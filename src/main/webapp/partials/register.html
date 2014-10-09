@@ -1,0 +1,24 @@
+<br><br>
+<div class="register_account">
+<div class="wrap">
+<h4 class="title">Create an Account</h4>
+<form data-ng-controller="UserCtrl" ng-submit="registerUser(Puser)">
+<div class="col_1_of_2 span_1_of_2">
+    <div><input required type="text" value="Name"  ng-model="Puser.name" placeholder="Name"></div>
+    <div><input type="text" class="register_account" ng-model="Puser.companyName" value="Company Name" placeholder="Company Name"></div>
+    <div><input required="" type="text"  value="E-Mail" ng-model="Puser.email" placeholder="Email"></div>
+    <div><input required="" type="text"  value="password" ng-model="Puser.password" placeholder="Password"></div>
+</div>
+<div class="col_1_of_2 span_1_of_2">
+<div><input type="text" required="" ng-model="Puser.address" value="Address" placeholder="Complete Address"></div>
+    <div><input required="" type="text"  value="India" ng-model="Puser.country" placeholder="Country"></div>
+<div><input type="text" required="" ng-model="Puser.city" value="City" placeholder="City"></div>
+<input type="text" value="91" ng-model="Puser.countryCode" required="" class="code"> - <input ng-model="Puser.phoneNumber" required="" type="text" value="" class="number">
+<p class="code">Country Code + Phone Number (Make sure your number is correct, in order to be eligible for cash back)</p>
+</div>
+<button class="grey">Submit</button>
+<p class="terms">By clicking 'Create Account' you agree to the <a href="#">Terms &amp; Conditions</a>.</p>
+<div class="clear"></div>
+</form>
+</div>
+</div>

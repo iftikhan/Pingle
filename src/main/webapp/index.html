@@ -1,0 +1,1375 @@
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html ng-app="ngdemo">
+<head>
+<title>Pingle.in ! Compare, Shop and Share</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="//twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css">
+<link rel="shortcut icon" type="image/x-icon" href="web/images/favicon.ico">
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link href="web/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+<link href="web/css/form.css" rel="stylesheet" type="text/css" media="all"/>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+
+<script type="text/javascript" src="/web/js/jquery-1.11.1.min.js"></script>
+<script src="web/js/jquery.elevatezoom.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="web/js/jquery.easydropdown.min.js"></script>
+<script src="js/bootsrap-modal.js"></script>
+
+
+<style>
+
+    .paginationclass {
+
+        margin: 19px 28px;
+    }
+
+    .pagination-controle li {
+        display: inline-block;
+    }
+
+    .pagination-centered button {
+
+        font-size: 12px;
+        margin-left: 28px;
+        cursor: pointer;
+    }
+
+    @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+
+    tbody > tr {
+        cursor: pointer;
+    }
+
+    .result {
+        margin-top: 20px;
+    }
+
+    .btn-group .dropdown-menu a {
+        color: #fff;
+    }
+
+    .btn-default .dropdown-menu {
+        color: #000 !important;
+    }
+
+    .btn-default .dropdown-menu li > a:hover,
+    .btn-default .dropdown-menu li > a:focus {
+        background-color: #000 !important;
+        color: #fff !important;
+    }
+
+    .btn-group-primary .dropdown-menu {
+        background-color: #3784c5 !important;
+    }
+
+    .btn-group-primary .dropdown-menu li > a:hover,
+    .btn-group-primary .dropdown-menu li > a:focus {
+        background-color: #428bca !important;
+    }
+
+    .btn-group-success .dropdown-menu {
+        background-color: #51b351 !important;
+    }
+
+    .btn-group-success .dropdown-menu li > a:hover,
+    .btn-group-success .dropdown-menu li > a:focus {
+        background-color: #5cb85c !important;
+    }
+
+    .btn-group-info .dropdown-menu {
+        background-color: #4ebbdb !important;
+    }
+
+    .btn-group-info .dropdown-menu li > a:hover,
+    .btn-group-info .dropdown-menu li > a:focus {
+        background-color: #5bc0de !important;
+    }
+
+    .btn-group-warning .dropdown-menu {
+        background-color: #efa640 !important;
+    }
+
+    .btn-group-warning .dropdown-menu li > a:hover,
+    .btn-group-warning .dropdown-menu li > a:focus {
+        background-color: #f0ad4e !important;
+    }
+
+    .btn-group-danger .dropdown-menu {
+        background-color: #d64742 !important;
+    }
+
+    .btn-group-danger .dropdown-menu li > a:hover,
+    .btn-group-danger .dropdown-menu li > a:focus {
+        background-color: #d9534f !important;
+    }
+
+    .filterable {
+        margin-top: 15px;
+    }
+
+    .filterable .panel-heading .pull-right {
+        margin-top: -20px;
+    }
+
+    .filterable .filters input[disabled] {
+        background-color: transparent;
+        border: none;
+        cursor: auto;
+        box-shadow: none;
+        padding: 0;
+        height: auto;
+    }
+
+    .filterable .filters input[disabled]::-webkit-input-placeholder {
+        color: #333;
+    }
+
+    .filterable .filters input[disabled]::-moz-placeholder {
+        color: #333;
+    }
+
+    .filterable .filters input[disabled]:-ms-input-placeholder {
+        color: #333;
+    }
+
+</style>
+
+<script type="text/javascript">
+    $(window).load(function () {
+        $("#flexiselDemo1").flexisel();
+        $("#flexiselDemo2").flexisel({
+            enableResponsiveBreakpoints: true,
+            responsiveBreakpoints: {
+                portrait: {
+                    changePoint: 480,
+                    visibleItems: 1
+                },
+                landscape: {
+                    changePoint: 640,
+                    visibleItems: 2
+                },
+                tablet: {
+                    changePoint: 768,
+                    visibleItems: 3
+                }
+            }
+        });
+
+        $("#flexiselDemo3").flexisel({
+            visibleItems: 5,
+            animationSpeed: 1000,
+            autoPlay: true,
+            autoPlaySpeed: 3000,
+            pauseOnHover: true,
+            enableResponsiveBreakpoints: true,
+            responsiveBreakpoints: {
+                portrait: {
+                    changePoint: 480,
+                    visibleItems: 1
+                },
+                landscape: {
+                    changePoint: 640,
+                    visibleItems: 2
+                },
+                tablet: {
+                    changePoint: 768,
+                    visibleItems: 3
+                }
+            }
+        });
+
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".dropdown img.flag").addClass("flagvisibility");
+
+        $(".dropdown dt a").click(function () {
+            $(".dropdown dd ul").toggle();
+        });
+
+        $(".dropdown dd ul li a").click(function () {
+            var text = $(this).html();
+            $(".dropdown dt a span").html(text);
+            $(".dropdown dd ul").hide();
+            $("#result").html("Selected value is: " + getSelectedValue("sample"));
+        });
+
+        function getSelectedValue(id) {
+            return $("#" + id).find("dt a span.value").html();
+        }
+
+        $(document).bind('click', function (e) {
+            var $clicked = $(e.target);
+            if (!$clicked.parents().hasClass("dropdown"))
+                $(".dropdown dd ul").hide();
+        });
+
+
+        $("#flagSwitcher").click(function () {
+            $(".dropdown img.flag").toggleClass("flagvisibility");
+        });
+    });
+</script>
+<!-- start menu -->
+<link href="web/css/megamenu.css" rel="stylesheet" type="text/css" media="all"/>
+<script type="text/javascript" src="web/js/megamenu.js"></script>
+<script>$(document).ready(function () {
+    $(".megamenu").megamenu();
+});</script>
+<!-- end menu -->
+<script type="text/javascript" src="web/js/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" id="sourcecode">
+    $(function () {
+        $('.scroll-pane').jScrollPane();
+    });
+</script>
+<!-- top scrolling -->
+
+<!-- Include the Etalage files -->
+<link rel="stylesheet" href="web/css/etalage.css">
+<script src="web/js/jquery.etalage.min.js"></script>
+<!-- Include the Etalage files -->
+<script>
+    jQuery(document).ready(function ($) {
+
+        $('#etalage').etalage({
+            thumb_image_width: 300,
+            thumb_image_height: 400,
+
+            show_hint: true,
+            click_callback: function (image_anchor, instance_id) {
+                alert('Callback example:\nYou clicked on an image with the anchor: "' + image_anchor + '"\n(in Etalage instance: "' + instance_id + '")');
+            }
+        });
+        // This is for the dropdown list example:
+        $('.dropdownlist').change(function () {
+            etalage_show($(this).find('option:selected').attr('class'));
+        });
+
+    });
+</script>
+<!----//details-product-slider--->
+
+
+<!-- top scrolling -->
+<script type="text/javascript" src="web/js/move-top.js"></script>
+<script type="text/javascript" src="web/js/easing.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
+        });
+    });
+</script>
+
+
+</head>
+<body>
+
+
+<div class="header-top">
+    <div class="wrap">
+        <div class="logo">
+            <a href="index.html"><img src="web/images/pinglelogo1.jpg" alt=""/></a>
+        </div>
+        <div class="cssmenu">
+            <ul>
+                <li class="active"><a href="#/register">Sign up</a></li>
+                <li><a href="#/login">Login</a></li>
+                <li><a href="#/userdetail">My Account ( Welcome Naveen )</a></li>
+                <!--<li><a href="web/checkout.html">CheckOut</a></li>-->
+            </ul>
+        </div>
+        <!--<ul class="icon2 sub-icon2 profile_img">
+            <li><a class="active-icon c2" href="#"> </a>
+                <ul class="sub-icon2 list">
+                    <li><h3>Products</h3><a href=""></a></li>
+                    <li><p>Lorem ipsum dolor sit amet, consectetuer  <a href="">adipiscing elit, sed diam</a></p></li>
+                </ul>
+            </li>
+        </ul>-->
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="header-bottom">
+<div class="wrap">
+<!-- start header menu -->
+<ul class="megamenu skyblue">
+
+<li><a class="color1" href="#">Home</a></li>
+<li class="active grid"><a class="color4" href="#">Men</a>
+
+    <div class="megapanel">
+        <div class="row">
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>MIXED & HAPPENING</h4>
+                    <ul>
+                        <li><a ng-click="getMenClothing('Formal Shirt')" data-ng-controller="MenCtrl" href="#/Menclothing">Formal Shirts</a></li>
+                        <li><a ng-click="getMenClothing('Casual Shirt')" data-ng-controller="MenCtrl" href="#/Menclothing">Casual Shirts</a></li>
+                        <li><a ng-click="getMenClothing('T-Shirt')" data-ng-controller="MenCtrl" href="#/Menclothing">T-Shirts</a></li>
+                        <li><a ng-click="getMenClothing('Tee')" data-ng-controller="MenCtrl" href="#/Menclothing">Tees</a></li>
+                        <li><a ng-click="getMenClothing('Polo')" data-ng-controller="MenCtrl" href="#/Menclothing">Polos</a></li>
+                        <li><a ng-click="getMenClothing('Jean')" data-ng-controller="MenCtrl" href="#/Menclothing">Jeans</a></li>
+                        <li><a ng-click="getMenClothing('Shirt')" data-ng-controller="MenCtrl" href="#/Menclothing">Shirts</a></li>
+                        <li><a ng-click="getMenClothing('Formal Trouser')" data-ng-controller="MenCtrl" href="#/Menclothing">Formal Trousers</a></li>
+                        <li><a ng-click="getMenClothing('Casual Trouser')" data-ng-controller="MenCtrl" href="#/Menclothing">Casual Trousers</a></li>
+                        <li><a ng-click="getMenClothing('Three Fourth')" data-ng-controller="MenCtrl" href="#/Menclothing">Three Fourths</a></li>
+                        <li><a ng-click="getMenClothing('Jacket')" data-ng-controller="MenCtrl" href="#/Menclothing">Jackets</a></li>
+                        <li><a ng-click="getMenClothing('Short')" data-ng-controller="MenCtrl" href="#/Menclothing">Shorts</a></li>
+                        <li><a ng-click="getMenClothing('Chino')" data-ng-controller="MenCtrl" href="#/Menclothing">Chinos</a></li>
+
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>INNERWEAR & NIGHWEAR</h4>
+                    <ul>
+                        <li><a ng-click="getMenClothing('Night Suit')" data-ng-controller="MenCtrl" href="#/Menclothing">Night Suits</a></li>
+                        <li><a ng-click="getMenClothing('Combo Set')" data-ng-controller="MenCtrl" href="#/Menclothing">Combo Sets</a></li>
+                        <li><a ng-click="getMenClothing('Trunk')" data-ng-controller="MenCtrl" href="#/Menclothing">Trunks</a></li>
+                        <li><a ng-click="getMenClothing('Briefs')" data-ng-controller="MenCtrl" href="#/Menclothing">Brief</a></li>
+                        <li><a ng-click="getMenClothing('Sock')" data-ng-controller="MenCtrl" href="#/Menclothing">Socks</a></li>
+                        <li><a ng-click="getMenClothing('Track Pant')" data-ng-controller="MenCtrl" href="#/Menclothing">Track Pants</a></li>
+                        <li><a ng-click="getMenClothing('Thermal')" data-ng-controller="MenCtrl" href="#/Menclothing">Thermals</a></li>
+
+                        <li><a ng-click="getMenClothing('Boxer')" data-ng-controller="MenCtrl" href="#/Menclothing">Boxers</a></li>
+                        <li><a ng-click="getMenClothing('Vest')" data-ng-controller="MenCtrl" href="#/Menclothing">Vests</a></li>
+                        <li><a ng-click="getMenClothing('Pyjama')" data-ng-controller="MenCtrl" href="#/Menclothing">Pyjamas</a></li>
+                        <li><a ng-click="getMenClothing('Lounge Pant')" data-ng-controller="MenCtrl" href="#/Menclothing">Lounge Pants</a></li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>SWIMWEAR</h4>
+                    <ul>
+                        <!--<li><a ng-click="getMenClothing('Swimsuit Top')" data-ng-controller="MenCtrl" href="#/Menclothing">Swimsuit Tops</a></li>
+                        <li><a ng-click="getMenClothing('Swimsuit Bottom')" data-ng-controller="MenCtrl" href="#/Menclothing">Swimsuit Bottoms</a></li>
+                        <li><a ng-click="getMenClothing('Swim Short')" data-ng-controller="MenCtrl" href="#/Menclothing">Swim Shorts</a></li>
+                        <li><a ng-click="getMenClothing('Tankini')" data-ng-controller="MenCtrl" href="#/Menclothing">Tankinis</a></li>
+-->
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>ETHNIC WEAR</h4>
+                    <ul>
+                        <li><a ng-click="getMenClothing('Set')" data-ng-controller="MenCtrl" href="#/Menclothing">Sets</a></li>
+                        <li><a ng-click="getMenClothing('Shirts')" data-ng-controller="MenCtrl" href="#/Menclothing">Shirts</a></li>
+                        <li><a ng-click="getMenClothing('Kurta')" data-ng-controller="MenCtrl" href="#/Menclothing">Kurtas</a></li>
+                        <li><a ng-click="getMenClothing('Pyjama')" data-ng-controller="MenCtrl" href="#/Menclothing">Pyjamas</a></li>
+                        <li><a ng-click="getMenClothing('Dhoti')" data-ng-controller="MenCtrl" href="#/Menclothing">Dhotis</a></li>
+                        <li><a ng-click="getMenClothing('Ethnic Jacket')" data-ng-controller="MenCtrl" href="#/Menclothing">Ethnic Jacket</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>SPORTS WEAR</h4>
+                    <ul>
+                        <li><a ng-click="getMenClothing('Track Top')" data-ng-controller="MenCtrl" href="#/Menclothing">Track Tops</a></li>
+                        <li><a ng-click="getMenClothing('Track Pant')" data-ng-controller="MenCtrl" href="#/Menclothing">Track Pant</a></li>
+                        <li><a ng-click="getMenClothing('swim')" data-ng-controller="MenCtrl" href="#/Menclothing">Swimsuit & Swimwear</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>ACCESSORIES</h4>
+                    <ul>
+                        <li><a ng-click="getMenClothing('Scarf')" data-ng-controller="MenCtrl" href="#/Menclothing">Scarfs</a></li>
+                        <li><a ng-click="getMenClothing('Wrist Band')" data-ng-controller="MenCtrl" href="#/Menclothing">Wrist Bands</a></li>
+                        <li><a ng-click="getMenClothing('Glove')" data-ng-controller="MenCtrl" href="#/Menclothing">Gloves</a></li>
+                        <li><a ng-click="getMenClothing('Handerkerchief')" data-ng-controller="MenCtrl" href="#/Menclothing">Handerkerchiefs</a></li>
+                        <li><a ng-click="getMenClothing('Cap')" data-ng-controller="MenCtrl" href="#/Menclothing">Caps</a></li>
+                        <li><a ng-click="getMenClothing('Cufflink')" data-ng-controller="MenCtrl" href="#/Menclothing">Cufflinks</a></li>
+                        <li><a ng-click="getMenClothing('Tie')" data-ng-controller="MenCtrl" href="#/Menclothing">Ties</a></li>
+                        <li><a ng-click="getMenClothing('Bandana')" data-ng-controller="MenCtrl" href="#/Menclothing">Bandanas</a></li>
+                        <li><a ng-click="getMenClothing('Muffler')" data-ng-controller="MenCtrl" href="#/Menclothing">Mufflers</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <img src="web/images/nav_img1.jpg" alt=""/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col2"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+        </div>
+    </div>
+</li>
+
+<li class="active grid"><a class="color4" href="#">Women</a>
+
+    <div class="megapanel">
+        <div class="row">
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>MIXED & HAPPENING</h4>
+                    <ul>
+                        <li><a ng-click="getWomenClothing('Dress')" data-ng-controller="WomenCtrl" href="#/womenclothing">Dresses</a></li>
+                         <li><a ng-click="getWomenClothing('Top')" data-ng-controller="WomenCtrl" href="#/womenclothing">Tops & Tees</a></li>
+                         <li><a ng-click="getWomenClothing('Tunic')" data-ng-controller="WomenCtrl" href="#/womenclothing">Tunics</a></li>
+                        <li><a ng-click="getWomenClothing('T-Shirt')" data-ng-controller="WomenCtrl" href="#/womenclothing">T-Shirts</a></li>
+                         <li><a ng-click="getWomenClothing('Shirt')" data-ng-controller="WomenCtrl" href="#/womenclothing">Shirts</a></li>
+                        <li><a ng-click="getWomenClothing('Jumpsuit')" data-ng-controller="WomenCtrl" href="#/womenclothing">Jumpsuit</a></li>
+                         <li><a ng-click="getWomenClothing('Trouser')" data-ng-controller="WomenCtrl" href="#/womenclothing">Trousers</a></li>
+                        <li><a ng-click="getWomenClothing('Jean')" data-ng-controller="WomenCtrl" href="#/womenclothing">Jeans</a></li>
+                         <li><a ng-click="getWomenClothing('Short')" data-ng-controller="WomenCtrl" href="#/womenclothing">Shorts</a></li>
+                        <li><a ng-click="getWomenClothing('Skirt')" data-ng-controller="WomenCtrl" href="#/womenclothing">Skirts</a></li>
+                         <li><a ng-click="getWomenClothing('Jacket')" data-ng-controller="WomenCtrl" href="#/womenclothing">Jackets</a></li>
+                        <li><a ng-click="getWomenClothing('Blazer')" data-ng-controller="WomenCtrl" href="#/womenclothing">Blazers</a></li>
+                         <li><a ng-click="getWomenClothing('Winter Wear')" data-ng-controller="WomenCtrl" href="#/womenclothing">Winter Wear</a></li>
+                         <li><a ng-click="getWomenClothing('Stocking')" data-ng-controller="WomenCtrl" href="#/womenclothing">Stockings</a></li>
+                        <li><a ng-click="getWomenClothing('Sock')" data-ng-controller="WomenCtrl" href="#/womenclothing">Socks</a></li>
+
+
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>LINGERIE & NIGHTWEAR</h4>
+                    <ul>
+                        <li><a ng-click="getWomenClothing('Lounge Set')" data-ng-controller="WomenCtrl" href="#/womenclothing">Lounge Set</a></li>
+                        <li><a ng-click="getWomenClothing('Lounge Short')" data-ng-controller="WomenCtrl" href="#/womenclothing">Lounge Short</a></li>
+                        <li><a ng-click="getWomenClothing('Lounge Top')" data-ng-controller="WomenCtrl" href="#/womenclothing">Lounge Top</a></li>
+                        <li><a ng-click="getWomenClothing('Robe')" data-ng-controller="WomenCtrl" href="#/womenclothing">Robe</a></li>
+                        <li><a ng-click="getWomenClothing('Nightdress')" data-ng-controller="WomenCtrl" href="#/womenclothing">Nightdress</a></li>
+                        <li><a ng-click="getWomenClothing('Nightwear')" data-ng-controller="WomenCtrl" href="#/womenclothing">Nightwear</a></li>
+                        <li><a ng-click="getWomenClothing('Lingerie')" data-ng-controller="WomenCtrl" href="#/womenclothing">Lingerie</a></li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>SWIMWEAR</h4>
+                    <ul>
+                        <li><a ng-click="getWomenClothing('Swimsuit Top')" data-ng-controller="WomenCtrl" href="#/womenclothing">Swimsuit Tops</a></li>
+                        <li><a ng-click="getWomenClothing('Swimsuit Bottom')" data-ng-controller="WomenCtrl" href="#/womenclothing">Swimsuit Bottoms</a></li>
+                        <li><a ng-click="getWomenClothing('Swim Short')" data-ng-controller="WomenCtrl" href="#/womenclothing">Swim Shorts</a></li>
+                        <li><a ng-click="getWomenClothing('Tankini')" data-ng-controller="WomenCtrl" href="#/womenclothing">Tankinis</a></li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>ETHNIC WEAR</h4>
+                    <ul>
+                        <li><a ng-click="getWomenClothing('Traditional Sari')" data-ng-controller="WomenCtrl" href="#/womenclothing">Traditional Sari</a></li>
+                        <li><a ng-click="getWomenClothing('Printed Sari')" data-ng-controller="WomenCtrl" href="#/womenclothing">Printed Sari</a></li>
+                        <li><a ng-click="getWomenClothing('Salwar')" data-ng-controller="WomenCtrl" href="#/womenclothing">Salwar</a></li>
+                        <li><a ng-click="getWomenClothing('Salwar Suit')" data-ng-controller="WomenCtrl" href="#/womenclothing">Salwar Suit</a></li>
+                        <li><a ng-click="getWomenClothing('Dupatta')" data-ng-controller="WomenCtrl" href="#/womenclothing">Dupatta</a></li>
+                        <li><a ng-click="getWomenClothing('Fashion Sari')" data-ng-controller="WomenCtrl" href="#/womenclothing">Fashion Sari</a></li>
+                        <li><a ng-click="getWomenClothing('Patiala Kurta')" data-ng-controller="WomenCtrl" href="#/womenclothing">Patiala Kurta Set</a></li>
+
+                        <li><a ng-click="getWomenClothing('Dhoti')" data-ng-controller="WomenCtrl" href="#/womenclothing">Dhotis</a></li>
+                        <li><a ng-click="getWomenClothing('Patiala')" data-ng-controller="WomenCtrl" href="#/womenclothing">Patiala</a></li>
+                        <li><a ng-click="getWomenClothing('Churidar')" data-ng-controller="WomenCtrl" href="#/womenclothing">Churidar</a></li>
+                        <li><a ng-click="getWomenClothing('Kurti')" data-ng-controller="WomenCtrl" href="#/womenclothing">Kurtis</a></li>
+                        <li><a ng-click="getWomenClothing('Churidar Kurta')" data-ng-controller="WomenCtrl" href="#/womenclothing">Churidar Kurta</a></li>
+
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>TOP WEAR</h4>
+                    <ul>
+                        <li><a ng-click="getWomenClothing('Sweatshirt')" data-ng-controller="WomenCtrl" href="#/womenclothing">Sweatshirts</a></li>
+                        <li><a ng-click="getWomenClothing('Shrug')" data-ng-controller="WomenCtrl" href="#/womenclothing">Shrug</a></li>
+                        <li><a ng-click="getWomenClothing('Waistcoat')" data-ng-controller="WomenCtrl" href="#/womenclothing">Waistcoat</a></li>
+                        <li><a ng-click="getWomenClothing('Romper')" data-ng-controller="WomenCtrl" href="#/womenclothing">Rompers</a></li>
+                        <li><a ng-click="getWomenClothing('Coat')" data-ng-controller="WomenCtrl" href="#/womenclothing">Coats</a></li>
+
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>BOTTOMWEAR</h4>
+                    <ul>
+                        <li><a ng-click="getWomenClothing('Pyjama')" data-ng-controller="WomenCtrl" href="#/womenclothing">Pyjamas</a></li>
+                        <li><a ng-click="getWomenClothing('Track Pant')" data-ng-controller="WomenCtrl" href="#/womenclothing">Track Pants</a></li>
+                        <li><a ng-click="getWomenClothing('Capri')" data-ng-controller="WomenCtrl" href="#/womenclothing">Capris</a></li>
+                        <li><a ng-click="getWomenClothing('Harem Pant')" data-ng-controller="WomenCtrl" href="#/womenclothing">Harem Pants</a></li>
+                        <li><a ng-click="getWomenClothing('Jegging')" data-ng-controller="WomenCtrl" href="#/womenclothing">Jeggings</a></li>
+                        <li><a ng-click="getWomenClothing('Tight')" data-ng-controller="WomenCtrl" href="#/womenclothing">Tights</a></li>
+                        <li><a ng-click="getWomenClothing('Dungaree')" data-ng-controller="WomenCtrl" href="#/womenclothing">Dungarees</a></li>
+
+
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <img src="web/images/nav_img1.jpg" alt=""/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col2"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+        </div>
+    </div>
+</li>
+<li><a class="color5" href="#/watches">Watches</a>
+    <div class="megapanel">
+        <div class="row">
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>Men's Watches</h4>
+                    <ul>
+                        <li><a ng-click="getwatches('Men')" data-ng-controller="WatchCtrl" href="#/watches">All Brands</a></li>
+                        <li><a ng-click="getwatches('Fossil')" data-ng-controller="WatchCtrl" href="#/watches">Fossil</a></li>
+                        <li><a href="shop.html">Titan</a></li>
+                        <li><a href="shop.html">Fastrack</a></li>
+                        <li><a href="shop.html">Analog Watches</a></li>
+                        <li><a href="shop.html">DIgital Watches</a></li>
+                    </ul>
+                </div>
+                <div class="h_nav">
+                    <h4 class="top">Women's Watches</h4>
+                    <ul>
+                        <li><a ng-click="getwatches('women')" data-ng-controller="WatchCtrl" href="#/watches">All Brands</a></li>
+                        <li><a href="shop.html">Fossil</a></li>
+                        <li><a href="shop.html">Titan</a></li>
+                        <li><a href="shop.html">Fastrack</a></li>
+                        <li><a href="shop.html">Analog Watches</a></li>
+                        <li><a href="shop.html">DIgital Watches</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col1"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+            <img src="web/images/nav_img2.jpg" alt=""/>
+        </div>
+    </div>
+</li>
+<li><a class="color6" ng-click="mobiles()" data-ng-controller="MyCtrl2" href="#/view2">Mobiles</a>
+    <!--<div class="megapanel">
+        <div class="row">
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>Brands</h4>
+                    <ul>
+                        <li><a ng-click="mobiles()" data-ng-controller="MyCtrl2" href="#/view2">All Brands</a></li>
+                        <li><a href="shop.html">Apple</a></li>
+                        <li><a href="shop.html">Samsung</a></li>
+                        <li><a href="shop.html">Nokia</a></li>
+                        <li><a href="shop.html">Blackberry</a></li>
+                        <li><a href="shop.html">Micromax</a></li>
+                    </ul>
+                </div>
+               &lt;!&ndash; <div class="h_nav">
+                    <h4 class="top">my company</h4>
+                    <ul>
+                        <li><a href="shop.html">trends</a></li>
+                        <li><a href="shop.html">sale</a></li>
+                        <li><a href="shop.html">style videos</a></li>
+                        <li><a href="shop.html">accessories</a></li>
+                        <li><a href="shop.html">kids</a></li>
+                        <li><a href="shop.html">style videos</a></li>
+                    </ul>
+                </div>&ndash;&gt;
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>Merchant</h4>
+                    <ul>
+                        <li><a href="shop.html">All Merchants</a></li>
+                        <li><a href="shop.html">Flipkart</a></li>
+                        <li><a href="shop.html">Amazon</a></li>
+                        <li><a href="shop.html">Indiatimes</a></li>
+                        <li><a href="shop.html">Greendust</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>Accessories</h4>
+                    <ul>
+                        <li><a  href="#">Coming soon</a></li>
+                       &lt;!&ndash; <li><a href="shop.html">sale</a></li>
+                        <li><a href="shop.html">style videos</a></li>
+                        <li><a href="shop.html">accessories</a></li>
+                        <li><a href="shop.html">kids</a></li>
+                        <li><a href="shop.html">style videos</a></li>&ndash;&gt;
+                    </ul>
+                </div>
+            </div>
+           &lt;!&ndash; <div class="col1">
+                <div class="h_nav">
+                    <h4>account</h4>
+                    <ul>
+                        <li><a href="shop.html">login</a></li>
+                        <li><a href="shop.html">create an account</a></li>
+                        <li><a href="shop.html">create wishlist</a></li>
+                        <li><a href="shop.html">my shopping bag</a></li>
+                        <li><a href="shop.html">brands</a></li>
+                        <li><a href="shop.html">create wishlist</a></li>
+                    </ul>
+                </div>
+            </div>&ndash;&gt;
+    &lt;!&ndash; <div class="col1">
+                <div class="h_nav">
+                    <h4>my company</h4>
+                    <ul>
+                        <li><a href="shop.html">trends</a></li>
+                        <li><a href="shop.html">sale</a></li>
+                        <li><a href="shop.html">style videos</a></li>
+                        <li><a href="shop.html">accessories</a></li>
+                        <li><a href="shop.html">kids</a></li>
+                        <li><a href="shop.html">style videos</a></li>
+                    </ul>
+                </div>
+            </div>&ndash;&gt;
+    &lt;!&ndash; <div class="col1">
+                <div class="h_nav">
+                    <h4>popular</h4>
+                    <ul>
+                        <li><a href="shop.html">new arrivals</a></li>
+                        <li><a href="shop.html">men</a></li>
+                        <li><a href="shop.html">women</a></li>
+                        <li><a href="shop.html">accessories</a></li>
+                        <li><a href="shop.html">kids</a></li>
+                        <li><a href="shop.html">style videos</a></li>
+                    </ul>
+                </div>
+            </div>&ndash;&gt;
+        </div>
+        <div class="row">
+            <div class="col2"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+        </div>
+    </div>-->
+</li>
+<li><a class="color7" ng-click="menlaptopes()" data-ng-controller="laptopesCtrl" href="#/laptopes">Laptops</a>
+    <!--<div class="megapanel">
+        <div class="row">
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>Laptops</h4>
+                    <ul>
+                        <li><a href="shop.html">HP</a></li>
+                        <li><a href="shop.html">Lenovo</a></li>
+                        <li><a href="shop.html">Dell</a></li>
+                        <li><a ng-click="menlaptopes()" data-ng-controller="laptopesCtrl" href="#/laptopes">All Brands</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>Televisions</h4>
+                    <ul>
+                        <li><a href="shop.html">LED/LCD Tv</a></li>
+                        <li><a ng-click="mentves()" data-ng-controller="tvesCtrl" href="#/tves">All Types</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>Home Appliances</h4>
+                    <ul>
+                        <li><a href="shop.html" disabled="true">Refrigerators (Coming Soon)</a></li>
+                        <li><a href="shop.html" disabled="true">Washing Machines (Coming Soon)</a></li>
+                        <li><a href="shop.html" disabled="true">Air Conditioners (Coming Soon)</a></li>
+                        <li><a href="shop.html" disabled="true">Microwave Ovens (Coming Soon)</a></li>
+                        <li><a href="shop.html" disabled="true">Mixers/Juicers/Grinders (Coming Soon)</a></li>
+                    </ul>
+                </div>
+            </div>
+           &lt;!&ndash; <div class="col1">
+                <div class="h_nav">
+                    <h4>account</h4>
+                    <ul>
+                        <li><a href="shop.html">login</a></li>
+                        <li><a href="shop.html">create an account</a></li>
+                        <li><a href="shop.html">create wishlist</a></li>
+                        <li><a href="shop.html">my shopping bag</a></li>
+                        <li><a href="shop.html">brands</a></li>
+                        <li><a href="shop.html">create wishlist</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>my company</h4>
+                    <ul>
+                        <li><a href="shop.html">trends</a></li>
+                        <li><a href="shop.html">sale</a></li>
+                        <li><a href="shop.html">style videos</a></li>
+                        <li><a href="shop.html">accessories</a></li>
+                        <li><a href="shop.html">kids</a></li>
+                        <li><a href="shop.html">style videos</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>popular</h4>
+                    <ul>
+                        <li><a href="shop.html">new arrivals</a></li>
+                        <li><a href="shop.html">men</a></li>
+                        <li><a href="shop.html">women</a></li>
+                        <li><a href="shop.html">accessories</a></li>
+                        <li><a href="shop.html">kids</a></li>
+                        <li><a href="shop.html">style videos</a></li>
+                    </ul>
+                </div>
+            </div>&ndash;&gt;
+        </div>
+        <div class="row">
+            <div class="col2"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+        </div>
+    </div>-->
+</li>
+<li><a class="color7" ng-click="mentves()" data-ng-controller="tvesCtrl" href="#/tves">Television</a>
+    <!--<div class="megapanel">
+        <div class="row">
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>Laptops</h4>
+                    <ul>
+                        <li><a href="shop.html">HP</a></li>
+                        <li><a href="shop.html">Lenovo</a></li>
+                        <li><a href="shop.html">Dell</a></li>
+                        <li><a ng-click="menlaptopes()" data-ng-controller="laptopesCtrl" href="#/laptopes">All Brands</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>Televisions</h4>
+                    <ul>
+                        <li><a href="shop.html">LED/LCD Tv</a></li>
+                        <li><a ng-click="mentves()" data-ng-controller="tvesCtrl" href="#/tves">All Types</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>Home Appliances</h4>
+                    <ul>
+                        <li><a href="shop.html" disabled="true">Refrigerators (Coming Soon)</a></li>
+                        <li><a href="shop.html" disabled="true">Washing Machines (Coming Soon)</a></li>
+                        <li><a href="shop.html" disabled="true">Air Conditioners (Coming Soon)</a></li>
+                        <li><a href="shop.html" disabled="true">Microwave Ovens (Coming Soon)</a></li>
+                        <li><a href="shop.html" disabled="true">Mixers/Juicers/Grinders (Coming Soon)</a></li>
+                    </ul>
+                </div>
+            </div>
+           &lt;!&ndash; <div class="col1">
+                <div class="h_nav">
+                    <h4>account</h4>
+                    <ul>
+                        <li><a href="shop.html">login</a></li>
+                        <li><a href="shop.html">create an account</a></li>
+                        <li><a href="shop.html">create wishlist</a></li>
+                        <li><a href="shop.html">my shopping bag</a></li>
+                        <li><a href="shop.html">brands</a></li>
+                        <li><a href="shop.html">create wishlist</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>my company</h4>
+                    <ul>
+                        <li><a href="shop.html">trends</a></li>
+                        <li><a href="shop.html">sale</a></li>
+                        <li><a href="shop.html">style videos</a></li>
+                        <li><a href="shop.html">accessories</a></li>
+                        <li><a href="shop.html">kids</a></li>
+                        <li><a href="shop.html">style videos</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>popular</h4>
+                    <ul>
+                        <li><a href="shop.html">new arrivals</a></li>
+                        <li><a href="shop.html">men</a></li>
+                        <li><a href="shop.html">women</a></li>
+                        <li><a href="shop.html">accessories</a></li>
+                        <li><a href="shop.html">kids</a></li>
+                        <li><a href="shop.html">style videos</a></li>
+                    </ul>
+                </div>
+            </div>&ndash;&gt;
+        </div>
+        <div class="row">
+            <div class="col2"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+        </div>
+    </div>-->
+</li>
+<li><a class="color8" ng-click="mencameraes('Camera')" data-ng-controller="cameraesCtrl" href="#/cameraes">Cameras</a>
+    <!--<div class="megapanel">
+        <div class="row">
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>Cameras</h4>
+                    <ul>
+                        <li><a href="shop.html">Canon</a></li>
+                        <li><a href="shop.html">Nikon</a></li>
+                        <li><a href="shop.html">Sony</a></li>
+                        <li><a ng-click="mencameraes('Camera')" data-ng-controller="cameraesCtrl" href="#/cameraes">All Brands</a></li>
+                    </ul>
+                </div>
+            </div>
+           &lt;!&ndash; <div class="col1">
+                <div class="h_nav">
+                    <h4>popular</h4>
+                    <ul>
+                        <li><a href="shop.html">new arrivals</a></li>
+                        <li><a href="shop.html">men</a></li>
+                        <li><a href="shop.html">kids</a></li>
+                        <li><a href="shop.html">accessories</a></li>
+                        <li><a href="shop.html">login</a></li>
+                    </ul>
+                </div>
+                <div class="h_nav">
+                    <h4 class="top">man</h4>
+                    <ul>
+                        <li><a href="shop.html">new arrivals</a></li>
+                        <li><a href="shop.html">accessories</a></li>
+                        <li><a href="shop.html">kids</a></li>
+                        <li><a href="shop.html">style videos</a></li>
+                    </ul>
+                </div>
+                <div class="col1"></div>
+                <div class="col1"></div>
+                <div class="col1"></div>
+                <div class="col1"></div>
+            </div>&ndash;&gt;
+        </div>
+        </div>-->
+</li>
+<!--<li><a class="color9" href="#">Sports Equipments</a>
+    <div class="megapanel">
+        <div class="row">
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>shop</h4>
+                    <ul>
+                        <li><a href="shop.html">new arrivals</a></li>
+                        <li><a href="shop.html">men</a></li>
+                        <li><a href="shop.html">women</a></li>
+                        <li><a href="shop.html">accessories</a></li>
+                        <li><a href="shop.html">kids</a></li>
+                        <li><a href="shop.html">brands</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>help</h4>
+                    <ul>
+                        <li><a href="shop.html">trends</a></li>
+                        <li><a href="shop.html">sale</a></li>
+                        <li><a href="shop.html">style videos</a></li>
+                        <li><a href="shop.html">accessories</a></li>
+                        <li><a href="shop.html">kids</a></li>
+                        <li><a href="shop.html">style videos</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>my company</h4>
+                    <ul>
+                        <li><a href="shop.html">trends</a></li>
+                        <li><a href="shop.html">sale</a></li>
+                        <li><a href="shop.html">style videos</a></li>
+                        <li><a href="shop.html">accessories</a></li>
+                        <li><a href="shop.html">kids</a></li>
+                        <li><a href="shop.html">style videos</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>account</h4>
+                    <ul>
+                        <li><a href="shop.html">login</a></li>
+                        <li><a href="shop.html">create an account</a></li>
+                        <li><a href="shop.html">create wishlist</a></li>
+                        <li><a href="shop.html">my shopping bag</a></li>
+                        <li><a href="shop.html">brands</a></li>
+                        <li><a href="shop.html">create wishlist</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>my company</h4>
+                    <ul>
+                        <li><a href="shop.html">trends</a></li>
+                        <li><a href="shop.html">sale</a></li>
+                        <li><a href="shop.html">style videos</a></li>
+                        <li><a href="shop.html">accessories</a></li>
+                        <li><a href="shop.html">kids</a></li>
+                        <li><a href="shop.html">style videos</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>popular</h4>
+                    <ul>
+                        <li><a href="shop.html">new arrivals</a></li>
+                        <li><a href="shop.html">men</a></li>
+                        <li><a href="shop.html">women</a></li>
+                        <li><a href="shop.html">accessories</a></li>
+                        <li><a href="shop.html">kids</a></li>
+                        <li><a href="shop.html">style videos</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col2"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+        </div>
+    </div>
+</li>-->
+<!--<li><a class="color10" href="#">Sale</a></li>
+<li><a class="color11" href="#">Coupon And Offers</a></li>-->
+<li><a class="color12" href="#">I'm Lucky</a></li>
+</ul>
+<div class="clear"></div>
+</div>
+</div>
+</div>
+
+<div class="content-bottom">
+
+    <div ng-view></div>
+
+</div>
+
+
+<div class="footer">
+<div class="footer-top">
+    <div class="wrap">
+        <div class="col_1_of_footer-top span_1_of_footer-top">
+            <ul class="f_list">
+                <li><img src="web/images/f_icon.png" alt=""/><span class="delivery">Free delivery on all orders over £100*</span>
+                </li>
+            </ul>
+        </div>
+        <div class="col_1_of_footer-top span_1_of_footer-top">
+            <ul class="f_list">
+                <li><img src="web/images/f_icon1.png" alt=""/><span class="delivery">Customer Service :<span
+                        class="orange"> (800) 000-2587 (freephone)</span></span></li>
+            </ul>
+        </div>
+        <div class="col_1_of_footer-top span_1_of_footer-top">
+            <ul class="f_list">
+                <li><img src="web/images/f_icon2.png" alt=""/><span class="delivery">Fast delivery & free returns</span>
+                </li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="footer-middle">
+    <div class="wrap">
+        <div class="section group">
+            <div class="col_1_of_middle span_1_of_middle">
+                <dl id="sample" class="dropdown">
+                    <dt><a href="#"><span>Please Select a Country</span></a></dt>
+                    <dd>
+                        <ul>
+                            <li><a href="#">Australia<img class="flag" src="web/images/as.png" alt=""/><span
+                                    class="value">AS</span></a></li>
+                            <li><a href="#">Sri Lanka<img class="flag" src="web/images/srl.png" alt=""/><span
+                                    class="value">SL</span></a></li>
+                            <li><a href="#">Newziland<img class="flag" src="web/images/nz.png" alt=""/><span
+                                    class="value">NZ</span></a></li>
+                            <li><a href="#">Pakistan<img class="flag" src="web/images/pk.png" alt=""/><span
+                                    class="value">Pk</span></a></li>
+                            <li><a href="#">United Kingdom<img class="flag" src="web/images/uk.png" alt=""/><span
+                                    class="value">UK</span></a></li>
+                            <li><a href="#">United States<img class="flag" src="web/images/us.png" alt=""/><span
+                                    class="value">US</span></a></li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col_1_of_middle span_1_of_middle">
+                <ul class="f_list1">
+                    <li><span class="m_8">Sign up for email and Get 15% off</span>
+
+                        <div class="search">
+                            <input type="text" name="s" class="textbox" value="Search" onfocus="this.value = '';"
+                                   onblur="if (this.value == '') {this.value = 'Search';}">
+                            <input type="submit" value="Subscribe" id="submit" name="submit">
+
+                            <div id="response"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div class="footer-bottom">
+    <div class="wrap">
+        <div class="section group">
+            <div class="col_1_of_5 span_1_of_5">
+                <h3 class="m_9">Shop</h3>
+                <ul class="sub_list">
+                    <h4 class="m_10">Men</h4>
+                    <li><a href="shop.html">Men's Shoes</a></li>
+                    <li><a href="shop.html">Men's Clothing</a></li>
+                    <li><a href="shop.html">Men's Accessories</a></li>
+                </ul>
+                <ul class="sub_list">
+                    <h4 class="m_10">Women</h4>
+                    <li><a href="shop.html">Women's Shoes</a></li>
+                    <li><a href="shop.html">Women's Clothing</a></li>
+                    <li><a href="shop.html">Women's Accessories</a></li>
+                </ul>
+                <ul class="sub_list">
+                    <h4 class="m_10">Kids</h4>
+                    <li><a href="shop.html">Kids Shoes</a></li>
+                    <li><a href="shop.html">Kids Clothing</a></li>
+                    <li><a href="shop.html">Kids Accessories</a></li>
+                </ul>
+                <ul class="sub_list">
+                    <h4 class="m_10">style</h4>
+                    <li><a href="shop.html">Porsche Design Sport</a></li>
+                    <li><a href="shop.html">Porsche Design Shoes</a></li>
+                    <li><a href="shop.html">Porsche Design Clothing</a></li>
+                </ul>
+                <ul class="sub_list">
+                    <h4 class="m_10">Adidas Neo Label</h4>
+                    <li><a href="shop.html">Adidas NEO Shoes</a></li>
+                    <li><a href="shop.html">Adidas NEO Clothing</a></li>
+                </ul>
+                <ul class="sub_list1">
+                    <h4 class="m_10">Customise</h4>
+                    <li><a href="shop.html">mi adidas</a></li>
+                    <li><a href="shop.html">mi team</a></li>
+                    <li><a href="shop.html">new arrivals</a></li>
+                </ul>
+            </div>
+            <div class="col_1_of_5 span_1_of_5">
+                <h3 class="m_9">Sports</h3>
+                <ul class="list1">
+                    <li><a href="shop.html">Basketball</a></li>
+                    <li><a href="shop.html">Football</a></li>
+                    <li><a href="shop.html">Football Boots</a></li>
+                    <li><a href="shop.html">Predator</a></li>
+                    <li><a href="shop.html">F50</a></li>
+                    <li><a href="shop.html">Football Clothing</a></li>
+                    <li><a href="shop.html">Golf</a></li>
+                    <li><a href="shop.html">Golf Shoes</a></li>
+                    <li><a href="shop.html">Golf Clothing</a></li>
+                    <li><a href="shop.html">Outdoor</a></li>
+                    <li><a href="shop.html">Outdoor Shoes</a></li>
+                    <li><a href="shop.html">Outdoor Clothing</a></li>
+                    <li><a href="shop.html">Rugby</a></li>
+                    <li><a href="shop.html">Running</a></li>
+                    <li><a href="shop.html">Running Shoes</a></li>
+                    <li><a href="shop.html">Boost</a></li>
+                    <li><a href="shop.html">Supernova</a></li>
+                    <li><a href="shop.html">Running Clothing</a></li>
+                    <li><a href="shop.html">Swimming</a></li>
+                    <li><a href="shop.html">Tennis</a></li>
+                    <li><a href="shop.html">Tennis Shoes</a></li>
+                    <li><a href="shop.html">Tennis Clothing</a></li>
+                    <li><a href="shop.html">Training</a></li>
+                    <li><a href="shop.html">Training Shoes</a></li>
+                    <li><a href="shop.html">Training Clothing</a></li>
+                    <li><a href="shop.html">Training Accessories</a></li>
+                    <li><a href="shop.html">miCoach</a></li>
+                    <li><a href="shop.html">All Sports</a></li>
+                </ul>
+            </div>
+            <div class="col_1_of_5 span_1_of_5">
+                <h3 class="m_9">Originals</h3>
+                <ul class="list1">
+                    <li><a href="shop.html">Originals Shoes</a></li>
+                    <li><a href="shop.html">Gazelle</a></li>
+                    <li><a href="shop.html">Samba</a></li>
+                    <li><a href="shop.html">LA Trainer</a></li>
+                    <li><a href="shop.html">Superstar</a></li>
+                    <li><a href="shop.html">SL</a></li>
+                    <li><a href="shop.html">ZX</a></li>
+                    <li><a href="shop.html">Campus</a></li>
+                    <li><a href="shop.html">Spezial</a></li>
+                    <li><a href="shop.html">Dragon</a></li>
+                    <li><a href="shop.html">Originals Clothing</a></li>
+                    <li><a href="shop.html">Firebird</a></li>
+                    <li><a href="shop.html">Originals Accessories</a></li>
+                    <li><a href="shop.html">Men's Originals</a></li>
+                    <li><a href="shop.html">Women's Originals</a></li>
+                    <li><a href="shop.html">Kid's Originals</a></li>
+                    <li><a href="shop.html">All Originals</a></li>
+                </ul>
+            </div>
+            <div class="col_1_of_5 span_1_of_5">
+                <h3 class="m_9">Product Types</h3>
+                <ul class="list1">
+                    <li><a href="shop.html">Shirts</a></li>
+                    <li><a href="shop.html">Pants & Tights</a></li>
+                    <li><a href="shop.html">Shirts</a></li>
+                    <li><a href="shop.html">Jerseys</a></li>
+                    <li><a href="shop.html">Hoodies & Track Tops</a></li>
+                    <li><a href="shop.html">Bags</a></li>
+                    <li><a href="shop.html">Jackets</a></li>
+                    <li><a href="shop.html">Hi Tops</a></li>
+                    <li><a href="shop.html">SweatShirts</a></li>
+                    <li><a href="shop.html">Socks</a></li>
+                    <li><a href="shop.html">Swimwear</a></li>
+                    <li><a href="shop.html">Tracksuits</a></li>
+                    <li><a href="shop.html">Hats</a></li>
+                    <li><a href="shop.html">Football Boots</a></li>
+                    <li><a href="shop.html">Other Accessories</a></li>
+                    <li><a href="shop.html">Sandals & Flip Flops</a></li>
+                    <li><a href="shop.html">Skirts & Dresseses</a></li>
+                    <li><a href="shop.html">Balls</a></li>
+                    <li><a href="shop.html">Watches</a></li>
+                    <li><a href="shop.html">Fitness Equipment</a></li>
+                    <li><a href="shop.html">Eyewear</a></li>
+                    <li><a href="shop.html">Gloves</a></li>
+                    <li><a href="shop.html">Sports Bras</a></li>
+                    <li><a href="shop.html">Scarves</a></li>
+                    <li><a href="shop.html">Shinguards</a></li>
+                    <li><a href="shop.html">Underwear</a></li>
+                </ul>
+            </div>
+            <div class="col_1_of_5 span_1_of_5">
+                <h3 class="m_9">Support</h3>
+                <ul class="list1">
+                    <li><a href="shop.html">Store finder</a></li>
+                    <li><a href="shop.html">Customer Service</a></li>
+                    <li><a href="shop.html">FAQ</a></li>
+                    <li><a href="shop.html">Online Shop Contact Us</a></li>
+                    <li><a href="shop.html">about adidas Products</a></li>
+                    <li><a href="shop.html">Size Charts </a></li>
+                    <li><a href="shop.html">Ordering </a></li>
+                    <li><a href="shop.html">Payment </a></li>
+                    <li><a href="shop.html">Shipping </a></li>
+                    <li><a href="shop.html">Returning</a></li>
+                    <li><a href="shop.html">Using out Site</a></li>
+                    <li><a href="shop.html">Delivery Terms</a></li>
+                    <li><a href="shop.html">Site Map</a></li>
+                    <li><a href="shop.html">Gift Card</a></li>
+
+                </ul>
+                <ul class="sub_list2">
+                    <h4 class="m_10">Company Info</h4>
+                    <li><a href="shop.html">About Us</a></li>
+                    <li><a href="shop.html">Careers</a></li>
+                    <li><a href="shop.html">Press</a></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div class="copy">
+    <div class="wrap">
+        <p>© All rights reserved | Template by&nbsp;<a href="http://w3layouts.com/"> W3Layouts</a></p>
+    </div>
+</div>
+</div>
+
+<script type="text/javascript">
+    $(window).load(function () {
+        $("#flexiselDemo1").flexisel();
+        $("#flexiselDemo2").flexisel({
+            enableResponsiveBreakpoints: true,
+            responsiveBreakpoints: {
+                portrait: {
+                    changePoint: 480,
+                    visibleItems: 1
+                },
+                landscape: {
+                    changePoint: 640,
+                    visibleItems: 2
+                },
+                tablet: {
+                    changePoint: 768,
+                    visibleItems: 3
+                }
+            }
+        });
+
+        $("#flexiselDemo3").flexisel({
+            visibleItems: 5,
+            animationSpeed: 1000,
+            autoPlay: true,
+            autoPlaySpeed: 3000,
+            pauseOnHover: true,
+            enableResponsiveBreakpoints: true,
+            responsiveBreakpoints: {
+                portrait: {
+                    changePoint: 480,
+                    visibleItems: 1
+                },
+                landscape: {
+                    changePoint: 640,
+                    visibleItems: 2
+                },
+                tablet: {
+                    changePoint: 768,
+                    visibleItems: 3
+                }
+            }
+        });
+
+    });
+</script>
+<script type="text/javascript">
+    /*
+     Please consider that the JS part isn't production ready at all, I just code it to show the concept of merging filters and titles together !
+     */
+    $(document).ready(function () {
+        $('.filterable .btn-filter').click(function () {
+            var $panel = $(this).parents('.filterable'),
+                    $filters = $panel.find('.filters input'),
+                    $tbody = $panel.find('.table tbody');
+            if ($filters.prop('disabled') == true) {
+                $filters.prop('disabled', false);
+                $filters.first().focus();
+            } else {
+                $filters.val('').prop('disabled', true);
+                $tbody.find('.no-result').remove();
+                $tbody.find('tr').show();
+            }
+        });
+
+        $('.filterable .filters input').keyup(function (e) {
+            /* Ignore tab key */
+            var code = e.keyCode || e.which;
+            if (code == '9') return;
+            /* Useful DOM data and selectors */
+            var $input = $(this),
+                    inputContent = $input.val().toLowerCase(),
+                    $panel = $input.parents('.filterable'),
+                    column = $panel.find('.filters th').index($input.parents('th')),
+                    $table = $panel.find('.table'),
+                    $rows = $table.find('tbody tr');
+            /* Dirtiest filter function ever ;) */
+            var $filteredRows = $rows.filter(function () {
+                var value = $(this).find('td').eq(column).text().toLowerCase();
+                return value.indexOf(inputContent) === -1;
+            });
+            /* Clean previous no-result if exist */
+            $table.find('tbody .no-result').remove();
+            /* Show all rows, hide filtered ones (never do that outside of a demo ! xD) */
+            $rows.show();
+            $filteredRows.hide();
+            /* Prepend no-result row if all rows are filtered */
+            if ($filteredRows.length === $rows.length) {
+                $table.find('tbody').prepend($('<tr class="no-result text-center"><td colspan="' + $table.find('.filters th').length + '">No result found</td></tr>'));
+            }
+        });
+    });
+</script>
+<script type="text/javascript" src="web/js/jquery.flexisel.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var defaults = {
+            containerID: 'toTop', // fading element id
+            containerHoverID: 'toTopHover', // fading element hover id
+            scrollSpeed: 1200,
+            easingType: 'linear'
+        };
+
+
+        $().UItoTop({ easingType: 'easeOutQuart' });
+
+    });
+</script>
+<a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+
+
+<script src="js/bootstrap.min.js"></script>
+<script src="lib/angular/angular.js"></script>
+<script src="js/angular-strap.js"></script>
+<script type='text/javascript' src='js/infinite-scroll.js'></script>
+<script type='text/javascript' src='js/ng-infinite-scroll.min.js'></script>
+
+
+<script src="lib/angular/angular-resource.js"></script>
+<script src="js/app.js"></script>
+<script type='text/javascript' src='js/ngAutocomplete.js'></script>
+<script src="js/services.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/directives.js"></script>
+<script src="js/checklist-model.js"></script>
+
+
+</body>
+</html>

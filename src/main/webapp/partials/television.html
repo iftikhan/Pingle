@@ -1,0 +1,215 @@
+<div class="register_account">
+    <div class="wrap">
+
+        <form>
+            <div class="col_1_of_2 span_1_of_2">
+                <div><input type="text" value="What you want to pingle?" ng-model="typeaheadValue" bs-typeahead="typeahead" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}"></div>
+            </div>
+            <div class="col_1_of_2 span_1_of_2">
+
+                <div>
+                    <select data-ng-controller="tvesCtrl"  ng-click="getMobileInfo(typeaheadValue, item.name)" style="width: 40%" ng-model="item"
+                            ng-options="item as item.name for item in items"></select>
+                </div>
+
+
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
+
+<div class="login">
+
+
+
+    <div class="wrap">
+
+
+        <div class="rsidebar span_1_of_left">
+
+            <section  class="sky-form">
+                <h4>Brand</h4>
+                <div class="row row1 scroll-pane">
+                    <div class="col col-4" ng-repeat="d in tvesdivisions">
+
+                        <input type="checkbox" ng-model="d.selected" class="" id="{{'div' + d.Id}}" name="selectedDivisionstv[]" />
+                        <label for="div{{$index}}">{{d.brand}}</label>
+
+                        <!-- <button ng-submit="getMobileBrandData(mobile.brand)"> send </button>-->
+                    </div>
+                </div>
+            </section>
+            <div class="clear"></div>
+            <section  class="sky-form">
+                <h4>Price</h4>
+                <div class="row row1 scroll-pane">
+                    <div class="col col-4" ng-repeat="d2 in pricedivisionstv">
+
+                        <input type="checkbox" ng-model="d2.selected" class="" id="{{'div' + d2.Id}}" name="selectedPriceDivisionstv[]" />
+                        <label for="div{{$index}}">{{d2.price}}</label>
+
+                        <!-- <button ng-submit="getMobileBrandData(mobile.brand)"> send </button>-->
+                    </div>
+
+                </div>
+            </section>
+            <div class="clear"></div>
+            <section  class="sky-form">
+                <h4>Colors</h4>
+                <div class="row row1 scroll-pane">
+                    <div class="col col-4" ng-repeat="d1 in colordivisionstv">
+
+                        <input type="checkbox" ng-model="d1.selected" class="" id="{{'div' + d1.Id}}" name="selectedColorDivisionstv[]" />
+                        <label for="div{{$index}}">{{d1.color}}</label>
+
+                        <!-- <button ng-submit="getMobileBrandData(mobile.brand)"> send </button>-->
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="cont span_2_of_3">
+            <div class="mens-toolbar">
+                <div class="sort">
+                    <div class="sort-by">
+                        <label>Sort By</label>
+                        <select>
+                            <option value="">
+                                Price : High to Low               </option>
+                            <option value="">
+                                Price : Low to High               </option>
+                        </select>
+                        <a href=""><img src="web/images/arrow2.gif" alt="" class="v-middle"></a>
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+
+            <div ng-show="loading"> Loading ..... </div>
+
+            <label class="text-muted fa-bold"><b>Total results : {{ tvlist.length }}</b></label> <br>
+            <div class="clear"></div>
+            <div ng-init="mentves()" class="box1">
+                <div ng-show="loading"> Loading .....  {{ loading }}</div>
+                <div data-ng-repeat="product in tvlist | limitTo: paginationLimit()">
+                    <div class="col_1_of_single1 span_1_of_single1" ><a href="#aboutModal" ng-click="gettvInfo(product)" data-toggle="modal" data-target="#myModal">
+                        <div class="view1 view-fifth1" style="width: 300px; height: 450px;">
+                            <div class="top_box">
+                                </br>
+
+                                <p class="m_2"></p>
+                                <div class="grid_img">
+                                    <div  class="css3"><img src="{{product.mediumImage}}" style="width: inherit; height: 250px" alt=""/></div>
+                                    <div class="mask1">
+                                        <div class="info">Similar & Compare</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div style="margin-left: 111px; margin-top: 8px" ng-show="product.merchant == 'Flipkart'"><span><img class="centered" src="web/images/Flipkart1.JPG"></span></div>
+                            <div style="margin-left: 111px; margin-top: 8px" ng-show="product.merchant == 'Amazon'"><span ><img class="centered" src="web/images/amazon1.JPG"></span></div>
+                            <div style="margin-left: 111px; margin-top: 8px" ng-show="product.merchant == 'Snapdeal'"><span ><img class="centered" src="web/images/snapdeal1.JPG"></span></div>
+
+                            <div style="margin-left: 111px; margin-top: 8px" ng-show="product.merchant == 'Jabong.com'"><span ><img class="centered" src="web/images/jabong1.JPG"></span></div>
+                            <div style="margin-left: 111px; margin-top: 8px" ng-show="product.merchant == 'Myntra.com'"><span ><img class="centered" src="web/images/myntra1.JPG"></span></div>
+                            <div style="margin-left: 111px; margin-top: 8px" ng-show="product.merchant == 'Indiatimes Shopping'"><span><img class="centered" src="web/images/Indiatimes1.JPG"></span></div>
+                            <div style="margin-left: 111px; margin-top: 8px" ng-show="product.merchant == 'Greendust.com'"><span><img class="centered" src="web/images/greendust1.JPG"></span></div>
+                            <div class="price text-center">{{product.salePrice}} Rs.  <span ng-hide="product.discountDesc == ''"> <font size = 3 color=red>  {{product.discountDesc}} </font></span></div>
+                            <h3 class="m_1 text-center">{{product.productName}}</h3>
+                            <a class="btn btn-primary bt" style="margin-left: 111px; margin-top: 8px" target="_blank" href="{{product.productURL}}">   Buy Now   </a>
+                        </div>
+
+
+                        <div class="clear"></div>
+
+                        <div class="clear"></div>
+                    </a></div>
+                </div>
+
+                <div class="pagination pagination-centered">
+                    <button class="btn btn-default btn-group-lg" style="margin-left: 400px" ng-show="hasMoreItemsToShow()" ng-click="showMoreItems()">Show more</button>
+                </div>
+
+
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+        <div class="clear"></div>
+
+
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title panel-primary span12" id="myModalLabel">
+                        You can compare prices from below sellers for <span style="font-weight: bold; font-size: large"> {{productInfo.productName}}</span> </h4>
+                </div>
+                <div class="modal-body">
+
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th><span style="font-weight: bold; font-size: medium">Seller</span></th>
+                            <th><span style="font-weight: bold; font-size: medium">Name</span></th>
+                            <th><span style="font-weight: bold; font-size: medium">Price</span></th>
+                            <th><span style="font-weight: bold; font-size: medium">Rating</span></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr ng-show="pricecompare.length > 0" data-ng-repeat="productcompare in pricecompare">
+                            <td ng-show="productcompare.merchant == 'Flipkart'"><span><img class="centered" src="web/images/Flipkart1.JPG"></span></td>
+                            <td ng-show="productcompare.merchant == 'Amazon'"><span ><img class="centered" src="web/images/amazon1.JPG"></span></td>
+                            <td ng-show="productcompare.merchant == 'Jabong.com'"><span><img class="centered" src="web/images/jabong1.JPG"></span></td>
+                            <td ng-show="productcompare.merchant == 'Myntra.com'"><span ><img class="centered" src="web/images/myntra1.JPG"></span></td>
+                            <td ng-show="productcompare.merchant == 'Snapdeal'"><span ><img class="centered" src="web/images/snapdeal1.JPG"></span></td>
+                            <td ng-show="productcompare.merchant == 'InfiBeam'"><span ><img class="centered" src="web/images/infibeam1.JPG"></span></td>
+                            <td ng-show="productcompare.merchant == 'Indiatimes Shopping'"><span><img class="centered" src="web/images/Indiatimes1.JPG"></span></td>
+                            <td ng-show="productcompare.merchant == 'Greendust.com'"><span><img class="centered" src="web/images/greendust1.JPG"></span></td>
+
+                            <td>
+                                <span >{{productcompare.productName}}</span>
+                            </td>
+                            <td>
+                                <span style="font-weight: bold; font-size: medium">{{productcompare.salePrice}} Rs.</span>
+                            </td>
+                            <td>
+
+                                <div class="fa fa-star" data-rating="5"></div>
+                            </td>
+                            <td>
+                                <a href="{{productcompare.productURL}}" target="_blank"> <span class="btn btn-primary btn-sm pull-right"> Buy on Seller Site </span> </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+
+
+                </div>
+                <div class="modal-footer">
+
+                    <span data-dismiss="modal" class="label label-warning">Close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

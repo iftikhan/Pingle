@@ -1,0 +1,158 @@
+<script>
+    jQuery(document).ready(function($){
+
+        $('#etalage').etalage({
+            thumb_image_width: 300,
+            thumb_image_height: 400,
+
+            show_hint: true,
+            click_callback: function(image_anchor, instance_id){
+                alert('Callback example:\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
+            }
+        });
+        // This is for the dropdown list example:
+        $('.dropdownlist').change(function(){
+            etalage_show( $(this).find('option:selected').attr('class') );
+        });
+
+    });
+</script>
+<div class="single">
+    <div class="wrap">
+
+        <div class="cont span_2_of_3">
+            <div class="labout span_1_of_a1">
+                <!-- start product_slider -->
+                <ul id="etalage">
+                    <li >
+                        <a href="web/optionallink.html">
+                            <img class="etalage_thumb_image" style="width: inherit; height: inherit" src="{{productInfo.productImage}}" />
+                            <img class="etalage_source_image" src="{{productInfo.productImage}}" />
+                        </a>
+                    </li>
+
+                </ul>
+
+
+                <!-- end product_slider -->
+            </div>
+
+
+
+            <div class="cont1 span_2_of_a1">
+                <h3 class="m_3">{{productInfo.productName}}</h3>
+
+                <div class="price_single">
+                    <span class="reducedfrom">{{productInfo.productPrice}}</span>
+                    <span class="actual">{{productInfo.salePrice}}</span><a href="#">click for offer</a>
+                </div>
+                <ul class="options">
+                    <h4 class="m_9">Additional Attributes</h4>
+                    <li><a href="#">6</a></li>
+                    <li><a href="#">7</a></li>
+                    <li><a href="#">8</a></li>
+                    <li><a href="#">9</a></li>
+                    <div class="clear"></div>
+                </ul>
+                <div class="btn_form">
+                    <form>
+                        <input type="submit" value="buy now" title="">
+                    </form>
+                </div>
+                <ul class="add-to-links">
+                    <li><img src="web/images/wish.png" alt=""/><a href="#">Add to wishlist</a></li>
+                </ul>
+                <p class="m_desc">{{productReviewUrl.editorialReview}}</p>
+
+                <div class="social_single">
+                    <ul>
+                        <li class="fb"><a href="#"><span> </span></a></li>
+                        <li class="tw"><a href="#"><span> </span></a></li>
+                        <li class="g_plus"><a href="#"><span> </span></a></li>
+                        <li class="rss"><a href="#"><span> </span></a></li>
+                    </ul>
+                </div>
+
+
+
+            </div>
+
+
+            <div class="clear"></div>
+
+
+            <div class="panel panel-heading">
+                Compare prices from below sellers -
+            </div>
+            <div  data-ng-repeat="productcompare in pricecompare">
+
+                <div class="panel panel-body">
+
+                    <table class="table">
+                        <tbody>
+                        <tr>
+
+                            <td ng-show="productcompare.merchant == 'Indiatimes'"><img src="web/images/indiatimes.jpg" /></td>
+                            <td ng-show="productcompare.merchant == 'Greendust'"><img src="web/images/greendust.jpg" /></td>
+                            <td ng-show="productcompare.merchant == 'Flipkart'"><img src="web/images/flipkart.JPG" /></td>
+                            <td ng-show="productcompare.merchant == 'Amazon'"><img src="web/images/amazonimages.jpg" /></td>
+                            <td></td>
+                            <td>{{productcompare.salePrice}}</td>
+                            <td><a href="{{productcompare.prodURL}}">Buy Now</a></td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+            </div>
+
+            <div class="nbs-flexisel-container"><div class="nbs-flexisel-inner">
+            <ul id="flexiselDemo3">
+                <li><img src="web/images/pic11.jpg" /><div class="grid-flex"><a href="#">Bloch</a><p>Rs 850</p></div></li>
+                <li><img src="web/images/pic10.jpg" /><div class="grid-flex"><a href="#">Capzio</a><p>Rs 850</p></div></li>
+                <li><img src="web/images/pic9.jpg" /><div class="grid-flex"><a href="#">Zumba</a><p>Rs 850</p></div></li>
+                <li><img src="web/images/pic8.jpg" /><div class="grid-flex"><a href="#">Bloch</a><p>Rs 850</p></div></li>
+                <li><img src="web/images/pic7.jpg" /><div class="grid-flex"><a href="#">Capzio</a><p>Rs 850</p></div></li>
+            </ul>
+                </div></div>
+            </div>
+
+            <div class="clear"></div>
+            <div class="clear"></div>
+
+            <div>
+                <h3 class="m_3">Product Reviews</h3>
+                <iframe scrolling="no" seamless="seamless" src="http://www.amazon.in/reviews/iframe?akid=AKIAJ7VQZNJLS5ALA2QA&alinkCode=sp1&asin=B00GC44ZG8&atag=pinglein-21&exp=2014-09-06T15%3A52%3A31Z&v=2&sig=KfFGNMJhdaZ6aRQ%2FJdmgDX1X8gTv4X3B7omCxWDzHNI%3D"
+                        style="overflow-x:hidden; width:1300px; height: 1100px; float: left; color: #FFF; background:#ed8719; line-height:100%; font-size:100%; font-family: sans-serif"  ></iframe>
+            </div>
+
+
+        </div>
+        <div class="clear"></div>
+
+        <!--<div class="cont1 span_1_of_1">
+
+
+
+        </div>
+-->
+    </div>
+</div>
+
+
+
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#media').carousel({
+                    pause: true,
+                    interval: false
+                });
+            });
+        </script>
+
+
+
