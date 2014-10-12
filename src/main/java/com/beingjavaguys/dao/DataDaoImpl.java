@@ -1,6 +1,6 @@
 package com.beingjavaguys.dao;
 
-import com.beingjavaguys.misc.PingleConstant;
+import com.beingjavaguys.misc.PConstants;
 import com.beingjavaguys.model.*;
 import com.beingjavaguys.vo.Product;
 import org.hibernate.Criteria;
@@ -213,7 +213,7 @@ public class DataDaoImpl implements DataDao {
         System.out.println("Dao Category is :: " + category);
         Criteria c = session.createCriteria(PWomenClothing.class);
         c.add(Restrictions.like("category", "%" + category + "%"));
-        c.setMaxResults(PingleConstant.MaxListSize);
+        c.setMaxResults(PConstants.MaxListSize);
         List<PWomenClothing> pWomenClothings = c.list();
         System.out.println("Size is for Dress :: " + pWomenClothings.size());
         Set<String> brandSet = new TreeSet<>();
@@ -238,7 +238,7 @@ public class DataDaoImpl implements DataDao {
         System.out.println("Dao Category is :: " + category);
         Criteria c = session.createCriteria(PWomenClothing.class);
         c.add(Restrictions.like("category", "%" + category + "%"));
-        c.setMaxResults(PingleConstant.MaxListSize);
+        c.setMaxResults(PConstants.MaxListSize);
         List<PWomenClothing> pWomenClothings = c.list();
         System.out.println("Size is for Dress :: " + pWomenClothings.size());
         Set<String> brandSet = new TreeSet<>();
@@ -274,7 +274,7 @@ public class DataDaoImpl implements DataDao {
 
         Criterion productName = Restrictions.like("productName", "%" + category + "%");
         Criterion category1 = Restrictions.like("category", "%" + category + "%");
-        c.setMaxResults(PingleConstant.MaxListSize);
+        c.setMaxResults(PConstants.MaxListSize);
 
 
         LogicalExpression andExp = Restrictions.and(productName, category1);
@@ -358,7 +358,7 @@ public class DataDaoImpl implements DataDao {
         LogicalExpression orExp = Restrictions.or(productName, category1);
         c.add(orExp);
         c.addOrder(Order.asc("salePrice"));
-        c.setMaxResults(PingleConstant.MaxListSize);
+        c.setMaxResults(PConstants.MaxListSize);
         List<PMenClothing> pMenClothings = c.list();
         System.out.println("Size is for getMenClothingForCatList :: " + pMenClothings.size());
         return pMenClothings;
@@ -372,7 +372,7 @@ public class DataDaoImpl implements DataDao {
         System.out.println("Dao Category is :: " + category);
         Criteria c = session.createCriteria(PWatch.class);
         c.add(Restrictions.like("category", "%" + category + "%"));
-        c.setMaxResults(PingleConstant.MaxListSize);
+        c.setMaxResults(PConstants.MaxListSize);
         List<PWatch> pWatches = c.list();
         System.out.println("Size is for Dress :: " + pWatches.size());
         Set<String> brandSet = new TreeSet<>();
@@ -397,7 +397,7 @@ public class DataDaoImpl implements DataDao {
         System.out.println("Dao Category is :: " + category);
         Criteria c = session.createCriteria(PWatch.class);
         c.add(Restrictions.like("category", "%" + category + "%"));
-        c.setMaxResults(PingleConstant.MaxListSize);
+        c.setMaxResults(PConstants.MaxListSize);
         List<PWatch> pWatches = c.list();
         System.out.println("Size is for Dress :: " + pWatches.size());
         Set<String> brandSet = new TreeSet<>();
@@ -438,7 +438,7 @@ public class DataDaoImpl implements DataDao {
         LogicalExpression orExp = Restrictions.or(productName, category1);
         c.add(orExp);
         c.addOrder(Order.asc("salePrice"));
-        c.setMaxResults(PingleConstant.MaxListSize);
+        c.setMaxResults(PConstants.MaxListSize);
         List<PWatch> pWatches = c.list();
         System.out.println("Size is for PWatch :: " + pWatches.size());
         return pWatches;
@@ -451,7 +451,7 @@ public class DataDaoImpl implements DataDao {
         // tx = session.beginTransaction();
         Criteria c = session.createCriteria(PMobile.class);
         c.addOrder(Order.asc("salePrice"));
-        c.setMaxResults(PingleConstant.MaxListSize);
+        c.setMaxResults(PConstants.MaxListSize);
         //  tx.commit();
         // session.close();
         return c.list();
@@ -464,7 +464,7 @@ public class DataDaoImpl implements DataDao {
         // tx = session.beginTransaction();
         Criteria c = session.createCriteria(PWatch.class);
         c.addOrder(Order.asc("salePrice"));
-        c.setMaxResults(PingleConstant.MaxListSize);
+        c.setMaxResults(PConstants.MaxListSize);
         //  tx.commit();
         // session.close();
 
@@ -478,7 +478,7 @@ public class DataDaoImpl implements DataDao {
         // tx = session.beginTransaction();
         Criteria c = session.createCriteria(PWatch.class);
         c.addOrder(Order.asc("salePrice"));
-        c.setMaxResults(PingleConstant.MaxListSize);
+        c.setMaxResults(PConstants.MaxListSize);
         //  tx.commit();
         // session.close();
 
@@ -492,7 +492,7 @@ public class DataDaoImpl implements DataDao {
         // tx = session.beginTransaction();
         Criteria c = session.createCriteria(PLaptop.class);
         c.addOrder(Order.asc("salePrice"));
-        c.setMaxResults(PingleConstant.MaxListSize);
+        c.setMaxResults(PConstants.MaxListSize);
         //  tx.commit();
         // session.close();
 
@@ -506,7 +506,7 @@ public class DataDaoImpl implements DataDao {
         // tx = session.beginTransaction();
         Criteria c = session.createCriteria(PLaptop.class);
         c.addOrder(Order.asc("salePrice"));
-        c.setMaxResults(PingleConstant.MaxListSize);
+        c.setMaxResults(PConstants.MaxListSize);
         //  tx.commit();
         // session.close();
 
@@ -695,7 +695,7 @@ public class DataDaoImpl implements DataDao {
         // tx = session.beginTransaction();
         Criteria c = session.createCriteria(PTelevision.class);
         c.addOrder(Order.asc("salePrice"));
-        c.setMaxResults(PingleConstant.MaxListSize);
+        c.setMaxResults(PConstants.MaxListSize);
         //  tx.commit();
         // session.close();
 
