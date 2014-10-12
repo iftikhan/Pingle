@@ -1,6 +1,6 @@
 package com.beingjavaguys.dao;
 
-import com.beingjavaguys.misc.PConstants;
+import com.beingjavaguys.pmisc.PConstants;
 import com.beingjavaguys.model.*;
 import com.beingjavaguys.vo.Product;
 import org.hibernate.Criteria;

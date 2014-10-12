@@ -1,4 +1,4 @@
-package com.beingjavaguys.misc;
+package com.beingjavaguys.pmisc;
 
 /**
  * Created by ifti on 12-10-2014.
