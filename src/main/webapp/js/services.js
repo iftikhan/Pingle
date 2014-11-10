@@ -237,7 +237,98 @@ services.factory('WomenFactory', ['$resource', '$rootScope', '$cacheFactory', fu
             query: {method: 'GET', isArray: true, params: {category: '@category'}, cache: true },
             create: {method: 'POST'}
         }),
+        selectionclothing: $resource('/women/selectionclothing/:brand/:color/:price/:categoryItem/:order', {}, {
+            query: {method: 'GET', isArray: true, params: {brand: '@brand', color: '@color', price: '@price', categoryItem: '@categoryItem', order: '@order'}, cache: true },
+            create: {method: 'POST'}
+        }),
+        comapreproduct: $resource('/women/compare/:productName/:category', {}, {
+            query: {method: 'GET', isArray: true, params: {productName: '@productName', category: '@category'}, cache: true },
+            create: {method: 'POST'}
+        }),
         allbrands: $resource('/women/brands/:category', {}, {
+            query: {method: 'GET', isArray: true, params: {category: '@category'}, cache: true }
+            // create: {method: 'POST'}
+        })};
+}]);
+
+
+services.factory('ElectronicsFactory', ['$resource', '$rootScope', '$cacheFactory', function ($resource, $rootScope, $cacheFactory) {
+    //alert("I am here service");
+    console.log("ElectronicsFactory service");
+    return  {
+
+        allclothing: $resource('/elect/allresults/:category', {}, {
+            query: {method: 'GET', isArray: true, params: {category: '@category'}, cache: true },
+            create: {method: 'POST'}
+        }),
+        allcolor: $resource('/elect/color/:category', {}, {
+            query: {method: 'GET', isArray: true, params: {category: '@category'}, cache: true },
+            create: {method: 'POST'}
+        }),
+        selectionclothing: $resource('/elect/selection/:brand/:color/:price/:categoryItem/:order', {}, {
+            query: {method: 'GET', isArray: true, params: {brand: '@brand', color: '@color', price: '@price', categoryItem: '@categoryItem', order: '@order'}, cache: true },
+            create: {method: 'POST'}
+        }),
+        comapreproduct: $resource('/elect/compare/:productName/:category', {}, {
+            query: {method: 'GET', isArray: true, params: {productName: '@productName', category: '@category'}, cache: true },
+            create: {method: 'POST'}
+        }),
+        allbrands: $resource('/elect/brands/:category', {}, {
+            query: {method: 'GET', isArray: true, params: {category: '@category'}, cache: true }
+            // create: {method: 'POST'}
+        })};
+}]);
+
+services.factory('MobilesFactory', ['$resource', '$rootScope', '$cacheFactory', function ($resource, $rootScope, $cacheFactory) {
+    //alert("I am here service");
+    console.log("mobileronicsFactory service");
+    return  {
+
+        allclothing: $resource('/mobile/allresults/:category', {}, {
+            query: {method: 'GET', isArray: true, params: {category: '@category'}, cache: true },
+            create: {method: 'POST'}
+        }),
+        allcolor: $resource('/mobile/color/:category', {}, {
+            query: {method: 'GET', isArray: true, params: {category: '@category'}, cache: true },
+            create: {method: 'POST'}
+        }),
+        smobileionclothing: $resource('/mobile/selection/:brand/:color/:price/:categoryItem/:order', {}, {
+            query: {method: 'GET', isArray: true, params: {brand: '@brand', color: '@color', price: '@price', categoryItem: '@categoryItem', order: '@order'}, cache: true },
+            create: {method: 'POST'}
+        }),
+        comapreproduct: $resource('/mobile/compare/:productName/:category', {}, {
+            query: {method: 'GET', isArray: true, params: {productName: '@productName', category: '@category'}, cache: true },
+            create: {method: 'POST'}
+        }),
+        allbrands: $resource('/mobile/brands/:category', {}, {
+            query: {method: 'GET', isArray: true, params: {category: '@category'}, cache: true }
+            // create: {method: 'POST'}
+        })};
+}]);
+
+
+services.factory('WatchsFactory', ['$resource', '$rootScope', '$cacheFactory', function ($resource, $rootScope, $cacheFactory) {
+    //alert("I am here service");
+    console.log("WatchronicsFactory service");
+    return  {
+
+        allclothing: $resource('/Watch/allresults/:category', {}, {
+            query: {method: 'GET', isArray: true, params: {category: '@category'}, cache: true },
+            create: {method: 'POST'}
+        }),
+        allcolor: $resource('/Watch/color/:category', {}, {
+            query: {method: 'GET', isArray: true, params: {category: '@category'}, cache: true },
+            create: {method: 'POST'}
+        }),
+        sWatchionclothing: $resource('/Watch/selection/:brand/:color/:price/:categoryItem/:order', {}, {
+            query: {method: 'GET', isArray: true, params: {brand: '@brand', color: '@color', price: '@price', categoryItem: '@categoryItem', order: '@order'}, cache: true },
+            create: {method: 'POST'}
+        }),
+        comapreproduct: $resource('/Watch/compare/:productName/:category', {}, {
+            query: {method: 'GET', isArray: true, params: {productName: '@productName', category: '@category'}, cache: true },
+            create: {method: 'POST'}
+        }),
+        allbrands: $resource('/Watch/brands/:category', {}, {
             query: {method: 'GET', isArray: true, params: {category: '@category'}, cache: true }
             // create: {method: 'POST'}
         })};
@@ -257,26 +348,15 @@ services.factory('MenFactory', ['$resource', '$rootScope', '$cacheFactory', func
             query: {method: 'GET', isArray: true, params: {category: '@category'}, cache: true },
             create: {method: 'POST'}
         }),
+        selectionclothing: $resource('/Men/selectionclothing/:brand/:color/:price/:categoryItem/:order', {}, {
+            query: {method: 'GET', isArray: true, params: {brand: '@brand', color: '@color', price: '@price', categoryItem: '@categoryItem', order: '@order'}, cache: true },
+            create: {method: 'POST'}
+        }),
+        comapreproduct: $resource('/Men/compare/:productName/:category', {}, {
+            query: {method: 'GET', isArray: true, params: {productName: '@productName', category: '@category'}, cache: true },
+            create: {method: 'POST'}
+        }),
         allbrands: $resource('/Men/brands/:category', {}, {
-            query: {method: 'GET', isArray: true, params: {category: '@category'}, cache: true }
-            // create: {method: 'POST'}
-        })};
-}]);
-
-services.factory('WatchFactory', ['$resource', '$rootScope', '$cacheFactory', function ($resource, $rootScope, $cacheFactory) {
-    //alert("I am here service");
-    console.log("MenFactory service");
-    return  {
-
-        allclothing: $resource('/watch/allresults/:category', {}, {
-            query: {method: 'GET', isArray: true, params: {category: '@category'}, cache: true },
-            create: {method: 'POST'}
-        }),
-        allcolor: $resource('/watch/color/:category', {}, {
-            query: {method: 'GET', isArray: true, params: {category: '@category'}, cache: true },
-            create: {method: 'POST'}
-        }),
-        allbrands: $resource('/watch/brands/:category', {}, {
             query: {method: 'GET', isArray: true, params: {category: '@category'}, cache: true }
             // create: {method: 'POST'}
         })};

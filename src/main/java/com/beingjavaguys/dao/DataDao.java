@@ -13,6 +13,9 @@ public interface DataDao {
 	public List<Employee> getEntityList() throws Exception;
 	public boolean deleteEntity(long id) throws Exception;
 
+    public PUser checkUser(String email, String password) throws Exception;
+
+
     public boolean addUser(PUser pUser) throws Exception;
 
     public boolean addPMobileEntity(PMobile pMobile) throws Exception;
@@ -24,7 +27,7 @@ public interface DataDao {
     public boolean addPShoesEntity(PShoes pShoes) throws Exception;
     public boolean addPWomenClothingEntity(PWomenClothing pWomenClothing) throws Exception;
     public boolean addPMenClothingEntity(PMenClothing pMenClothing) throws Exception;
-
+    public boolean addPElectronicsEntity(PElectronics pElectronics) throws Exception;
 
     public List<PMobile> getAllMobileList() throws Exception;
     public List<PMobile> getAllMobileBrandList() throws Exception;
@@ -46,10 +49,26 @@ public interface DataDao {
     public Set<String> getAllWomenBrandList(String category) throws Exception;
     public Set<String> getAllWomenColorList(String category) throws Exception;
     public List<PWomenClothing> getWomenClothingForCatList(String category) throws Exception;
+    public List<PWomenClothing> getAllWomenSelectClothingList(String brand, String color, int maxPrice, int minPrice, String categoryItem, String order) throws Exception;
+
+    public List<PMenClothing> getAllMenSelectClothingList(String brand, String color, int maxPrice, int minPrice, String categoryItem, String order) throws Exception;
+
+
+    public Set<String> getAllElectronicsBrandList(String category) throws Exception;
+    public Set<String> getAllElectronicsColorList(String category) throws Exception;
+    public List<PElectronics> getElectronicsForCatList(String category) throws Exception;
+    public List<PElectronics> getAllElectronicsList(String brand, String color, int maxPrice, int minPrice, String categoryItem, String order) throws Exception;
+
+    public Set<String> getAllMobileBrandList(String category) throws Exception;
+    public Set<String> getAllMobileColorList(String category) throws Exception;
+    public List<PMobile> getMobileForCatList(String category) throws Exception;
+    public List<PMobile> getAllMobileList(String brand, String color, int maxPrice, int minPrice, String categoryItem, String order) throws Exception;
+
 
     public Set<String> getAllWatchBrandList(String category) throws Exception;
     public Set<String> getAllWatchColorList(String category) throws Exception;
     public List<PWatch> getWatchForCatList(String category) throws Exception;
+    public List<PWatch> getAllWatchList(String brand, String color, int maxPrice, int minPrice, String categoryItem, String order) throws Exception;
 
     public Set<String> getAllMenBrandList(String category) throws Exception;
     public Set<String> getAllMenColorList(String category) throws Exception;

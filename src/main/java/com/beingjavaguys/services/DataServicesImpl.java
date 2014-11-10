@@ -51,6 +51,10 @@ public class DataServicesImpl implements DataServices {
 		return dataDao.deleteEntity(id);
 	}
 
+    @Override
+    public PUser checkUser(String email, String password) throws Exception{
+        return dataDao.checkUser(email, password);
+    }
 
     @Override
     public boolean addPMobileEntity(PMobile pMobile) throws Exception{
@@ -112,6 +116,13 @@ public class DataServicesImpl implements DataServices {
         return dataDao.addPMenClothingEntity(pMenClothing);
     }
 
+
+    @Override
+    public boolean addPElectronicsEntity(PElectronics pElectronics) throws Exception{
+        return dataDao.addPElectronicsEntity(pElectronics);
+    }
+
+
     @Override
     public List<PWatch> getAllWatchBrandList() throws Exception{
         return dataDao.getAllWatchBrandList();
@@ -168,19 +179,80 @@ public class DataServicesImpl implements DataServices {
     }
 
     @Override
+    public List<PWomenClothing> getAllWomenSelectClothingList(String brand, String color, int maxPrice, int minPrice, String categoryItem, String order) throws Exception{
+        return dataDao.getAllWomenSelectClothingList(brand, color,  maxPrice,  minPrice, categoryItem, order);
+    }
+
+    @Override
+    public List<PMenClothing> getAllMenSelectClothingList(String brand, String color, int maxPrice, int minPrice, String categoryItem, String order) throws Exception{
+        return dataDao.getAllMenSelectClothingList(brand, color,  maxPrice,  minPrice, categoryItem, order);
+    }
+
+
+
+
+    @Override
+    public Set<String> getAllElectronicsBrandList(String category) throws Exception{
+        return dataDao.getAllElectronicsBrandList(category);
+    }
+
+    @Override
+    public Set<String> getAllElectronicsColorList(String category) throws Exception{
+        return dataDao.getAllElectronicsColorList(category);
+    }
+
+    @Override
+    public List<PElectronics> getElectronicsForCatList(String category) throws Exception{
+        return dataDao.getElectronicsForCatList(category);
+    }
+
+    @Override
+    public List<PElectronics> getAllElectronicsList(String brand, String color, int maxPrice, int minPrice, String categoryItem, String order) throws Exception{
+        return dataDao.getAllElectronicsList(brand, color,  maxPrice,  minPrice, categoryItem, order);
+    }
+
+    @Override
+    public Set<String> getAllMobileBrandList(String category) throws Exception{
+        return dataDao.getAllMobileBrandList(category);
+    }
+
+    @Override
+    public Set<String> getAllMobileColorList(String category) throws Exception{
+        return dataDao.getAllMobileColorList(category);
+    }
+
+    @Override
+    public List<PMobile> getMobileForCatList(String category) throws Exception{
+        return dataDao.getMobileForCatList(category);
+    }
+
+    @Override
+    public List<PMobile> getAllMobileList(String brand, String color, int maxPrice, int minPrice, String categoryItem, String order) throws Exception{
+        return dataDao.getAllMobileList(brand, color,  maxPrice,  minPrice, categoryItem, order);
+    }
+
+
+    @Override
     public Set<String> getAllWatchBrandList(String category) throws Exception{
-        return dataDao.getAllMenBrandList(category);
+        return dataDao.getAllWatchBrandList(category);
     }
 
     @Override
     public Set<String> getAllWatchColorList(String category) throws Exception{
-        return dataDao.getAllMenColorList(category);
+        return dataDao.getAllWatchColorList(category);
     }
 
     @Override
     public List<PWatch> getWatchForCatList(String category) throws Exception{
         return dataDao.getWatchForCatList(category);
     }
+
+    @Override
+    public List<PWatch> getAllWatchList(String brand, String color, int maxPrice, int minPrice, String categoryItem, String order) throws Exception{
+        return dataDao.getAllWatchList(brand, color,  maxPrice,  minPrice, categoryItem, order);
+    }
+
+
 
     @Override
     public Set<String> getAllMenBrandList(String category) throws Exception{

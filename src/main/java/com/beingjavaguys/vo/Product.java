@@ -14,25 +14,65 @@ import java.util.Date;
 public class Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private transient long id;
+
+
+    private transient  long id;
+
+
     private transient String productId;
+
+
+
     private String productName;
+
+
     private String productDesc;
+
     private String productURL;
+
+
     private int productPrice;
+
+
     private int salePrice;
+
+
     private String mediumImage;
+
+
     private String largeImage;
+
+
     private String merchant;
+
+
     private String brand;
+
+
     private String couponCode;
+
+
     private String couponDiscount;
+
+
     private String discountAmount;
+
+
     private String discountDesc;
+
+
     private Date expirationDate;
+
+
     private String gender;
+
+
     private String category;
+
+
     private String inStock;
+
+
     private String color;
 
     public String getColor() {

@@ -40,16 +40,16 @@ public class BatchWatchController {
 
     static final Logger logger = Logger.getLogger(RestController.class);
 
-    @RequestMapping(value = "/Watchclothing", method = RequestMethod.POST, consumes = MediaType.ALL_VALUE)
+    @RequestMapping(value = "/Watch", method = RequestMethod.POST, consumes = MediaType.ALL_VALUE)
     public
     @ResponseBody
-    Status addMobile() throws Exception {
-        System.out.println("Calling Watchclothing Services");
+    Status addWatch() throws Exception {
+        System.out.println("Calling Watch Services");
 
         List<PWatch> finalList = new ArrayList<>();
 
         JSONObject jsonObject = null;
-        String str = "http://feeds.omgeu.com/data/feed.aspx?hash=84de06858b6f4024ad0726ce6414cf22" + "&page=1";
+        String str = "http://feeds.omgeu.com/data/feed.aspx?hash=fb1c0854f8ae4a408dbfddd09220afae" + "&page=1";
         URL url = new URL(str);
         InputStream is = url.openStream();
         int ptr = 0;
@@ -72,7 +72,7 @@ public class BatchWatchController {
                 break;
             }
 
-            list = omgMobileData(i);
+            list = omgWatchData(i);
             System.out.println("Size : " + list.size());
 
             finalList.addAll(list);
@@ -87,16 +87,16 @@ public class BatchWatchController {
             }
         }
 
-        // List<PWatch> fliPWatchList = flipKartMobileData();
+        // List<PWatch> fliPWatchList = flipKartWatchData();
 
         //  List<PWatch> amazonResults = getAmazonResults();
 
         // List<PWatch> snapAndInfiResults = getSnapdealAndInfibeamResults();
 
-        //   System.out.println("omgMobileDataList size : " + omgMobileDataList.size());
+        //   System.out.println("omgWatchDataList size : " + omgWatchDataList.size());
 
-     /*   for (PWatch product : omgMobileDataList) {
-            *//*if (!product.getProductName().toLowerCase().contains("Watch")) {
+     /*   for (PWatch product : omgWatchDataList) {
+            *//*if (!product.getProductName().toLowerCase().contains("Men")) {
               *//*
             if (product.getMediumImage() != null) {
                   System.out.println("Coupon Code - " + product.getCouponCode());
@@ -119,7 +119,7 @@ public class BatchWatchController {
         }*/
 
        /* for (PWatch product : amazonResults) {
-            if (!product.getProductName().toLowerCase().contains("Watch") && (product.getCategory().toLowerCase().contains("t-shirts")
+            if (!product.getProductName().toLowerCase().contains("Men") && (product.getCategory().toLowerCase().contains("t-shirts")
             || product.getCategory().toLowerCase().contains("tshirts"))) {
             dataServices.addPWatchEntity(product);
             System.out.println("tshirtcreate Product added Successfully !");
@@ -132,14 +132,14 @@ public class BatchWatchController {
 
         }*/
 
-        return new Status(1, "Watchclothing Product added Successfully !");
+        return new Status(1, "Watch Product added Successfully !");
 
     }
 
-    public List<PWatch> omgMobileData(int pageNo) throws IOException, JSONException, org.json.JSONException {
+    public List<PWatch> omgWatchData(int pageNo) throws IOException, JSONException, org.json.JSONException {
 
         JSONObject jsonObject = null;
-        String str = "http://feeds.omgeu.com/data/feed.aspx?hash=84de06858b6f4024ad0726ce6414cf22" + "&page=" + pageNo;
+        String str = "http://feeds.omgeu.com/data/feed.aspx?hash=fb1c0854f8ae4a408dbfddd09220afae" + "&page=" + pageNo;
         URL url = new URL(str);
         InputStream is = url.openStream();
         int ptr = 0;
@@ -164,7 +164,7 @@ public class BatchWatchController {
             PWatch pinfo = new PWatch();
 
             Object prodAttr = null;
-            if (!productList1.getJSONObject(i).getString("Merchant").equalsIgnoreCase("Trendin.com")) {
+            if (!productList1.getJSONObject(i).getString("Merchant").equalsIgnoreCase("Amazon")) {
                 JSONObject productAttributes = productList1.getJSONObject(i).getJSONObject("Attributes");
                 prodAttr = productAttributes.get("Attribute");
             }
@@ -254,7 +254,7 @@ public class BatchWatchController {
         return productList;
     }
 
-    public List<PWatch> flipKartMobileData() throws IOException, JSONException, org.json.JSONException {
+    public List<PWatch> flipKartWatchData() throws IOException, JSONException, org.json.JSONException {
 
         List<PWatch> productList = new ArrayList<PWatch>();
 
@@ -280,7 +280,7 @@ public class BatchWatchController {
         beanStrategy.setColumnMapping(columnMapping);
 
         CsvToBean<PWatch> csvToBean = new CsvToBean<PWatch>();
-        CSVReader reader = new CSVReader(new FileReader("C:\\pingleCSV\\WatchClothing\\WatchClothing8Oct.csv"));
+        CSVReader reader = new CSVReader(new FileReader("C:\\pingleCSV\\MenClothing\\MenClothing8Oct.csv"));
         List<PWatch> emps = csvToBean.parse(beanStrategy, reader);
         // System.out.println(emps.size());
         for (PWatch product : emps) {
@@ -341,17 +341,17 @@ public class BatchWatchController {
             System.out.println("Set item Request :::: ");
 
             // itemRequest.setVersion("2013-08-01");
-            ItemSearch ItemEleWatcht = new ItemSearch();
-            ItemEleWatcht.setAWSAccessKeyId("AKIAJ7VQZNJLS5ALA2QA");
-            ItemEleWatcht.setAssociateTag("pinglein-21");
-            //ItemEleWatcht.setMarketplaceDomain("www.amazon.in");
+            ItemSearch ItemElement = new ItemSearch();
+            ItemElement.setAWSAccessKeyId("AKIAJ7VQZNJLS5ALA2QA");
+            ItemElement.setAssociateTag("pinglein-21");
+            //ItemElement.setMarketplaceDomain("www.amazon.in");
 
-            ItemEleWatcht.getRequest().add(itemRequest);
-            System.out.println("Set item EleWatcht :::: ");
+            ItemElement.getRequest().add(itemRequest);
+            System.out.println("Set item Element :::: ");
 
             // Call the Web service operation and store the response
             // in the response object:
-            ItemSearchResponse response = port.itemSearch(ItemEleWatcht);
+            ItemSearchResponse response = port.itemSearch(ItemElement);
             System.out.println("Response is :::: " + response.getItems().size());
 
 
@@ -437,7 +437,7 @@ public class BatchWatchController {
         beanStrategy2.setColumnMapping(columnMapping2);
 
         CsvToBean<PWatch> csvToBean2 = new CsvToBean<PWatch>();
-        CSVReader reader2 = new CSVReader(new FileReader("C:\\pingleCSV\\InfibeamMobilesFeed.csv"));
+        CSVReader reader2 = new CSVReader(new FileReader("C:\\pingleCSV\\InfibeamWatchsFeed.csv"));
         List<PWatch> emps2 = csvToBean2.parse(beanStrategy2, reader2);
         System.out.println("omg list size = " + emps2.size());
         for (PWatch product : emps2) {

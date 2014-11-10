@@ -14,8 +14,8 @@
 		<jdk.version>1.7</jdk.version>
 		<context.path>SpringRestCrud</context.path>
 	</properties>
-	<build>
-		<finalName>${pom.artifactId}</finalName>
+    <build>
+        <finalName>pingle</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -25,15 +25,17 @@
                 </excludes>
             </resource>
         </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
 
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
-				</configuration>
-			</plugin>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.4</version>
@@ -46,16 +48,11 @@
                     <packagingIncludes>
                         WEB-INF/lib/org.json-20120521.jar
                     </packagingIncludes>
-                    <packagingIncludes>
-                        WEB-INF/mvc-dispatcher-servlet.xml
-                    </packagingIncludes>
-                    <packagingIncludes>
-                        WEB-INF/web.xml
-                    </packagingIncludes>
                 </configuration>
             </plugin>
-		</plugins>
-	</build>
+
+        </plugins>
+    </build>
 	<dependencies>
 		<dependency>
 			<groupId>log4j</groupId>

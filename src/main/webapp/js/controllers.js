@@ -4,7 +4,7 @@
 
 
 var app = angular.module('ngdemo.controllers', ['ngResource', '$strap.directives', 'infinite-scroll',
-    'infiniteScroll', 'checklist-model', 'ngAutocomplete', 'checklist-model']);
+    'infiniteScroll', 'checklist-model', 'angucomplete', 'ngAutocomplete', 'checklist-model']);
 
 
 app.run(function ($rootScope, $templateCache) {
@@ -39,121 +39,452 @@ angular.module('scroll', []).directive('whenScrolled', function () {
 });
 
 
+app.controller('ElectronicsCtrl', ['$scope', '$rootScope', '$location', 'ElectronicsFactory',
+    function ($scope, $rootScope, $location, ElectronicsFactory) {
+
+
+        $rootScope.pricecompare = {productNane: null};
+
+        $scope.getElectronicsResult = function (category) {
+            console.log("category 1 - " + category);
+            $rootScope.categoryItem = category;
+            console.log("$rootScope.categoryItem - " + $rootScope.categoryItem);
+            $rootScope.brandList = ElectronicsFactory.allbrands.query({category: category});
+            $rootScope.colorList = ElectronicsFactory.allcolor.query({category: category});
+            $rootScope.electronicsList = ElectronicsFactory.allclothing.query({category: category});
+            $rootScope.priceList = [
+                {
+                    price: "Rs. 1000 and below"
+                },
+                {
+                    price: "Rs 1001 - 3000"
+                },
+                {
+                    price: "Rs 3001 - 5000"
+                },
+                {
+                    price: "Rs 5001 - 7000"
+                },
+                {
+                    price: "Rs 7001 - 10000"
+                },
+                {
+                    price: "Rs 10001 - 20000"
+                },
+                {
+                    price: "Rs 20001 - 30000"
+                },
+                {
+                    price: "Rs 30001 and above"
+                }
+            ];
+
+            var pagesShown = 1;
+            var pageSize = 21;
+
+            $scope.paginationLimit = function (data) {
+                //alert("34");
+                return pageSize * pagesShown;
+            };
+            $scope.hasMoreItemsToShow = function () {
+                return pagesShown < ($rootScope.electronicsList.length / pageSize);
+            };
+            $scope.showMoreItems = function () {
+                pagesShown = pagesShown + 1;
+            };
+
+
+            $location.path('/electronics');
+        }
+
+
+        $rootScope.resultForSelection = function (brand, color, price, categoryItem, order) {
+            console.log("brand #############- " + brand);
+            console.log("color #############- " + color);
+            console.log("price #############- " + price);
+            console.log("categoryItem #############- " + categoryItem);
+            //$rootScope.user.roles = angular.copy($rootScope.roles);
+            //console.log("$scope.user.roles #############- " + $rootScope.user.roles);
+
+
+            if (brand != undefined && brand.length > 0) {
+                brand = brand;
+            } else if (brand === undefined) {
+                // alert('1');
+                brand = "0";
+            } else if (brand.length === 0) {
+                alert('1');
+                brand = "0";
+            } else if (brand == null) {
+                brand = "0";
+            } else {
+                brand = "0";
+            }
+
+
+            if (price != undefined  && price.length > 0) {
+                price = price;
+            } else if (price === undefined) {
+                // alert('1');
+                price = "0";
+            } else if (price.length === 0) {
+                // alert('1');
+                price = "0";
+            } else if (price == null) {
+                price = "0";
+            } else {
+                price = "0";
+            }
+
+            if (color != undefined && color.length > 0) {
+                color = color;
+            } else if (color === undefined) {
+                // alert('1');
+                color = "0";
+            }else if (color.length === 0) {
+                // alert('1');
+                color = "0";
+            } else if (color == null) {
+                color = "0";
+            } else {
+                color = "0";
+            }
+
+            if (order != undefined  && order.length > 0) {
+                order = order;
+            } else {
+                order = 'asc';
+            }
+
+            $rootScope.electronicsList = ElectronicsFactory.selectionclothing.query({brand: brand, color: color, price: price, categoryItem: categoryItem, order: order});
+        };
+
+        $scope.getElectronicsResultBrands = function (category) {
+            console.log("category 2 - " + category);
+            $rootScope.brandList = ElectronicsFactory.allbrands.query({category: category});
+
+            $location.path('/electronics');
+        }
+
+        $scope.getProductInfo = function (productName, categoryItem) {
+            console.log("categoryItem 2 - " + categoryItem);
+            $rootScope.pricecompare = ElectronicsFactory.comapreproduct.query({productName: productName, category: categoryItem});
+            $rootScope.product = productName;
+            $location.path('/electronics');
+        }
+
+
+    }]);
+
+app.controller('MobilesCtrl', ['$scope', '$rootScope', '$location', 'MobilesFactory',
+    function ($scope, $rootScope, $location, MobilesFactory) {
+
+
+        $rootScope.pricecompare = {productNane: null};
+
+        $scope.getMobilesResult = function (category) {
+            console.log("category 1 - " + category);
+            $rootScope.categoryItem = category;
+            console.log("$rootScope.categoryItem - " + $rootScope.categoryItem);
+            $rootScope.brandList = MobilesFactory.allbrands.query({category: category});
+            $rootScope.colorList = MobilesFactory.allcolor.query({category: category});
+            $rootScope.MobilesList = MobilesFactory.allclothing.query({category: category});
+            $rootScope.priceList = [
+                {
+                    price: "Rs. 1000 and below"
+                },
+                {
+                    price: "Rs 1001 - 3000"
+                },
+                {
+                    price: "Rs 3001 - 5000"
+                },
+                {
+                    price: "Rs 5001 - 7000"
+                },
+                {
+                    price: "Rs 7001 - 10000"
+                },
+                {
+                    price: "Rs 10001 - 20000"
+                },
+                {
+                    price: "Rs 20001 - 30000"
+                },
+                {
+                    price: "Rs 30001 and above"
+                }
+            ];
+
+            var pagesShown = 1;
+            var pageSize = 21;
+
+            $scope.paginationLimit = function (data) {
+                //alert("34");
+                return pageSize * pagesShown;
+            };
+            $scope.hasMoreItemsToShow = function () {
+                return pagesShown < ($rootScope.MobilesList.length / pageSize);
+            };
+            $scope.showMoreItems = function () {
+                pagesShown = pagesShown + 1;
+            };
+
+
+            $location.path('/mobiles');
+        }
+
+
+        $rootScope.resultForSelection = function (brand, color, price, categoryItem, order) {
+            console.log("brand #############- " + brand);
+            console.log("color #############- " + color);
+            console.log("price #############- " + price);
+            console.log("categoryItem #############- " + categoryItem);
+            //$rootScope.user.roles = angular.copy($rootScope.roles);
+            //console.log("$scope.user.roles #############- " + $rootScope.user.roles);
+
+
+            if (brand != undefined && brand.length > 0) {
+                brand = brand;
+            } else if (brand === undefined) {
+                // alert('1');
+                brand = "0";
+            } else if (brand.length === 0) {
+                alert('1');
+                brand = "0";
+            } else if (brand == null) {
+                brand = "0";
+            } else {
+                brand = "0";
+            }
+
+
+            if (price != undefined  && price.length > 0) {
+                price = price;
+            } else if (price === undefined) {
+                // alert('1');
+                price = "0";
+            } else if (price.length === 0) {
+                // alert('1');
+                price = "0";
+            } else if (price == null) {
+                price = "0";
+            } else {
+                price = "0";
+            }
+
+            if (color != undefined && color.length > 0) {
+                color = color;
+            } else if (color === undefined) {
+                // alert('1');
+                color = "0";
+            }else if (color.length === 0) {
+                // alert('1');
+                color = "0";
+            } else if (color == null) {
+                color = "0";
+            } else {
+                color = "0";
+            }
+
+            if (order != undefined  && order.length > 0) {
+                order = order;
+            } else {
+                order = 'desc';
+            }
+
+            $rootScope.MobilesList = MobilesFactory.smobileionclothing.query({brand: brand, color: color, price: price, categoryItem: categoryItem, order: order});
+        };
+
+        $scope.getMobilesResultBrands = function (category) {
+            console.log("category 2 - " + category);
+            $rootScope.brandList = MobilesFactory.allbrands.query({category: category});
+
+            $location.path('/mobiles');
+        }
+
+        $scope.getProductInfo = function (productName, categoryItem) {
+            console.log("categoryItem 2 - " + categoryItem);
+            $rootScope.pricecompare = MobilesFactory.comapreproduct.query({productName: productName, category: categoryItem});
+            $rootScope.product = productName;
+            $location.path('/mobiles');
+        }
+
+
+    }]);
+
+
+
+app.controller('WatchsCtrl', ['$scope', '$rootScope', '$location', 'WatchsFactory',
+    function ($scope, $rootScope, $location, WatchsFactory) {
+
+
+        $rootScope.pricecompare = {productName: null};
+
+        $scope.getWatchsResult = function (category) {
+            console.log("category 1 - " + category);
+            $rootScope.categoryItem = category;
+            console.log("$rootScope.categoryItem - " + $rootScope.categoryItem);
+            $rootScope.brandList = WatchsFactory.allbrands.query({category: category});
+            $rootScope.colorList = WatchsFactory.allcolor.query({category: category});
+            $rootScope.WatchsList = WatchsFactory.allclothing.query({category: category});
+            $rootScope.priceList = [
+                {
+                    price: "Rs. 1000 and below"
+                },
+                {
+                    price: "Rs 1001 - 3000"
+                },
+                {
+                    price: "Rs 3001 - 5000"
+                },
+                {
+                    price: "Rs 5001 - 7000"
+                },
+                {
+                    price: "Rs 7001 - 10000"
+                },
+                {
+                    price: "Rs 10001 - 20000"
+                },
+                {
+                    price: "Rs 20001 - 30000"
+                },
+                {
+                    price: "Rs 30001 and above"
+                }
+            ];
+
+            var pagesShown = 1;
+            var pageSize = 21;
+
+            $scope.paginationLimit = function (data) {
+                //alert("34");
+                return pageSize * pagesShown;
+            };
+            $scope.hasMoreItemsToShow = function () {
+                return pagesShown < ($rootScope.WatchsList.length / pageSize);
+            };
+            $scope.showMoreItems = function () {
+                pagesShown = pagesShown + 1;
+            };
+
+
+            $location.path('/Watchs');
+        }
+
+
+        $rootScope.resultForSelection = function (brand, color, price, categoryItem, order) {
+            console.log("brand #############- " + brand);
+            console.log("color #############- " + color);
+            console.log("price #############- " + price);
+            console.log("categoryItem #############- " + categoryItem);
+            //$rootScope.user.roles = angular.copy($rootScope.roles);
+            //console.log("$scope.user.roles #############- " + $rootScope.user.roles);
+
+
+            if (brand != undefined && brand.length > 0) {
+                brand = brand;
+            } else if (brand === undefined) {
+                // alert('1');
+                brand = "0";
+            } else if (brand.length === 0) {
+                alert('1');
+                brand = "0";
+            } else if (brand == null) {
+                brand = "0";
+            } else {
+                brand = "0";
+            }
+
+
+            if (price != undefined  && price.length > 0) {
+                price = price;
+            } else if (price === undefined) {
+                // alert('1');
+                price = "0";
+            } else if (price.length === 0) {
+                // alert('1');
+                price = "0";
+            } else if (price == null) {
+                price = "0";
+            } else {
+                price = "0";
+            }
+
+            if (color != undefined && color.length > 0) {
+                color = color;
+            } else if (color === undefined) {
+                // alert('1');
+                color = "0";
+            }else if (color.length === 0) {
+                // alert('1');
+                color = "0";
+            } else if (color == null) {
+                color = "0";
+            } else {
+                color = "0";
+            }
+
+            if (order != undefined  && order.length > 0) {
+                order = order;
+            } else {
+                order = 'desc';
+            }
+
+            $rootScope.WatchsList = WatchsFactory.sWatchionclothing.query({brand: brand, color: color, price: price, categoryItem: categoryItem, order: order});
+        };
+
+        $scope.getWatchsResultBrands = function (category) {
+            console.log("category 2 - " + category);
+            $rootScope.brandList = WatchsFactory.allbrands.query({category: category});
+
+            $location.path('/Watchs');
+        }
+
+        $scope.getProductInfo = function (productName, categoryItem) {
+            console.log("categoryItem 2 - " + categoryItem);
+            $rootScope.pricecompare = WatchsFactory.comapreproduct.query({productName: productName, category: categoryItem});
+            $rootScope.product = productName;
+            $location.path('/Watchs');
+        }
+
+
+    }]);
+
+
 app.controller('WomenCtrl', ['$scope', '$rootScope', '$location', 'WomenFactory',
     function ($scope, $rootScope, $location, WomenFactory) {
 
 
-        $rootScope.brandList = WomenFactory.allbrands.query({category: 'Dress'});
-        $rootScope.colorList = WomenFactory.allcolor.query({category: 'Dress'});
-        $rootScope.priceList = [
-            {
-                price: "Rs. 2000 and below"
-            },
-            {
-                price: "Rs 2001 - 5000"
-            },
-            {
-                price: "Rs 5001 - 10000"
-            },
-            {
-                price: "Rs 10001 - 18000"
-            },
-            {
-                price: "Rs 18001 - 25000"
-            },
-            {
-                price: "Rs 25001 - 35000"
-            },
-            {
-                price: "Rs 35001 and above"
-            }
-        ];
-
-        $rootScope.user = {
-            brandList: ['Vero Moda']
+        $scope.getProdName = function () {
+            $rootScope.prodList = WomenFactory.allclothing.query({category: 'Dress'});
         };
-        $rootScope.checkAll = function () {
-            $rootScope.user.brandList = angular.copy($rootScope.brandList);
-            console.log("$scope.user.brandList #############- " + $rootScope.user.brandList);
-        };
-        $rootScope.uncheckAll = function () {
-            $rootScope.user.colorList = [];
-            console.log("$scope.user.brandList #############- " + $rootScope.user.brandList);
-        };
-        $rootScope.checkFirst = function () {
-            $rootScope.user.brandList.splice(0, $rootScope.user.brandList.length);
-            $rootScope.user.brandList.push('guest');
-            console.log("$scope.user.brandList #############- " + $rootScope.user.brandList);
-        }
-
-        $rootScope.user = {
-            colorList: ['Pink']
-        };
-        $rootScope.checkAll = function () {
-            $rootScope.user.colorList = angular.copy($rootScope.colorList);
-            console.log("$scope.user.colorList #############- " + $rootScope.user.colorList);
-        };
-        $rootScope.uncheckAll = function () {
-            $rootScope.user.colorList = [];
-            console.log("$scope.user.colorList #############- " + $rootScope.user.colorList);
-        };
-        $rootScope.checkFirst = function () {
-            $rootScope.user.colorList.splice(0, $rootScope.user.brandList.length);
-            $rootScope.user.colorList.push('guest');
-            console.log("$scope.user.colorList #############- " + $rootScope.user.colorList);
-        }
-
-        $rootScope.user = {
-            priceList: ['2000']
-        };
-        $rootScope.checkAll = function () {
-            $rootScope.user.priceList = angular.copy($rootScope.priceList);
-            console.log("$scope.user.priceList #############- " + $rootScope.user.priceList);
-        };
-        $rootScope.uncheckAll = function () {
-            $rootScope.user.priceList = [];
-            console.log("$scope.user.priceList #############- " + $rootScope.user.priceList);
-        };
-        $rootScope.checkFirst = function () {
-            $rootScope.user.priceList.splice(0, $rootScope.user.priceList.length);
-            $rootScope.user.priceList.push('guest');
-            console.log("$scope.user.priceList #############- " + $rootScope.user.priceList);
-        }
-
-
-        $rootScope.selectedColor = function (user) {
-            console.log("es #############- " + user);
-            var re = { name: user};
-            console.log("re #############- " + re);
-            //$rootScope.user.roles = angular.copy($rootScope.roles);
-            //console.log("$scope.user.roles #############- " + $rootScope.user.roles);
-        };
-
-        $rootScope.resultForSelection = function (brand, color, price) {
-            console.log("brand #############- " + brand);
-            console.log("color #############- " + color);
-            console.log("price #############- " + price);
-            //$rootScope.user.roles = angular.copy($rootScope.roles);
-            //console.log("$scope.user.roles #############- " + $rootScope.user.roles);
-        };
-
-
-
-        $rootScope.selectedRadio = function (color) {
-            console.log("color #############- " + color);
-            //$rootScope.user.roles = angular.copy($rootScope.roles);
-            //console.log("$scope.user.roles #############- " + $rootScope.user.roles);
-        };
-
-
-        console.log("$scope.user.roles #############- " + $scope.user.brandList);
 
         $scope.getWomenClothing = function (category) {
             console.log("category 1 - " + category);
+            $rootScope.categoryItem = category;
+            console.log("$rootScope.categoryItem - " + $rootScope.categoryItem);
             $rootScope.brandList = WomenFactory.allbrands.query({category: category});
             $rootScope.colorList = WomenFactory.allcolor.query({category: category});
             $rootScope.womenList = WomenFactory.allclothing.query({category: category});
-
+            $rootScope.priceList = [
+                {
+                    price: "Rs. 1000 and below"
+                },
+                {
+                    price: "Rs 1001 - 3000"
+                },
+                {
+                    price: "Rs 3001 - 5000"
+                },
+                {
+                    price: "Rs 5001 - 7000"
+                },
+                {
+                    price: "Rs 7001 and above"
+                }
+            ];
 
             var pagesShown = 1;
             var pageSize = 21;
@@ -173,10 +504,82 @@ app.controller('WomenCtrl', ['$scope', '$rootScope', '$location', 'WomenFactory'
             $location.path('/womenclothing');
         }
 
+
+        $rootScope.resultForSelection = function (brand, color, price, categoryItem, order) {
+            console.log("brand #############- " + brand);
+            console.log("color #############- " + color);
+            console.log("price #############- " + price);
+            console.log("categoryItem #############- " + categoryItem);
+            //$rootScope.user.roles = angular.copy($rootScope.roles);
+            //console.log("$scope.user.roles #############- " + $rootScope.user.roles);
+
+
+
+            if (brand != undefined && brand.length > 0) {
+                brand = brand;
+            } else if (brand === undefined) {
+                // alert('1');
+                brand = "0";
+            } else if (brand.length === 0) {
+                alert('1');
+                brand = "0";
+            } else if (brand == null) {
+                brand = "0";
+            } else {
+                brand = "0";
+            }
+
+
+            if (price != undefined  && price.length > 0) {
+                price = price;
+            } else if (price === undefined) {
+                // alert('1');
+                price = "0";
+            } else if (price.length === 0) {
+                // alert('1');
+                price = "0";
+            } else if (price == null) {
+                price = "0";
+            } else {
+                price = "0";
+            }
+
+            if (color != undefined && color.length > 0) {
+                color = color;
+            } else if (color === undefined) {
+                // alert('1');
+                color = "0";
+            }else if (color.length === 0) {
+                // alert('1');
+                color = "0";
+            } else if (color == null) {
+                color = "0";
+            } else {
+                color = "0";
+            }
+
+            if (order != undefined  && order.length > 0) {
+                order = order;
+            } else {
+                order = 'asc';
+            }
+
+            $rootScope.womenList = WomenFactory.selectionclothing.query({brand: brand, color: color, price: price, categoryItem: categoryItem, order: order});
+        };
+
         $scope.getWomenClothingBrands = function (category) {
             console.log("category 2 - " + category);
             $rootScope.brandList = WomenFactory.allbrands.query({category: category});
 
+            $location.path('/womenclothing');
+        }
+
+        $rootScope.pricecompare = {productName: null};
+
+        $scope.getProductInfo = function (productName, categoryItem) {
+            console.log("categoryItem 2 - " + categoryItem);
+            $rootScope.pricecompare = WomenFactory.comapreproduct.query({productName: productName, category: categoryItem});
+            $rootScope.product = productName;
             $location.path('/womenclothing');
         }
 
@@ -189,270 +592,34 @@ app.controller('WomenCtrl', ['$scope', '$rootScope', '$location', 'WomenFactory'
     }]);
 
 
-app.controller('WatchCtrl', ['$scope', '$rootScope', '$location', 'WatchFactory',
-    function ($scope, $rootScope, $location, WatchFactory) {
-
-
-        $rootScope.brandList = WatchFactory.allbrands.query({category: 'Men'});
-        $rootScope.colorList = WatchFactory.allcolor.query({category: 'Men'});
-        $rootScope.priceList = [
-            {
-                price: "Rs. 2000 and below"
-            },
-            {
-                price: "Rs 2001 - 5000"
-            },
-            {
-                price: "Rs 5001 - 10000"
-            },
-            {
-                price: "Rs 10001 - 18000"
-            },
-            {
-                price: "Rs 18001 - 25000"
-            },
-            {
-                price: "Rs 25001 - 35000"
-            },
-            {
-                price: "Rs 35001 and above"
-            }
-        ];
-
-        $rootScope.user = {
-            brandList: ['Vero Moda']
-        };
-        $rootScope.checkAll = function () {
-            $rootScope.user.brandList = angular.copy($rootScope.brandList);
-            console.log("$scope.user.brandList #############- " + $rootScope.user.brandList);
-        };
-        $rootScope.uncheckAll = function () {
-            $rootScope.user.colorList = [];
-            console.log("$scope.user.brandList #############- " + $rootScope.user.brandList);
-        };
-        $rootScope.checkFirst = function () {
-            $rootScope.user.brandList.splice(0, $rootScope.user.brandList.length);
-            $rootScope.user.brandList.push('guest');
-            console.log("$scope.user.brandList #############- " + $rootScope.user.brandList);
-        }
-
-        $rootScope.user = {
-            colorList: ['Pink']
-        };
-        $rootScope.checkAll = function () {
-            $rootScope.user.colorList = angular.copy($rootScope.colorList);
-            console.log("$scope.user.colorList #############- " + $rootScope.user.colorList);
-        };
-        $rootScope.uncheckAll = function () {
-            $rootScope.user.colorList = [];
-            console.log("$scope.user.colorList #############- " + $rootScope.user.colorList);
-        };
-        $rootScope.checkFirst = function () {
-            $rootScope.user.colorList.splice(0, $rootScope.user.brandList.length);
-            $rootScope.user.colorList.push('guest');
-            console.log("$scope.user.colorList #############- " + $rootScope.user.colorList);
-        }
-
-        $rootScope.user = {
-            priceList: ['2000']
-        };
-        $rootScope.checkAll = function () {
-            $rootScope.user.priceList = angular.copy($rootScope.priceList);
-            console.log("$scope.user.priceList #############- " + $rootScope.user.priceList);
-        };
-        $rootScope.uncheckAll = function () {
-            $rootScope.user.priceList = [];
-            console.log("$scope.user.priceList #############- " + $rootScope.user.priceList);
-        };
-        $rootScope.checkFirst = function () {
-            $rootScope.user.priceList.splice(0, $rootScope.user.priceList.length);
-            $rootScope.user.priceList.push('guest');
-            console.log("$scope.user.priceList #############- " + $rootScope.user.priceList);
-        }
-
-
-        $rootScope.selectedColor = function (user) {
-            console.log("es #############- " + user);
-            var re = { name: user};
-            console.log("re #############- " + re);
-            //$rootScope.user.roles = angular.copy($rootScope.roles);
-            //console.log("$scope.user.roles #############- " + $rootScope.user.roles);
-        };
-
-        $rootScope.resultForSelection = function (brand, color, price) {
-            console.log("brand #############- " + brand);
-            console.log("color #############- " + color);
-            console.log("price #############- " + price);
-            //$rootScope.user.roles = angular.copy($rootScope.roles);
-            //console.log("$scope.user.roles #############- " + $rootScope.user.roles);
-        };
-
-
-
-        $rootScope.selectedRadio = function (color) {
-            console.log("color #############- " + color);
-            //$rootScope.user.roles = angular.copy($rootScope.roles);
-            //console.log("$scope.user.roles #############- " + $rootScope.user.roles);
-        };
-
-
-        console.log("$scope.user.roles #############- " + $scope.user.brandList);
-
-        $scope.getwatches = function (category) {
-            console.log("category 1 - " + category);
-            $rootScope.brandList = WatchFactory.allbrands.query({category: category});
-            $rootScope.colorList = WatchFactory.allcolor.query({category: category});
-            $rootScope.WatchList = WatchFactory.allclothing.query({category: category});
-
-
-            var pagesShown = 1;
-            var pageSize = 21;
-
-            $scope.paginationLimit = function (data) {
-                //alert("34");
-                return pageSize * pagesShown;
-            };
-            $scope.hasMoreItemsToShow = function () {
-                return pagesShown < ($rootScope.WatchList.length / pageSize);
-            };
-            $scope.showMoreItems = function () {
-                pagesShown = pagesShown + 1;
-            };
-
-
-            $location.path('/watches');
-        }
-
-        $scope.getwatchesBrands = function (category) {
-            console.log("category 2 - " + category);
-            $rootScope.brandList = WatchFactory.allbrands.query({category: category});
-
-            $location.path('/watches');
-        }
-
-        $scope.login = function (PUser) {
-
-            $scope.loginstatus = UserFactory.userquery.query({username: PUser.email, pwd: PUser.password});
-            $location.path('/view1');
-        }
-
-    }]);
-
 app.controller('MenCtrl', ['$scope', '$rootScope', '$location', 'MenFactory',
     function ($scope, $rootScope, $location, MenFactory) {
 
 
-        $rootScope.brandList = MenFactory.allbrands.query({category: 'Dress'});
-        $rootScope.colorList = MenFactory.allcolor.query({category: 'Dress'});
-        $rootScope.priceList = [
-            {
-                price: "Rs. 2000 and below"
-            },
-            {
-                price: "Rs 2001 - 5000"
-            },
-            {
-                price: "Rs 5001 - 10000"
-            },
-            {
-                price: "Rs 10001 - 18000"
-            },
-            {
-                price: "Rs 18001 - 25000"
-            },
-            {
-                price: "Rs 25001 - 35000"
-            },
-            {
-                price: "Rs 35001 and above"
-            }
-        ];
-
-        $rootScope.user = {
-            brandList: ['Vero Moda']
-        };
-        $rootScope.checkAll = function () {
-            $rootScope.user.brandList = angular.copy($rootScope.brandList);
-            console.log("$scope.user.brandList #############- " + $rootScope.user.brandList);
-        };
-        $rootScope.uncheckAll = function () {
-            $rootScope.user.colorList = [];
-            console.log("$scope.user.brandList #############- " + $rootScope.user.brandList);
-        };
-        $rootScope.checkFirst = function () {
-            $rootScope.user.brandList.splice(0, $rootScope.user.brandList.length);
-            $rootScope.user.brandList.push('guest');
-            console.log("$scope.user.brandList #############- " + $rootScope.user.brandList);
-        }
-
-        $rootScope.user = {
-            colorList: ['Pink']
-        };
-        $rootScope.checkAll = function () {
-            $rootScope.user.colorList = angular.copy($rootScope.colorList);
-            console.log("$scope.user.colorList #############- " + $rootScope.user.colorList);
-        };
-        $rootScope.uncheckAll = function () {
-            $rootScope.user.colorList = [];
-            console.log("$scope.user.colorList #############- " + $rootScope.user.colorList);
-        };
-        $rootScope.checkFirst = function () {
-            $rootScope.user.colorList.splice(0, $rootScope.user.brandList.length);
-            $rootScope.user.colorList.push('guest');
-            console.log("$scope.user.colorList #############- " + $rootScope.user.colorList);
-        }
-
-        $rootScope.user = {
-            priceList: ['2000']
-        };
-        $rootScope.checkAll = function () {
-            $rootScope.user.priceList = angular.copy($rootScope.priceList);
-            console.log("$scope.user.priceList #############- " + $rootScope.user.priceList);
-        };
-        $rootScope.uncheckAll = function () {
-            $rootScope.user.priceList = [];
-            console.log("$scope.user.priceList #############- " + $rootScope.user.priceList);
-        };
-        $rootScope.checkFirst = function () {
-            $rootScope.user.priceList.splice(0, $rootScope.user.priceList.length);
-            $rootScope.user.priceList.push('guest');
-            console.log("$scope.user.priceList #############- " + $rootScope.user.priceList);
-        }
-
-
-        $rootScope.selectedColor = function (user) {
-            console.log("es #############- " + user);
-            var re = { name: user};
-            console.log("re #############- " + re);
-            //$rootScope.user.roles = angular.copy($rootScope.roles);
-            //console.log("$scope.user.roles #############- " + $rootScope.user.roles);
-        };
-
-        $rootScope.resultForSelection = function (brand, color, price) {
-            console.log("brand #############- " + brand);
-            console.log("color #############- " + color);
-            console.log("price #############- " + price);
-            //$rootScope.user.roles = angular.copy($rootScope.roles);
-            //console.log("$scope.user.roles #############- " + $rootScope.user.roles);
-        };
-
-
-
-        $rootScope.selectedRadio = function (color) {
-            console.log("color #############- " + color);
-            //$rootScope.user.roles = angular.copy($rootScope.roles);
-            //console.log("$scope.user.roles #############- " + $rootScope.user.roles);
-        };
-
-
-        console.log("$scope.user.roles #############- " + $scope.user.brandList);
-
         $scope.getMenClothing = function (category) {
             console.log("category 1 - " + category);
+            $rootScope.categoryItem = category;
+            console.log("$rootScope.categoryItem - " + $rootScope.categoryItem);
             $rootScope.brandList = MenFactory.allbrands.query({category: category});
             $rootScope.colorList = MenFactory.allcolor.query({category: category});
             $rootScope.MenList = MenFactory.allclothing.query({category: category});
-
+            $rootScope.priceList = [
+                {
+                    price: "Rs. 1000 and below"
+                },
+                {
+                    price: "Rs 1001 - 3000"
+                },
+                {
+                    price: "Rs 3001 - 5000"
+                },
+                {
+                    price: "Rs 5001 - 7000"
+                },
+                {
+                    price: "Rs 7001 and above"
+                }
+            ];
 
             var pagesShown = 1;
             var pageSize = 21;
@@ -472,10 +639,82 @@ app.controller('MenCtrl', ['$scope', '$rootScope', '$location', 'MenFactory',
             $location.path('/Menclothing');
         }
 
+
+        $rootScope.resultForSelection = function (brand, color, price, categoryItem, order) {
+            console.log("brand #############- " + brand);
+            console.log("color #############- " + color);
+            console.log("price #############- " + price);
+            console.log("categoryItem #############- " + categoryItem);
+            //$rootScope.user.roles = angular.copy($rootScope.roles);
+            //console.log("$scope.user.roles #############- " + $rootScope.user.roles);
+
+
+
+            if (brand != undefined && brand.length > 0) {
+                brand = brand;
+            } else if (brand === undefined) {
+                // alert('1');
+                brand = "0";
+            } else if (brand.length === 0) {
+                alert('1');
+                brand = "0";
+            } else if (brand == null) {
+                brand = "0";
+            } else {
+                brand = "0";
+            }
+
+
+            if (price != undefined  && price.length > 0) {
+                price = price;
+            } else if (price === undefined) {
+                // alert('1');
+                price = "0";
+            } else if (price.length === 0) {
+                // alert('1');
+                price = "0";
+            } else if (price == null) {
+                price = "0";
+            } else {
+                price = "0";
+            }
+
+            if (color != undefined && color.length > 0) {
+                color = color;
+            } else if (color === undefined) {
+                // alert('1');
+                color = "0";
+            }else if (color.length === 0) {
+                // alert('1');
+                color = "0";
+            } else if (color == null) {
+                color = "0";
+            } else {
+                color = "0";
+            }
+
+            if (order != undefined  && order.length > 0) {
+                order = order;
+            } else {
+                order = 'asc';
+            }
+
+            $rootScope.MenList = MenFactory.selectionclothing.query({brand: brand, color: color, price: price, categoryItem: categoryItem, order: order});
+        };
+
         $scope.getMenClothingBrands = function (category) {
             console.log("category 2 - " + category);
             $rootScope.brandList = MenFactory.allbrands.query({category: category});
 
+            $location.path('/Menclothing');
+        }
+
+        $rootScope.pricecompare = {productName: null};
+
+        $scope.getProductInfo = function (productName, categoryItem) {
+            console.log("categoryItem 2 - " + categoryItem);
+            $rootScope.pricecompare = MenFactory.comapreproduct.query({productName: productName, category: categoryItem});
+            $rootScope.product = productName;
             $location.path('/Menclothing');
         }
 
@@ -498,13 +737,18 @@ app.controller('UserCtrl', ['$scope', '$rootScope', '$location', 'UserFactory', 
         console.log("register - " + PUser.password);
         console.log("register - " + PUser.phoneNumber);
         console.log("register - " + PUser.address);
+        console.log("register - " + PUser.countryCode);
+        console.log("register - " + PUser.country);
+        console.log("register - " + PUser.city);
+
         UserFactory.usercreation.create(PUser);
         $location.path('/login');
     }
 
     $scope.login = function (PUser) {
 
-        $scope.loginstatus = UserFactory.userquery.query({username: PUser.email, pwd: PUser.password});
+        $rootScope.loginstatus = UserFactory.userquery.query({username: PUser.email, password: PUser.password});
+       console.log("user" + $rootScope.loginstatus.length);
         $location.path('/view1');
     }
 

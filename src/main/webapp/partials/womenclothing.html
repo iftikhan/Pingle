@@ -1,4 +1,4 @@
-<div class="register_account">
+<!--<div class="register_account">
     <div class="wrap">
         <form>
             <div class="row">
@@ -7,70 +7,63 @@
                         <div class="col_1_of_2 span_1_of_2 pi-input-box col-md-offset-4">
                             <div><input type="text" placeholder="What you want to pingle?" ng-model="typeaheadValue"
                                         bs-typeahead="typeahead"></div>
+                            &lt;!&ndash;<iframe src='http://www.flipkart.com/affiliate/displayWidget?affrid=WRID-140783497538848252' height=55 width=360 scrolling='no' frameborder=0></iframe>&ndash;&gt;
                         </div>
-                        <div class="col_1_of_2 span_1_of_2 pi-select-box">
+                       &lt;!&ndash; <div class="col_1_of_2 span_1_of_2 pi-select-box">
                             <div>
                                 <select data-ng-controller="watchesCtrl" placeholder="Select category"
                                         ng-click="getMobileInfo(typeaheadValue, item.name)" style="width: 40%"
                                         ng-model="item"
                                         ng-options="item as item.name for item in items"></select>
                             </div>
-                        </div>
+                        </div>&ndash;&gt;
+                        <div></div>
                     </div>
                 </div>
             </div>
         </form>
     </div>
-</div>
-
+</div>-->
+<div data-ng-controller="watchesCtrl"></div>
 
 <div class="login">
     <div class="wrap">
         <div class="rsidebar span_1_of_left">
            <form ng-submit="resultForSelection(user.brandList, user.colorList, user.priceList)">
-            <section class="sky-form">
-                <h4>Category</h4>
 
-                <div class="row row1 scroll-pane">
-                    <div class="col col-4" ng-repeat="role in brandList">
-                        <label class="pi-label">
-                            <input type="checkbox" ng-click="selectedColor(user.brandList)" checklist-model="user.brandList" checklist-value="role.brand"> {{role.brand}}
-                        </label>
-                    </div>
-                </div>
-            </section>
 
-               <div class="clear"></div>
-
-            <section class="sky-form">
+          <!--  <section class="sky-form">
                 <h4>Brand</h4>
 
                 <div class="row row1 scroll-pane">
                     <div class="col col-4" ng-repeat="role in brandList">
                         <label class="pi-label">
-                            <input type="checkbox" ng-click="selectedColor(user.brandList)" checklist-model="user.brandList" checklist-value="role.brand"> {{role.brand}}
+                            <input type="checkbox" ng-click="resultForSelection(user.brandList, user.colorList, user.priceList, categoryItem)"
+                                   checklist-model="user.brandList" checklist-value="role.brand"> {{role.brand}}
                         </label>
                     </div>
                 </div>
             </section>
 
 
-            <div class="clear"></div>
+            <div class="clear"></div>-->
 
 
-            <section class="sky-form">
+            <section ng-hide="user.colorList.length<4" class="sky-form">
                 <h4>Color</h4>
 
                 <div class="row row1 scroll-pane">
                     <div class="col col-4" ng-repeat="role in colorList">
                         <label class="pi-label">
-                            <input type="checkbox" ng-click="selectedColor(user.colorList)" checklist-model="user.colorList" checklist-value="role.color"> {{role.color}}
+                            <input type="radio" ng-click="resultForSelection(user.brandList, user.colorList, user.priceList, categoryItem)"
+                                   ng-model="user.colorList" ng-value="role.color"> {{role.color}}
                         </label>
                     </div>
                 </div>
             </section>
 
             <div class="clear"></div>
+
 
 
             <section class="sky-form">
@@ -79,11 +72,15 @@
                 <div class="row row1 scroll-pane">
                     <div class="col col-4" ng-repeat="role in priceList">
                         <label class="pi-label">
-                            <input type="checkbox" ng-click="selectedColor(user.priceList)" checklist-model="user.priceList" checklist-value="role.price"> {{role.price}}
+                            <input type="radio" ng-click="resultForSelection(user.brandList, user.colorList, user.priceList, categoryItem)"
+                                   ng-model="user.priceList" ng-value="role.price"> {{role.price}}
                         </label>
                     </div>
                 </div>
             </section>
+
+               <iframe src="http://www.flipkart.com/affiliate/displayWidget?affrid=WRID-141521015153220344" style="width:120px;height:270px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" ></iframe>
+               <iframe src="http://www.flipkart.com/affiliate/displayWidget?affrid=WRID-141521021743174527" style="width:120px;height:270px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" ></iframe>
 
 
            </form>
@@ -93,35 +90,63 @@
             <div class="mens-toolbar">
                 <div class="sort">
                     <div class="sort-by">
-                        <label>Sort By</label>
-                        <select>
-                            <option value="">
-                                Price : High to Low
-                            </option>
-                            <option value="">
-                                Price : Low to High
-                            </option>
-                        </select>
-                        <a href=""><img src="web/images/arrow2.gif" alt="" class="v-middle"></a>
+                        <label>Price - </label>
+                        <a href="#/womenclothing" ng-click="resultForSelection(user.brandList, user.colorList, user.priceList, categoryItem, 'desc')"> High to Low </a>
+                        <a href="#/womenclothing" ng-click="resultForSelection(user.brandList, user.colorList, user.priceList, categoryItem, 'asc')" class="pull-right"> Low  to high </a>
+
                     </div>
                 </div>
                 <div class="clear"></div>
             </div>
-            <div ng-show="loading"> Loading .....</div>
+            <div ng-show="womenList.length>0">
             <label class="text-muted fa-bold"><b>Total results : {{ womenList.length }}</b></label> <br>
-
+            </div>
             <div class="clear"></div>
 
             <!--  <a href="#" class="btn btn-primary btn-lg" data-ng-controller="watchesCtrl" ng-click="start()">
                   <i class="glyphicon glyphicon-play-circle"></i> <span>cfpLoadingBar.</span>start()
               </a>-->
 
-            <div ng-init="getWomenClothing('Dress')" class="box1">
+            <div ng-init="getWomenClothing('women')" class="box1">
+
+                <div ng-hide="womenList.length>0">
+
+                    <div class="spinner">
+                        <div class="rect1"></div>
+                        <div class="rect2"></div>
+                        <div class="rect3"></div>
+                        <div class="rect4"></div>
+                        <div class="rect5"></div>
+
+                    </div>
+                    <div class="text-center text-danger">
+                        <img class="centered"
+                             src="web/images/Flipkart1.JPG">
+                        <img class="centered" src="web/images/amazon1.JPG"><img class="centered"
+                                                                                src="web/images/snapdeal1.JPG">
+                        <img class="centered"
+                             src="web/images/jabong1.JPG">
+                        <img class="centered"
+                             src="web/images/Indiatimes1.JPG">
+                        <img class="centered"
+                             src="web/images/myntra1.JPG">
+                        <img class="centered"
+                             src="web/images/greendust1.JPG">
+                    </div>
+                    <!--<img src="web/images/spiffygif_86x86 (1).gif" style="margin-left: 450px; margin-top: 15%" class="text-center">
+
+                    </img>-->
+
+                    <!--<div class="alert alert-info">
+                        <span><strong>Notice: </strong> Oops! We are sorry, we don't have products which you have selected! Try expanding your filter and see we will have lot many products for you.</span>
+                    </div>-->
+
+                </div>
 
                 <div data-ng-repeat="product in womenList | limitTo: paginationLimit()">
                     <div class="col_1_of_single1 span_1_of_single1">
-                        <a href="#myModal" ng-click="getWatchInfo(product)" data-toggle="modal" data-target="#myModal">
-                            <div class="view1 view-fifth1" style="width: 300px; height: 450px;">
+                        <a ng-click="getProductInfo(product.productName, categoryItem)" data-toggle="modal" data-target="#myModal">
+                            <div class="view1 view-fifth1" style="width: 300px; height: 490px;">
                                 <div class="top_box">
                                     </br>
                                     <p class="m_2"></p>
@@ -166,7 +191,7 @@
                                     {{product.discountDesc}} </font></span></div>
                                 <h3 class="m_1 text-center">{{product.productName}}</h3>
                                 <a class="btn btn-primary bt" style="margin-left: 111px; margin-top: 8px"
-                                   target="_blank" href="{{product.productURL}}"> Buy Now </a>
+                                   target="_blank" href="{{product.productURL}}"> View & Buy </a>
                             </div>
                             <div class="clear"></div>
                             <div class="clear"></div>
@@ -193,11 +218,122 @@
                     <h4 class="modal-title panel-primary" id="myModalLabel">
                         You can compare prices from below sellers for
                         <span class="pi-product-details">
-                            {{productInfo.productName}}
+                            {{productName}}
                         </span>
                     </h4>
                 </div>
                 <div class="modal-body">
+
+                    <div id="myCarousel" style="width: 100%" class="carousel slide" data-interval="3000" data-ride="carousel">
+                        <!-- Carousel indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                        </ol>
+
+                        <div ng-hide="pricecompare.length>0">
+
+                            <div class="spinner">
+                                <div class="rect1"></div>
+                                <div class="rect2"></div>
+                                <div class="rect3"></div>
+                                <div class="rect4"></div>
+                                <div class="rect5"></div>
+
+                            </div>
+                            <div class="text-center text-danger">
+                                <img class="centered"
+                                     src="web/images/Flipkart1.JPG">
+                                <img class="centered" src="web/images/amazon1.JPG"><img class="centered"
+                                                                                        src="web/images/snapdeal1.JPG">
+                                <img class="centered"
+                                     src="web/images/jabong1.JPG">
+                                <img class="centered"
+                                     src="web/images/Indiatimes1.JPG">
+                                <img class="centered"
+                                     src="web/images/myntra1.JPG">
+                                <img class="centered"
+                                     src="web/images/greendust1.JPG">
+                            </div>
+                            <!--<img src="web/images/spiffygif_86x86 (1).gif" style="margin-left: 450px; margin-top: 15%" class="text-center">
+
+                            </img>-->
+
+                            <!--<div class="alert alert-info">
+                                <span><strong>Notice: </strong> Oops! We are sorry, we don't have products which you have selected! Try expanding your filter and see we will have lot many products for you.</span>
+                            </div>-->
+
+                        </div>
+                        <!-- Carousel items -->
+                        <div  class="carousel-inner" style="overflow: inherit">
+                            <div  class="active item">
+                                <div >
+                                    <div data-ng-repeat="productcompare in pricecompare">
+                                        <div class="col_1_of_single1 span_1_of_single1">
+                                <div class="view1 view-fifth1" style="width: 300px; height: 450px;">
+                                    <div class="top_box">
+                                        </br>
+                                        <p class="m_2"></p>
+
+                                        <div class="grid_img">
+                                            <div class="css3"><img src="{{productcompare.mediumImage}}"
+                                                                   style="width: inherit; height: 250px" alt=""/></div>
+
+                                        </div>
+                                    </div>
+                                    <div style="margin-left: 111px; margin-top: 8px"
+                                         ng-show="product.merchant == 'Flipkart'"><span><img class="centered"
+                                                                                             src="web/images/Flipkart1.JPG"></span>
+                                    </div>
+                                    <div style="margin-left: 111px; margin-top: 8px"
+                                         ng-show="product.merchant == 'Amazon'"><span><img class="centered"
+                                                                                           src="web/images/amazon1.JPG"></span>
+                                    </div>
+                                    <div style="margin-left: 111px; margin-top: 8px"
+                                         ng-show="product.merchant == 'Snapdeal'"><span><img class="centered"
+                                                                                             src="web/images/snapdeal1.JPG"></span>
+                                    </div>
+
+                                    <div style="margin-left: 111px; margin-top: 8px"
+                                         ng-show="product.merchant == 'Jabong.com'"><span><img class="centered"
+                                                                                               src="web/images/jabong1.JPG"></span>
+                                    </div>
+                                    <div style="margin-left: 111px; margin-top: 8px"
+                                         ng-show="product.merchant == 'Myntra.com'"><span><img class="centered"
+                                                                                               src="web/images/myntra1.JPG"></span>
+                                    </div>
+                                    <div style="margin-left: 111px; margin-top: 8px"
+                                         ng-show="product.merchant == 'Indiatimes Shopping'"><span><img class="centered"
+                                                                                                        src="web/images/Indiatimes1.JPG"></span>
+                                    </div>
+                                    <div style="margin-left: 111px; margin-top: 8px"
+                                         ng-show="product.merchant == 'Greendust.com'"><span><img class="centered"
+                                                                                                  src="web/images/greendust1.JPG"></span>
+                                    </div>
+                                    <div class="price text-center">{{productcompare.salePrice}} Rs. <span
+                                            ng-hide="productcompare.discountDesc == ''"> <font size=3 color=red>
+                                        {{productcompare.discountDesc}} </font></span></div>
+                                    <h3 class="m_1 text-center">{{productcompare.productName}}</h3>
+                                    <a class="btn btn-primary bt" style="margin-left: 111px; margin-top: 8px"
+                                       target="_blank" href="{{productcompare.productURL}}"> View & Buy </a>
+
+                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <!-- Carousel nav -->
+                        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    </div>
+
+<!--
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div data-ng-repeat="productcompare in pricecompare">
                             <div class="col_1_of_single1 span_1_of_single1"><a href="#aboutModal"
@@ -256,6 +392,7 @@
                             </a></div>
                         </div>
                     </div>
+-->
                 </div>
                 <div class="modal-footer">
                     <span data-dismiss="modal" class="label label-warning">Close</span>

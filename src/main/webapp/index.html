@@ -12,6 +12,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="//twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css">
+<link rel="stylesheet" href="web/css/angucomplete.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 <link rel="shortcut icon" type="image/x-icon" href="web/images/favicon.ico">
 
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
@@ -19,15 +21,127 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href="web/css/form.css" rel="stylesheet" type="text/css" media="all"/>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 
+<script src="/js/pace.js"></script>
+<link href="/js/themes/pace-theme-barber-shop.css"
+      rel="stylesheet"/>
 
-<script type="text/javascript" src="/web/js/jquery-1.11.1.min.js"></script>
-<script src="web/js/jquery.elevatezoom.js" type="text/javascript"></script>
+<script src="web/js/jquery.min.js"></script>
+<script src="js/jquery.elevatezoom.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="web/js/jquery.easydropdown.min.js"></script>
+<script src="js/jquery.easydropdown.min.js"></script>
 <script src="js/bootsrap-modal.js"></script>
 
 
 <style>
+
+
+
+.spinner {
+    margin: 100px auto;
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.spinner > div {
+    background-color: #333;
+    height: 100%;
+    width: 6px;
+    display: inline-block;
+
+    -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+    animation: stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+}
+
+@-webkit-keyframes stretchdelay {
+    0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
+    20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes stretchdelay {
+    0%, 40%, 100% {
+        transform: scaleY(0.4);
+        -webkit-transform: scaleY(0.4);
+    }  20% {
+           transform: scaleY(1.0);
+           -webkit-transform: scaleY(1.0);
+       }
+}
+
+    /*-------------------------------*/
+    /*      Code snippet by          */
+    /*      @maridlcrmn              */
+    /*-------------------------------*/
+
+
+section {
+    padding-top: 0px;
+    padding-bottom: 30px;
+}
+
+.quote {
+    color: rgba(0,0,0,.1);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+    /*-------------------------------*/
+    /*    Carousel Fade Transition   */
+    /*-------------------------------*/
+
+#fade-quote-carousel.carousel {
+    padding-bottom: 60px;
+}
+#fade-quote-carousel.carousel .carousel-inner .item {
+    opacity: 0;
+    -webkit-transition-property: opacity;
+    -ms-transition-property: opacity;
+    transition-property: opacity;
+}
+#fade-quote-carousel.carousel .carousel-inner .active {
+    opacity: 1;
+    -webkit-transition-property: opacity;
+    -ms-transition-property: opacity;
+    transition-property: opacity;
+}
+#fade-quote-carousel.carousel .carousel-indicators {
+    bottom: 10px;
+}
+#fade-quote-carousel.carousel .carousel-indicators > li {
+    background-color: #e84a64;
+    border: none;
+}
+#fade-quote-carousel blockquote {
+    text-align: center;
+    border: none;
+}
+#fade-quote-carousel .profile-circle {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 100px;
+}
 
     .paginationclass {
 
@@ -143,6 +257,72 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         color: #333;
     }
 
+    .big-btn{
+        padding: 10px 0px 11px 0px;
+        width: 215px;
+        margin-top:5px;
+    }
+
+    .big-btn i{
+        font-size: 65px;
+        margin-right: 0px !important;
+    }
+    .big-btn strong{
+        font-size: 25px;
+        text-shadow: 1px 2px 0px #34659B;
+        color: #fff;
+        line-height: 24px;
+    }
+    .big-btn .btn-text{
+        margin-top:6px;
+    }
+
+    .big-btn small{font-size: 75%;}
+
+    .android-btn{
+
+        width: 240px;
+        padding: 13px 17px 13px 0px;
+        background-color: #000;
+        border-color: #000;
+
+    }
+    .android-btn:hover{
+        background-color: #272727;
+    }
+
+    .android-btn i{
+        font-size: 55px;
+    }
+
+    .android-btn .btn-text{
+        margin-top: 0px;
+    }
+
+    .android-btn strong{
+        font-size: 25px;
+        text-shadow: none;
+        color: #fff;
+        line-height: 24px;
+    }
+
+    .windows-btn{
+        background-color:#008A00;
+        width: 235px;
+        padding: 13px 5px 13px 10px;
+        border-color: #055805;
+    }
+
+    .windows-btn:hover{
+        background-color: #008A00;
+    }
+    .windows-btn .btn-text{
+        text-shadow: none;
+        font-size: 26px;
+        line-height: 25px;
+    }
+
+
 </style>
 
 <script type="text/javascript">
@@ -256,7 +436,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         });
         // This is for the dropdown list example:
         $('.dropdownlist').change(function () {
-            etalage_show($(this).find('option:selected').attr('class'));
+            etalage_show($(this).find   ('option:selected').attr('class'));
         });
 
     });
@@ -288,9 +468,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
         <div class="cssmenu">
             <ul>
-                <li class="active"><a href="#/register">Sign up</a></li>
-                <li><a href="#/login">Login</a></li>
-                <li><a href="#/userdetail">My Account ( Welcome Naveen )</a></li>
+                <li class="active pull-left"><a href="#/howitworks">How Pingle Works</a></li>
+                <li class="active pull-left"><a href="#/register">Sign up</a></li>
+                <li class="pull-left"><a ng-if="user.name != ''" data-ng-controller="UserCtrl" href="#/login">Login</a></li>
+                <li class="pull-left"><a data-ng-controller="UserCtrl" data-ng-repeat="user in loginstatus" href="#/userdetail">My Account
+                    ( Welcome {{user.name}} )</a></li>
                 <!--<li><a href="web/checkout.html">CheckOut</a></li>-->
             </ul>
         </div>
@@ -313,25 +495,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <li><a class="color1" href="#">Home</a></li>
 <li class="active grid"><a class="color4" href="#">Men</a>
 
-    <div class="megapanel">
+    <div data-ng-controller="MenCtrl" class="megapanel">
         <div class="row">
             <div class="col1">
                 <div class="h_nav">
                     <h4>MIXED & HAPPENING</h4>
                     <ul>
-                        <li><a ng-click="getMenClothing('Formal Shirt')" data-ng-controller="MenCtrl" href="#/Menclothing">Formal Shirts</a></li>
-                        <li><a ng-click="getMenClothing('Casual Shirt')" data-ng-controller="MenCtrl" href="#/Menclothing">Casual Shirts</a></li>
-                        <li><a ng-click="getMenClothing('T-Shirt')" data-ng-controller="MenCtrl" href="#/Menclothing">T-Shirts</a></li>
-                        <li><a ng-click="getMenClothing('Tee')" data-ng-controller="MenCtrl" href="#/Menclothing">Tees</a></li>
-                        <li><a ng-click="getMenClothing('Polo')" data-ng-controller="MenCtrl" href="#/Menclothing">Polos</a></li>
-                        <li><a ng-click="getMenClothing('Jean')" data-ng-controller="MenCtrl" href="#/Menclothing">Jeans</a></li>
-                        <li><a ng-click="getMenClothing('Shirt')" data-ng-controller="MenCtrl" href="#/Menclothing">Shirts</a></li>
-                        <li><a ng-click="getMenClothing('Formal Trouser')" data-ng-controller="MenCtrl" href="#/Menclothing">Formal Trousers</a></li>
-                        <li><a ng-click="getMenClothing('Casual Trouser')" data-ng-controller="MenCtrl" href="#/Menclothing">Casual Trousers</a></li>
-                        <li><a ng-click="getMenClothing('Three Fourth')" data-ng-controller="MenCtrl" href="#/Menclothing">Three Fourths</a></li>
-                        <li><a ng-click="getMenClothing('Jacket')" data-ng-controller="MenCtrl" href="#/Menclothing">Jackets</a></li>
-                        <li><a ng-click="getMenClothing('Short')" data-ng-controller="MenCtrl" href="#/Menclothing">Shorts</a></li>
-                        <li><a ng-click="getMenClothing('Chino')" data-ng-controller="MenCtrl" href="#/Menclothing">Chinos</a></li>
+                        <li><a ng-click="getMenClothing('Formal Shirt')" href="#/Menclothing">Formal Shirts</a></li>
+                        <li><a ng-click="getMenClothing('Casual Shirt')" href="#/Menclothing">Casual Shirts</a></li>
+                        <li><a ng-click="getMenClothing('T-Shirt')" href="#/Menclothing">T-Shirts</a></li>
+                        <li><a ng-click="getMenClothing('Tee')" href="#/Menclothing">Tees</a></li>
+                        <li><a ng-click="getMenClothing('Polo')" href="#/Menclothing">Polos</a></li>
+                        <li><a ng-click="getMenClothing('Jean')" href="#/Menclothing">Jeans</a></li>
+                        <li><a ng-click="getMenClothing('Shirt')" href="#/Menclothing">Shirts</a></li>
+                        <li><a ng-click="getMenClothing('Formal Trouser')" href="#/Menclothing">Formal Trousers</a></li>
+                        <li><a ng-click="getMenClothing('Casual Trouser')" href="#/Menclothing">Casual Trousers</a></li>
+                        <li><a ng-click="getMenClothing('Three Fourth')" href="#/Menclothing">Three Fourths</a></li>
+                        <li><a ng-click="getMenClothing('Jacket')" href="#/Menclothing">Jackets</a></li>
+                        <li><a ng-click="getMenClothing('Short')" href="#/Menclothing">Shorts</a></li>
+                        <li><a ng-click="getMenClothing('Chino')" href="#/Menclothing">Chinos</a></li>
 
 
                     </ul>
@@ -342,46 +524,48 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="h_nav">
                     <h4>INNERWEAR & NIGHWEAR</h4>
                     <ul>
-                        <li><a ng-click="getMenClothing('Night Suit')" data-ng-controller="MenCtrl" href="#/Menclothing">Night Suits</a></li>
-                        <li><a ng-click="getMenClothing('Combo Set')" data-ng-controller="MenCtrl" href="#/Menclothing">Combo Sets</a></li>
-                        <li><a ng-click="getMenClothing('Trunk')" data-ng-controller="MenCtrl" href="#/Menclothing">Trunks</a></li>
-                        <li><a ng-click="getMenClothing('Briefs')" data-ng-controller="MenCtrl" href="#/Menclothing">Brief</a></li>
-                        <li><a ng-click="getMenClothing('Sock')" data-ng-controller="MenCtrl" href="#/Menclothing">Socks</a></li>
-                        <li><a ng-click="getMenClothing('Track Pant')" data-ng-controller="MenCtrl" href="#/Menclothing">Track Pants</a></li>
-                        <li><a ng-click="getMenClothing('Thermal')" data-ng-controller="MenCtrl" href="#/Menclothing">Thermals</a></li>
+                        <li><a ng-click="getMenClothing('Night Suit')" href="#/Menclothing">Night Suits</a></li>
+                        <li><a ng-click="getMenClothing('Combo Set')" href="#/Menclothing">Combo Sets</a></li>
+                        <li><a ng-click="getMenClothing('Trunk')" href="#/Menclothing">Trunks</a></li>
+                        <li><a ng-click="getMenClothing('Briefs')" href="#/Menclothing">Brief</a></li>
+                        <li><a ng-click="getMenClothing('Sock')" href="#/Menclothing">Socks</a></li>
+                        <li><a ng-click="getMenClothing('Track Pant')" href="#/Menclothing">Track Pants</a></li>
+                        <li><a ng-click="getMenClothing('Thermal')" href="#/Menclothing">Thermals</a></li>
 
-                        <li><a ng-click="getMenClothing('Boxer')" data-ng-controller="MenCtrl" href="#/Menclothing">Boxers</a></li>
-                        <li><a ng-click="getMenClothing('Vest')" data-ng-controller="MenCtrl" href="#/Menclothing">Vests</a></li>
-                        <li><a ng-click="getMenClothing('Pyjama')" data-ng-controller="MenCtrl" href="#/Menclothing">Pyjamas</a></li>
-                        <li><a ng-click="getMenClothing('Lounge Pant')" data-ng-controller="MenCtrl" href="#/Menclothing">Lounge Pants</a></li>
+                        <li><a ng-click="getMenClothing('Boxer')" href="#/Menclothing">Boxers</a></li>
+                        <li><a ng-click="getMenClothing('Vest')" href="#/Menclothing">Vests</a></li>
+                        <li><a ng-click="getMenClothing('Pyjama')" href="#/Menclothing">Pyjamas</a></li>
+                        <li><a ng-click="getMenClothing('Lounge Pant')" href="#/Menclothing">Lounge Pants</a></li>
 
                     </ul>
                 </div>
             </div>
 
-            <div class="col1">
+            <div data-ng-controller="WatchsCtrl" class="col1">
                 <div class="h_nav">
-                    <h4>SWIMWEAR</h4>
+                    <h4>Watches</h4>
                     <ul>
-                        <!--<li><a ng-click="getMenClothing('Swimsuit Top')" data-ng-controller="MenCtrl" href="#/Menclothing">Swimsuit Tops</a></li>
-                        <li><a ng-click="getMenClothing('Swimsuit Bottom')" data-ng-controller="MenCtrl" href="#/Menclothing">Swimsuit Bottoms</a></li>
-                        <li><a ng-click="getMenClothing('Swim Short')" data-ng-controller="MenCtrl" href="#/Menclothing">Swim Shorts</a></li>
-                        <li><a ng-click="getMenClothing('Tankini')" data-ng-controller="MenCtrl" href="#/Menclothing">Tankinis</a></li>
--->
+                        <li><a ng-click="getWatchsResult('men')"  href="#/Watchs">All
+                            Brands</a></li>
+                        <li><a ng-click="getWatchsResult('analog')"  href="#/Watchs">Analog
+                            Watches</a></li>
+                        <li><a ng-click="getWatchsResult('digital')"  href="#/Watchs">Digital
+                            Watches</a></li>
                     </ul>
                 </div>
+
             </div>
 
             <div class="col1">
                 <div class="h_nav">
                     <h4>ETHNIC WEAR</h4>
                     <ul>
-                        <li><a ng-click="getMenClothing('Set')" data-ng-controller="MenCtrl" href="#/Menclothing">Sets</a></li>
-                        <li><a ng-click="getMenClothing('Shirts')" data-ng-controller="MenCtrl" href="#/Menclothing">Shirts</a></li>
-                        <li><a ng-click="getMenClothing('Kurta')" data-ng-controller="MenCtrl" href="#/Menclothing">Kurtas</a></li>
-                        <li><a ng-click="getMenClothing('Pyjama')" data-ng-controller="MenCtrl" href="#/Menclothing">Pyjamas</a></li>
-                        <li><a ng-click="getMenClothing('Dhoti')" data-ng-controller="MenCtrl" href="#/Menclothing">Dhotis</a></li>
-                        <li><a ng-click="getMenClothing('Ethnic Jacket')" data-ng-controller="MenCtrl" href="#/Menclothing">Ethnic Jacket</a></li>
+                        <li><a ng-click="getMenClothing('Set')" href="#/Menclothing">Sets</a></li>
+                        <li><a ng-click="getMenClothing('Shirts')" href="#/Menclothing">Shirts</a></li>
+                        <li><a ng-click="getMenClothing('Kurta')" href="#/Menclothing">Kurtas</a></li>
+                        <li><a ng-click="getMenClothing('Pyjama')" href="#/Menclothing">Pyjamas</a></li>
+                        <li><a ng-click="getMenClothing('Dhoti')" href="#/Menclothing">Dhotis</a></li>
+                        <li><a ng-click="getMenClothing('Ethnic Jacket')" href="#/Menclothing">Ethnic Jacket</a></li>
 
                     </ul>
                 </div>
@@ -390,9 +574,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="h_nav">
                     <h4>SPORTS WEAR</h4>
                     <ul>
-                        <li><a ng-click="getMenClothing('Track Top')" data-ng-controller="MenCtrl" href="#/Menclothing">Track Tops</a></li>
-                        <li><a ng-click="getMenClothing('Track Pant')" data-ng-controller="MenCtrl" href="#/Menclothing">Track Pant</a></li>
-                        <li><a ng-click="getMenClothing('swim')" data-ng-controller="MenCtrl" href="#/Menclothing">Swimsuit & Swimwear</a></li>
+                        <li><a ng-click="getMenClothing('Track Top')" href="#/Menclothing">Track Tops</a></li>
+                        <li><a ng-click="getMenClothing('Track Pant')" href="#/Menclothing">Track Pant</a></li>
+                        <li><a ng-click="getMenClothing('swim')" href="#/Menclothing">Swimsuit & Swimwear</a></li>
                     </ul>
                 </div>
             </div>
@@ -400,15 +584,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="h_nav">
                     <h4>ACCESSORIES</h4>
                     <ul>
-                        <li><a ng-click="getMenClothing('Scarf')" data-ng-controller="MenCtrl" href="#/Menclothing">Scarfs</a></li>
-                        <li><a ng-click="getMenClothing('Wrist Band')" data-ng-controller="MenCtrl" href="#/Menclothing">Wrist Bands</a></li>
-                        <li><a ng-click="getMenClothing('Glove')" data-ng-controller="MenCtrl" href="#/Menclothing">Gloves</a></li>
-                        <li><a ng-click="getMenClothing('Handerkerchief')" data-ng-controller="MenCtrl" href="#/Menclothing">Handerkerchiefs</a></li>
-                        <li><a ng-click="getMenClothing('Cap')" data-ng-controller="MenCtrl" href="#/Menclothing">Caps</a></li>
-                        <li><a ng-click="getMenClothing('Cufflink')" data-ng-controller="MenCtrl" href="#/Menclothing">Cufflinks</a></li>
-                        <li><a ng-click="getMenClothing('Tie')" data-ng-controller="MenCtrl" href="#/Menclothing">Ties</a></li>
-                        <li><a ng-click="getMenClothing('Bandana')" data-ng-controller="MenCtrl" href="#/Menclothing">Bandanas</a></li>
-                        <li><a ng-click="getMenClothing('Muffler')" data-ng-controller="MenCtrl" href="#/Menclothing">Mufflers</a></li>
+                        <li><a ng-click="getMenClothing('Scarf')" href="#/Menclothing">Scarfs</a></li>
+                        <li><a ng-click="getMenClothing('Wrist Band')" href="#/Menclothing">Wrist Bands</a></li>
+                        <li><a ng-click="getMenClothing('Glove')" href="#/Menclothing">Gloves</a></li>
+                        <li><a ng-click="getMenClothing('Handerkerchief')" href="#/Menclothing">Handerkerchiefs</a></li>
+                        <li><a ng-click="getMenClothing('Cap')" href="#/Menclothing">Caps</a></li>
+                        <li><a ng-click="getMenClothing('Cufflink')" href="#/Menclothing">Cufflinks</a></li>
+                        <li><a ng-click="getMenClothing('Tie')" href="#/Menclothing">Ties</a></li>
+                        <li><a ng-click="getMenClothing('Bandana')" href="#/Menclothing">Bandanas</a></li>
+                        <li><a ng-click="getMenClothing('Muffler')" href="#/Menclothing">Mufflers</a></li>
 
                     </ul>
                 </div>
@@ -431,28 +615,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <li class="active grid"><a class="color4" href="#">Women</a>
 
-    <div class="megapanel">
+    <div data-ng-controller="WomenCtrl" class="megapanel">
         <div class="row">
             <div class="col1">
                 <div class="h_nav">
                     <h4>MIXED & HAPPENING</h4>
                     <ul>
                         <li><a ng-click="getWomenClothing('Dress')" data-ng-controller="WomenCtrl" href="#/womenclothing">Dresses</a></li>
-                         <li><a ng-click="getWomenClothing('Top')" data-ng-controller="WomenCtrl" href="#/womenclothing">Tops & Tees</a></li>
-                         <li><a ng-click="getWomenClothing('Tunic')" data-ng-controller="WomenCtrl" href="#/womenclothing">Tunics</a></li>
+                        <li><a ng-click="getWomenClothing('Top')" data-ng-controller="WomenCtrl" href="#/womenclothing">Tops & Tees</a></li>
+                        <li><a ng-click="getWomenClothing('Tunic')" data-ng-controller="WomenCtrl" href="#/womenclothing">Tunics</a></li>
                         <li><a ng-click="getWomenClothing('T-Shirt')" data-ng-controller="WomenCtrl" href="#/womenclothing">T-Shirts</a></li>
-                         <li><a ng-click="getWomenClothing('Shirt')" data-ng-controller="WomenCtrl" href="#/womenclothing">Shirts</a></li>
-                        <li><a ng-click="getWomenClothing('Jumpsuit')" data-ng-controller="WomenCtrl" href="#/womenclothing">Jumpsuit</a></li>
-                         <li><a ng-click="getWomenClothing('Trouser')" data-ng-controller="WomenCtrl" href="#/womenclothing">Trousers</a></li>
-                        <li><a ng-click="getWomenClothing('Jean')" data-ng-controller="WomenCtrl" href="#/womenclothing">Jeans</a></li>
-                         <li><a ng-click="getWomenClothing('Short')" data-ng-controller="WomenCtrl" href="#/womenclothing">Shorts</a></li>
-                        <li><a ng-click="getWomenClothing('Skirt')" data-ng-controller="WomenCtrl" href="#/womenclothing">Skirts</a></li>
-                         <li><a ng-click="getWomenClothing('Jacket')" data-ng-controller="WomenCtrl" href="#/womenclothing">Jackets</a></li>
-                        <li><a ng-click="getWomenClothing('Blazer')" data-ng-controller="WomenCtrl" href="#/womenclothing">Blazers</a></li>
-                         <li><a ng-click="getWomenClothing('Winter Wear')" data-ng-controller="WomenCtrl" href="#/womenclothing">Winter Wear</a></li>
-                         <li><a ng-click="getWomenClothing('Stocking')" data-ng-controller="WomenCtrl" href="#/womenclothing">Stockings</a></li>
-                        <li><a ng-click="getWomenClothing('Sock')" data-ng-controller="WomenCtrl" href="#/womenclothing">Socks</a></li>
-
+                        <li><a ng-click="getWomenClothing('Shirt')" data-ng-controller="WomenCtrl" href="#/womenclothing">Shirts</a></li>
+                        <li><a ng-click="getWomenClothing('Jumpsuit')" href="#/womenclothing">Jumpsuit</a></li>
+                        <li><a ng-click="getWomenClothing('Trouser')" href="#/womenclothing">Trousers</a></li>
+                        <li><a ng-click="getWomenClothing('Jean')" href="#/womenclothing">Jeans</a></li>
+                        <li><a ng-click="getWomenClothing('Short')" href="#/womenclothing">Shorts</a></li>
+                        <li><a ng-click="getWomenClothing('Skirt')" href="#/womenclothing">Skirts</a></li>
+                        <li><a ng-click="getWomenClothing('Jacket')" href="#/womenclothing">Jackets</a></li>
+                        <li><a ng-click="getWomenClothing('Blazer')" href="#/womenclothing">Blazers</a></li>
+                        <li><a ng-click="getWomenClothing('Winter Wear')" href="#/womenclothing">Winter Wear</a></li>
+                        <li><a ng-click="getWomenClothing('Stocking')" href="#/womenclothing">Stockings</a></li>
+                        <li><a ng-click="getWomenClothing('Sock')" href="#/womenclothing">Socks</a></li>
 
 
                     </ul>
@@ -463,48 +646,52 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="h_nav">
                     <h4>LINGERIE & NIGHTWEAR</h4>
                     <ul>
-                        <li><a ng-click="getWomenClothing('Lounge Set')" data-ng-controller="WomenCtrl" href="#/womenclothing">Lounge Set</a></li>
-                        <li><a ng-click="getWomenClothing('Lounge Short')" data-ng-controller="WomenCtrl" href="#/womenclothing">Lounge Short</a></li>
-                        <li><a ng-click="getWomenClothing('Lounge Top')" data-ng-controller="WomenCtrl" href="#/womenclothing">Lounge Top</a></li>
-                        <li><a ng-click="getWomenClothing('Robe')" data-ng-controller="WomenCtrl" href="#/womenclothing">Robe</a></li>
-                        <li><a ng-click="getWomenClothing('Nightdress')" data-ng-controller="WomenCtrl" href="#/womenclothing">Nightdress</a></li>
-                        <li><a ng-click="getWomenClothing('Nightwear')" data-ng-controller="WomenCtrl" href="#/womenclothing">Nightwear</a></li>
-                        <li><a ng-click="getWomenClothing('Lingerie')" data-ng-controller="WomenCtrl" href="#/womenclothing">Lingerie</a></li>
+                        <li><a ng-click="getWomenClothing('Lounge Set')" href="#/womenclothing">Lounge Set</a></li>
+                        <li><a ng-click="getWomenClothing('Lounge Short')" href="#/womenclothing">Lounge Short</a></li>
+                        <li><a ng-click="getWomenClothing('Lounge Top')" href="#/womenclothing">Lounge Top</a></li>
+                        <li><a ng-click="getWomenClothing('Robe')" href="#/womenclothing">Robe</a></li>
+                        <li><a ng-click="getWomenClothing('Nightdress')" href="#/womenclothing">Nightdress</a></li>
+                        <li><a ng-click="getWomenClothing('Nightwear')" href="#/womenclothing">Nightwear</a></li>
+                        <!--<li><a ng-click="getWomenClothing('Lingerie')" href="#/womenclothing">Lingerie</a></li>-->
 
                     </ul>
                 </div>
             </div>
 
-            <div class="col1">
+            <!--<div class="col1">
                 <div class="h_nav">
                     <h4>SWIMWEAR</h4>
                     <ul>
-                        <li><a ng-click="getWomenClothing('Swimsuit Top')" data-ng-controller="WomenCtrl" href="#/womenclothing">Swimsuit Tops</a></li>
-                        <li><a ng-click="getWomenClothing('Swimsuit Bottom')" data-ng-controller="WomenCtrl" href="#/womenclothing">Swimsuit Bottoms</a></li>
-                        <li><a ng-click="getWomenClothing('Swim Short')" data-ng-controller="WomenCtrl" href="#/womenclothing">Swim Shorts</a></li>
-                        <li><a ng-click="getWomenClothing('Tankini')" data-ng-controller="WomenCtrl" href="#/womenclothing">Tankinis</a></li>
+                        <li><a ng-click="getWomenClothing('Swimsuit Top')" href="#/womenclothing">Swimsuit Tops</a></li>
+                        <li><a ng-click="getWomenClothing('Swimsuit Bottom')" href="#/womenclothing">Swimsuit
+                            Bottoms</a></li>
+                        <li><a ng-click="getWomenClothing('Swim Short')" href="#/womenclothing">Swim Shorts</a></li>
+                        <li><a ng-click="getWomenClothing('Tankini')" href="#/womenclothing">Tankinis</a></li>
 
                     </ul>
                 </div>
-            </div>
+            </div>-->
 
             <div class="col1">
                 <div class="h_nav">
                     <h4>ETHNIC WEAR</h4>
                     <ul>
-                        <li><a ng-click="getWomenClothing('Traditional Sari')" data-ng-controller="WomenCtrl" href="#/womenclothing">Traditional Sari</a></li>
-                        <li><a ng-click="getWomenClothing('Printed Sari')" data-ng-controller="WomenCtrl" href="#/womenclothing">Printed Sari</a></li>
-                        <li><a ng-click="getWomenClothing('Salwar')" data-ng-controller="WomenCtrl" href="#/womenclothing">Salwar</a></li>
-                        <li><a ng-click="getWomenClothing('Salwar Suit')" data-ng-controller="WomenCtrl" href="#/womenclothing">Salwar Suit</a></li>
-                        <li><a ng-click="getWomenClothing('Dupatta')" data-ng-controller="WomenCtrl" href="#/womenclothing">Dupatta</a></li>
-                        <li><a ng-click="getWomenClothing('Fashion Sari')" data-ng-controller="WomenCtrl" href="#/womenclothing">Fashion Sari</a></li>
-                        <li><a ng-click="getWomenClothing('Patiala Kurta')" data-ng-controller="WomenCtrl" href="#/womenclothing">Patiala Kurta Set</a></li>
+                        <li><a ng-click="getWomenClothing('Traditional Sari')" href="#/womenclothing">Traditional
+                            Sari</a></li>
+                        <li><a ng-click="getWomenClothing('Printed Sari')" href="#/womenclothing">Printed Sari</a></li>
+                        <li><a ng-click="getWomenClothing('Salwar')" href="#/womenclothing">Salwar</a></li>
+                        <li><a ng-click="getWomenClothing('Salwar Suit')" href="#/womenclothing">Salwar Suit</a></li>
+                        <li><a ng-click="getWomenClothing('Dupatta')" href="#/womenclothing">Dupatta</a></li>
+                        <li><a ng-click="getWomenClothing('Fashion Sari')" href="#/womenclothing">Fashion Sari</a></li>
+                        <li><a ng-click="getWomenClothing('Patiala Kurta')" href="#/womenclothing">Patiala Kurta Set</a>
+                        </li>
 
-                        <li><a ng-click="getWomenClothing('Dhoti')" data-ng-controller="WomenCtrl" href="#/womenclothing">Dhotis</a></li>
-                        <li><a ng-click="getWomenClothing('Patiala')" data-ng-controller="WomenCtrl" href="#/womenclothing">Patiala</a></li>
-                        <li><a ng-click="getWomenClothing('Churidar')" data-ng-controller="WomenCtrl" href="#/womenclothing">Churidar</a></li>
-                        <li><a ng-click="getWomenClothing('Kurti')" data-ng-controller="WomenCtrl" href="#/womenclothing">Kurtis</a></li>
-                        <li><a ng-click="getWomenClothing('Churidar Kurta')" data-ng-controller="WomenCtrl" href="#/womenclothing">Churidar Kurta</a></li>
+                        <li><a ng-click="getWomenClothing('Dhoti')" href="#/womenclothing">Dhotis</a></li>
+                        <li><a ng-click="getWomenClothing('Patiala')" href="#/womenclothing">Patiala</a></li>
+                        <li><a ng-click="getWomenClothing('Churidar')" href="#/womenclothing">Churidar</a></li>
+                        <li><a ng-click="getWomenClothing('Kurti')" href="#/womenclothing">Kurtis</a></li>
+                        <li><a ng-click="getWomenClothing('Churidar Kurta')" href="#/womenclothing">Churidar Kurta</a>
+                        </li>
 
 
                     </ul>
@@ -514,28 +701,43 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="h_nav">
                     <h4>TOP WEAR</h4>
                     <ul>
-                        <li><a ng-click="getWomenClothing('Sweatshirt')" data-ng-controller="WomenCtrl" href="#/womenclothing">Sweatshirts</a></li>
-                        <li><a ng-click="getWomenClothing('Shrug')" data-ng-controller="WomenCtrl" href="#/womenclothing">Shrug</a></li>
-                        <li><a ng-click="getWomenClothing('Waistcoat')" data-ng-controller="WomenCtrl" href="#/womenclothing">Waistcoat</a></li>
-                        <li><a ng-click="getWomenClothing('Romper')" data-ng-controller="WomenCtrl" href="#/womenclothing">Rompers</a></li>
-                        <li><a ng-click="getWomenClothing('Coat')" data-ng-controller="WomenCtrl" href="#/womenclothing">Coats</a></li>
+                        <li><a ng-click="getWomenClothing('Sweatshirt')" href="#/womenclothing">Sweatshirts</a></li>
+                        <li><a ng-click="getWomenClothing('Shrug')" href="#/womenclothing">Shrug</a></li>
+                        <li><a ng-click="getWomenClothing('Waistcoat')" href="#/womenclothing">Waistcoat</a></li>
+                        <li><a ng-click="getWomenClothing('Romper')" href="#/womenclothing">Rompers</a></li>
+                        <li><a ng-click="getWomenClothing('Coat')" href="#/womenclothing">Coats</a></li>
 
 
                     </ul>
                 </div>
             </div>
+
+            <div data-ng-controller="WatchsCtrl" class="col1">
+                <div class="h_nav">
+                    <h4>Watches</h4>
+                    <ul>
+                        <li><a ng-click="getWatchsResult('women')"  href="#/Watchs">All
+                            Brands</a></li>
+                        <li><a ng-click="getWatchsResult('analog')"  href="#/Watchs">Analog
+                            Watches</a></li>
+                        <li><a ng-click="getWatchsResult('digital')"  href="#/Watchs">Digital
+                            Watches</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
             <div class="col1">
                 <div class="h_nav">
                     <h4>BOTTOMWEAR</h4>
                     <ul>
-                        <li><a ng-click="getWomenClothing('Pyjama')" data-ng-controller="WomenCtrl" href="#/womenclothing">Pyjamas</a></li>
-                        <li><a ng-click="getWomenClothing('Track Pant')" data-ng-controller="WomenCtrl" href="#/womenclothing">Track Pants</a></li>
-                        <li><a ng-click="getWomenClothing('Capri')" data-ng-controller="WomenCtrl" href="#/womenclothing">Capris</a></li>
-                        <li><a ng-click="getWomenClothing('Harem Pant')" data-ng-controller="WomenCtrl" href="#/womenclothing">Harem Pants</a></li>
-                        <li><a ng-click="getWomenClothing('Jegging')" data-ng-controller="WomenCtrl" href="#/womenclothing">Jeggings</a></li>
-                        <li><a ng-click="getWomenClothing('Tight')" data-ng-controller="WomenCtrl" href="#/womenclothing">Tights</a></li>
-                        <li><a ng-click="getWomenClothing('Dungaree')" data-ng-controller="WomenCtrl" href="#/womenclothing">Dungarees</a></li>
-
+                        <li><a ng-click="getWomenClothing('Pyjama')" href="#/womenclothing">Pyjamas</a></li>
+                        <li><a ng-click="getWomenClothing('Track Pant')" href="#/womenclothing">Track Pants</a></li>
+                        <li><a ng-click="getWomenClothing('Capri')" href="#/womenclothing">Capris</a></li>
+                        <li><a ng-click="getWomenClothing('Harem Pant')" href="#/womenclothing">Harem Pants</a></li>
+                        <li><a ng-click="getWomenClothing('Jegging')" href="#/womenclothing">Jeggings</a></li>
+                        <li><a ng-click="getWomenClothing('Tight')" href="#/womenclothing">Tights</a></li>
+                        <li><a ng-click="getWomenClothing('Dungaree')" href="#/womenclothing">Dungarees</a></li>
 
 
                     </ul>
@@ -556,83 +758,98 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </div>
 </li>
-<li><a class="color5" href="#/watches">Watches</a>
-    <div class="megapanel">
+<!--<li><a class="color5" ng-click="getWatchsResult('analog')" href="#/Watchs">Watches</a>
+
+    <div data-ng-controller="WatchsCtrl" class="megapanel">
         <div class="row">
             <div class="col1">
                 <div class="h_nav">
                     <h4>Men's Watches</h4>
                     <ul>
-                        <li><a ng-click="getwatches('Men')" data-ng-controller="WatchCtrl" href="#/watches">All Brands</a></li>
-                        <li><a ng-click="getwatches('Fossil')" data-ng-controller="WatchCtrl" href="#/watches">Fossil</a></li>
-                        <li><a href="shop.html">Titan</a></li>
-                        <li><a href="shop.html">Fastrack</a></li>
-                        <li><a href="shop.html">Analog Watches</a></li>
-                        <li><a href="shop.html">DIgital Watches</a></li>
+                        <li><a ng-click="getWatchsResult('men')"  href="#/Watchs">All
+                            Brands</a></li>
+                        <li><a ng-click="getWatchsResult('analog')"  href="#/Watchs">Analog
+                            Watches</a></li>
+                        <li><a ng-click="getWatchsResult('digital')"  href="#/Watchs">Digital
+                            Watches</a></li>
                     </ul>
                 </div>
+
+            </div>
+
+            <div class="col1">
                 <div class="h_nav">
-                    <h4 class="top">Women's Watches</h4>
+                    <h4>Women's Watches</h4>
                     <ul>
-                        <li><a ng-click="getwatches('women')" data-ng-controller="WatchCtrl" href="#/watches">All Brands</a></li>
-                        <li><a href="shop.html">Fossil</a></li>
-                        <li><a href="shop.html">Titan</a></li>
-                        <li><a href="shop.html">Fastrack</a></li>
-                        <li><a href="shop.html">Analog Watches</a></li>
-                        <li><a href="shop.html">DIgital Watches</a></li>
+                        <li><a ng-click="getWatchsResult('women')"  href="#/Watchs">All
+                            Brands</a></li>
+                        <li><a ng-click="getWatchsResult('women analog')"
+                               href="#/Watchs">Analog Watches</a></li>
+                        <li><a ng-click="getWatchsResult('women digital')"
+                               href="#/Watchs">Digital Watches</a></li>
                     </ul>
                 </div>
+
             </div>
 
             <div class="col1"></div>
             <div class="col1"></div>
             <div class="col1"></div>
             <div class="col1"></div>
-            <img src="web/images/nav_img2.jpg" alt=""/>
+            <img src="web/images/nav_watch.jpg" alt=""/>
+
         </div>
     </div>
-</li>
-<li><a class="color6" ng-click="mobiles()" data-ng-controller="MyCtrl2" href="#/view2">Mobiles</a>
-    <!--<div class="megapanel">
+</li>-->
+<li><a class="color6" ng-click="getMobilesResult('mobile phone')" data-ng-controller="MobilesCtrl" href="#/mobiles">Mobiles
+    & Accessories</a>
+
+    <div class="megapanel">
         <div class="row">
             <div class="col1">
                 <div class="h_nav">
                     <h4>Brands</h4>
                     <ul>
-                        <li><a ng-click="mobiles()" data-ng-controller="MyCtrl2" href="#/view2">All Brands</a></li>
-                        <li><a href="shop.html">Apple</a></li>
-                        <li><a href="shop.html">Samsung</a></li>
-                        <li><a href="shop.html">Nokia</a></li>
-                        <li><a href="shop.html">Blackberry</a></li>
-                        <li><a href="shop.html">Micromax</a></li>
+                        <li><a ng-click="getMobilesResult('mobile phone')" data-ng-controller="MobilesCtrl"
+                               href="#/mobiles">Mobile Phones</a></li>
+                        <!-- <li><a href="shop.html">Apple</a></li>
+                         <li><a href="shop.html">Samsung</a></li>
+                         <li><a href="shop.html">Nokia</a></li>
+                         <li><a href="shop.html">Blackberry</a></li>
+                         <li><a href="shop.html">Micromax</a></li>-->
                     </ul>
                 </div>
-               &lt;!&ndash; <div class="h_nav">
-                    <h4 class="top">my company</h4>
-                    <ul>
-                        <li><a href="shop.html">trends</a></li>
-                        <li><a href="shop.html">sale</a></li>
-                        <li><a href="shop.html">style videos</a></li>
-                        <li><a href="shop.html">accessories</a></li>
-                        <li><a href="shop.html">kids</a></li>
-                        <li><a href="shop.html">style videos</a></li>
-                    </ul>
-                </div>&ndash;&gt;
+                <!-- <div class="h_nav">
+                     <h4 class="top">my company</h4>
+                     <ul>
+                         <li><a href="shop.html">trends</a></li>
+                         <li><a href="shop.html">sale</a></li>
+                         <li><a href="shop.html">style videos</a></li>
+                         <li><a href="shop.html">accessories</a></li>
+                         <li><a href="shop.html">kids</a></li>
+                         <li><a href="shop.html">style videos</a></li>
+                     </ul>
+                 </div>-->
             </div>
             <div class="col1">
                 <div class="h_nav">
-                    <h4>Merchant</h4>
+                    <h4>Accessories</h4>
                     <ul>
-                        <li><a href="shop.html">All Merchants</a></li>
-                        <li><a href="shop.html">Flipkart</a></li>
-                        <li><a href="shop.html">Amazon</a></li>
-                        <li><a href="shop.html">Indiatimes</a></li>
-                        <li><a href="shop.html">Greendust</a></li>
+                        <li><a ng-click="getMobilesResult('Case')" data-ng-controller="MobilesCtrl" href="#/mobiles">Case</a>
+                        </li>
+                        <li><a ng-click="getMobilesResult('Cover')" data-ng-controller="MobilesCtrl" href="#/mobiles">Cover</a>
+                        </li>
+                        <li><a ng-click="getMobilesResult('Screen')" data-ng-controller="MobilesCtrl" href="#/mobiles">Screen
+                            Guard and protectors</a></li>
+                        <li><a ng-click="getMobilesResult('ear')" data-ng-controller="MobilesCtrl" href="#/mobiles">Earphone</a>
+                        </li>
+                        <li><a ng-click="getMobilesResult('power bank')" data-ng-controller="MobilesCtrl"
+                               href="#/mobiles">Power Bank</a></li>
 
                     </ul>
                 </div>
             </div>
-            <div class="col1">
+            <!--<div class="col1">
                 <div class="h_nav">
                     <h4>Accessories</h4>
                     <ul>
@@ -644,46 +861,46 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <li><a href="shop.html">style videos</a></li>&ndash;&gt;
                     </ul>
                 </div>
-            </div>
-           &lt;!&ndash; <div class="col1">
-                <div class="h_nav">
-                    <h4>account</h4>
-                    <ul>
-                        <li><a href="shop.html">login</a></li>
-                        <li><a href="shop.html">create an account</a></li>
-                        <li><a href="shop.html">create wishlist</a></li>
-                        <li><a href="shop.html">my shopping bag</a></li>
-                        <li><a href="shop.html">brands</a></li>
-                        <li><a href="shop.html">create wishlist</a></li>
-                    </ul>
-                </div>
-            </div>&ndash;&gt;
-    &lt;!&ndash; <div class="col1">
-                <div class="h_nav">
-                    <h4>my company</h4>
-                    <ul>
-                        <li><a href="shop.html">trends</a></li>
-                        <li><a href="shop.html">sale</a></li>
-                        <li><a href="shop.html">style videos</a></li>
-                        <li><a href="shop.html">accessories</a></li>
-                        <li><a href="shop.html">kids</a></li>
-                        <li><a href="shop.html">style videos</a></li>
-                    </ul>
-                </div>
-            </div>&ndash;&gt;
-    &lt;!&ndash; <div class="col1">
-                <div class="h_nav">
-                    <h4>popular</h4>
-                    <ul>
-                        <li><a href="shop.html">new arrivals</a></li>
-                        <li><a href="shop.html">men</a></li>
-                        <li><a href="shop.html">women</a></li>
-                        <li><a href="shop.html">accessories</a></li>
-                        <li><a href="shop.html">kids</a></li>
-                        <li><a href="shop.html">style videos</a></li>
-                    </ul>
-                </div>
-            </div>&ndash;&gt;
+            </div>-->
+            <!-- <div class="col1">
+                 <div class="h_nav">
+                     <h4>account</h4>
+                     <ul>
+                         <li><a href="shop.html">login</a></li>
+                         <li><a href="shop.html">create an account</a></li>
+                         <li><a href="shop.html">create wishlist</a></li>
+                         <li><a href="shop.html">my shopping bag</a></li>
+                         <li><a href="shop.html">brands</a></li>
+                         <li><a href="shop.html">create wishlist</a></li>
+                     </ul>
+                 </div>
+             </div>-->
+            <!-- <div class="col1">
+                        <div class="h_nav">
+                            <h4>my company</h4>
+                            <ul>
+                                <li><a href="shop.html">trends</a></li>
+                                <li><a href="shop.html">sale</a></li>
+                                <li><a href="shop.html">style videos</a></li>
+                                <li><a href="shop.html">accessories</a></li>
+                                <li><a href="shop.html">kids</a></li>
+                                <li><a href="shop.html">style videos</a></li>
+                            </ul>
+                        </div>
+                    </div>-->
+            <!-- <div class="col1">
+                        <div class="h_nav">
+                            <h4>popular</h4>
+                            <ul>
+                                <li><a href="shop.html">new arrivals</a></li>
+                                <li><a href="shop.html">men</a></li>
+                                <li><a href="shop.html">women</a></li>
+                                <li><a href="shop.html">accessories</a></li>
+                                <li><a href="shop.html">kids</a></li>
+                                <li><a href="shop.html">style videos</a></li>
+                            </ul>
+                        </div>
+                    </div>-->
         </div>
         <div class="row">
             <div class="col2"></div>
@@ -692,10 +909,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="col1"></div>
             <div class="col1"></div>
         </div>
-    </div>-->
+    </div>
 </li>
-<li><a class="color7" ng-click="menlaptopes()" data-ng-controller="laptopesCtrl" href="#/laptopes">Laptops</a>
-    <!--<div class="megapanel">
+<!--<li><a class="color7" ng-click="menlaptopes()" data-ng-controller="laptopesCtrl" href="#/laptopes">Laptops</a>
+    &lt;!&ndash;<div class="megapanel">
         <div class="row">
             <div class="col1">
                 <div class="h_nav">
@@ -776,10 +993,153 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="col1"></div>
             <div class="col1"></div>
         </div>
-    </div>-->
+    </div>&ndash;&gt;
+</li>-->
+
+
+<li><a class="color7" data-ng-controller="ElectronicsCtrl" href="#/electronics">Electronics</a>
+
+    <div data-ng-controller="ElectronicsCtrl" class="megapanel">
+        <div class="row">
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>Video & Audio Systems</h4>
+
+                    <ul>
+                        <li><a ng-click="getElectronicsResult('LCD')" href="#/electronics">LCD Tv</a></li>
+                        <li><a ng-click="getElectronicsResult('LED')" href="#/electronics">LED Tv</a></li>
+                        <li><a ng-click="getElectronicsResult('Plasma')" href="#/electronics">Plasma Tv</a></li>
+                        <li><a ng-click="getElectronicsResult('Television')" href="#/electronics">All Television</a>
+                        </li>
+
+                        <li><a ng-click="getElectronicsResult('DVD')" href="#/electronics">DVD Player</a></li>
+                        <li><a ng-click="getElectronicsResult('DVD')" href="#/electronics">DVD Player</a></li>
+
+                        <li><a ng-click="getElectronicsResult('Desktop')" href="#/electronics">Desktops</a></li>
+
+                        <li><a ng-click="getElectronicsResult('washing machine')" href="#/electronics">Washing
+                            Machine</a></li>
+                        <li><a ng-click="getElectronicsResult('refriger')" href="#/electronics">Refrigerators</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>Camera</h4>
+                    <ul>
+                        <li><a ng-click="getElectronicsResult('camera')" href="#/electronics">All Camera</a></li>
+                        <li><a ng-click="getElectronicsResult('digital camera')" href="#/electronics">Digital Camera</a>
+                        </li>
+                        <li><a ng-click="getElectronicsResult('SLR camera')" href="#/electronics">SLR Camera</a></li>
+                        <li><a ng-click="getElectronicsResult('Camcorder')" href="#/electronics">Camcorders</a></li>
+                        <li><a ng-click="getElectronicsResult('Camera Access')" href="#/electronics">Camera
+                            Accessories</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>Computers & Peripherals</h4>
+                    <ul>
+                        <li><a ng-click="getElectronicsResult('Laptop')" href="#/electronics">Laptops & Laptop Bags</a>
+                        </li>
+                        <li><a ng-click="getElectronicsResult('Desktop')" href="#/electronics">Desktop</a></li>
+                        <li><a ng-click="getElectronicsResult('Pen Drive')" href="#/electronics">Pen Drives</a></li>
+                        <li><a ng-click="getElectronicsResult('Headphone')" href="#/electronics">Headphones & Mic</a>
+                        </li>
+                        <li><a ng-click="getElectronicsResult('Speaker')" href="#/electronics">Speakers</a></li>
+                        <li><a ng-click="getElectronicsResult('Laptop Bag')" href="#/electronics">Laptop Bags</a></li>
+                        <li><a ng-click="getElectronicsResult('External Hard Disk')" href="#/electronics">External Hard
+                            disks</a></li>
+                        <li><a ng-click="getElectronicsResult('Printer')" href="#/electronics">Printers & Scanners</a>
+                        </li>
+                        <li><a ng-click="getElectronicsResult('Laptop table')" href="#/electronics">Laptop Tables</a>
+                        </li>
+                        <li><a ng-click="getElectronicsResult('iPad')" href="#/electronics">iPad</a></li>
+                        <li><a ng-click="getElectronicsResult('Tablet')" href="#/electronics">Tablets</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>Home Appliances</h4>
+                    <ul>
+                        <li><a ng-click="getElectronicsResult('Referi')" href="#/electronics">Refrigerators</a></li>
+                        <li><a ng-click="getElectronicsResult('Washing machine')" href="#/electronics">Washing
+                            Machines</a></li>
+                        <li><a ng-click="getElectronicsResult('Air condition')" href="#/electronics">Air
+                            Conditioners</a></li>
+                        <li><a ng-click="getElectronicsResult('microwave')" href="#/electronics">Microwave Ovens</a>
+                        </li>
+                        <li><a ng-click="getElectronicsResult('Mixer')" href="#/electronics">Mixers</a></li>
+                        <li><a ng-click="getElectronicsResult('Juicer')" href="#/electronics">Juicers</a></li>
+                        <li><a ng-click="getElectronicsResult('grinder')" href="#/electronics">Grinders</a></li>
+                        <li><a ng-click="getElectronicsResult('Air Purifier')" href="#/electronics">Air Purifier</a>
+                        </li>
+                        <li><a ng-click="getElectronicsResult('Dishwasher')" href="#/electronics">Dishwashers</a></li>
+                        <li><a ng-click="getElectronicsResult('Chimney & Hoods')" href="#/electronics">Chimney &
+                            Hoods</a></li>
+                        <li><a ng-click="getElectronicsResult('Choppers & Blenders')" href="#/electronics">Choppers &
+                            Blenders</a></li>
+                        <li><a ng-click="getElectronicsResult('Coffee Maker & Kettles')" href="#/electronics">Coffee
+                            Maker & Kettles</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <!-- <div class="col1">
+                 <div class="h_nav">
+                     <h4>account</h4>
+                     <ul>
+                         <li><a href="shop.html">login</a></li>
+                         <li><a href="shop.html">create an account</a></li>
+                         <li><a href="shop.html">create wishlist</a></li>
+                         <li><a href="shop.html">my shopping bag</a></li>
+                         <li><a href="shop.html">brands</a></li>
+                         <li><a href="shop.html">create wishlist</a></li>
+                     </ul>
+                 </div>
+             </div>
+             <div class="col1">
+                 <div class="h_nav">
+                     <h4>my company</h4>
+                     <ul>
+                         <li><a href="shop.html">trends</a></li>
+                         <li><a href="shop.html">sale</a></li>
+                         <li><a href="shop.html">style videos</a></li>
+                         <li><a href="shop.html">accessories</a></li>
+                         <li><a href="shop.html">kids</a></li>
+                         <li><a href="shop.html">style videos</a></li>
+                     </ul>
+                 </div>
+             </div>
+             <div class="col1">
+                 <div class="h_nav">
+                     <h4>popular</h4>
+                     <ul>
+                         <li><a href="shop.html">new arrivals</a></li>
+                         <li><a href="shop.html">men</a></li>
+                         <li><a href="shop.html">women</a></li>
+                         <li><a href="shop.html">accessories</a></li>
+                         <li><a href="shop.html">kids</a></li>
+                         <li><a href="shop.html">style videos</a></li>
+                     </ul>
+                 </div>
+             </div>-->
+        </div>
+        <div class="row">
+            <div class="col2"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+        </div>
+    </div>
 </li>
-<li><a class="color7" ng-click="mentves()" data-ng-controller="tvesCtrl" href="#/tves">Television</a>
-    <!--<div class="megapanel">
+
+
+<!--<li><a class="color7" ng-click="mentves()" data-ng-controller="tvesCtrl" href="#/tves">Television</a>
+    &lt;!&ndash;<div class="megapanel">
         <div class="row">
             <div class="col1">
                 <div class="h_nav">
@@ -860,10 +1220,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="col1"></div>
             <div class="col1"></div>
         </div>
-    </div>-->
+    </div>&ndash;&gt;
 </li>
 <li><a class="color8" ng-click="mencameraes('Camera')" data-ng-controller="cameraesCtrl" href="#/cameraes">Cameras</a>
-    <!--<div class="megapanel">
+    &lt;!&ndash;<div class="megapanel">
         <div class="row">
             <div class="col1">
                 <div class="h_nav">
@@ -902,8 +1262,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="col1"></div>
             </div>&ndash;&gt;
         </div>
-        </div>-->
-</li>
+        </div>&ndash;&gt;
+</li>-->
 <!--<li><a class="color9" href="#">Sports Equipments</a>
     <div class="megapanel">
         <div class="row">
@@ -1004,11 +1364,46 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </div>
 </div>
 
+<div class="register_account">
+<div class="wrap">
+    <form>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="pi-inner-search">
+                    <div class="col_1_of_2 span_1_of_2 pi-input-box col-md-offset-4">
+                       <!-- <div><input type="text" placeholder="What you want to pingle?" ng-model="typeaheadValue"
+                                    bs-typeahead="typeahead"></div>-->
+                        <angucomplete id="members"
+                                      placeholder="Search members"
+                                      pause="400"
+                                      selectedobject="testObj"
+                                      url="http://localhost:8080/mobile/allresults/"
+                                      titlefield="productName,salePrice"
+                                      inputclass="form-control form-control-small"/>
+
+                        <!--<iframe src='http://www.flipkart.com/affiliate/displayWidget?affrid=WRID-140783497538848252' height=55 width=360 scrolling='no' frameborder=0></iframe>-->
+                    </div>
+                    <!-- <div class="col_1_of_2 span_1_of_2 pi-select-box">
+                         <div>
+                             <select data-ng-controller="watchesCtrl" placeholder="Select category"
+                                     ng-click="getMobileInfo(typeaheadValue, item.name)" style="width: 40%"
+                                     ng-model="item"
+                                     ng-options="item as item.name for item in items"></select>
+                         </div>
+                     </div>-->
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
 <div class="content-bottom">
 
     <div ng-view></div>
 
 </div>
+
 
 
 <div class="footer">
@@ -1355,7 +1750,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 <script src="js/bootstrap.min.js"></script>
-<script src="lib/angular/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.1/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+<!--<script src="js/angtouch.js"></script>-->
 <script src="js/angular-strap.js"></script>
 <script type='text/javascript' src='js/infinite-scroll.js'></script>
 <script type='text/javascript' src='js/ng-infinite-scroll.min.js'></script>
@@ -1366,8 +1763,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script type='text/javascript' src='js/ngAutocomplete.js'></script>
 <script src="js/services.js"></script>
 <script src="js/controllers.js"></script>
+<script src="web/js/angucomplete.js"></script>
 <script src="js/filters.js"></script>
 <script src="js/directives.js"></script>
+
+
 <script src="js/checklist-model.js"></script>
 
 
