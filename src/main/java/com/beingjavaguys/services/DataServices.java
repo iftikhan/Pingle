@@ -5,6 +5,7 @@ import com.beingjavaguys.vo.Product;
 import org.json.JSONArray;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public interface DataServices {
@@ -52,8 +53,8 @@ public interface DataServices {
 
     public Set<String> getAllMenBrandList(String category) throws Exception;
     public Set<String> getAllMenColorList(String category) throws Exception;
-    public List<PMenClothing> getMenClothingForCatList(String category) throws Exception;
-    public List<PMenClothing> getAllMenSelectClothingList(String brand, String color, int maxPrice, int minPrice, String categoryItem, String order) throws Exception;
+    public Map getMenClothingForCatList(String category) throws Exception;
+    public Map getAllMenSelectClothingList(String brand, String color, int maxPrice, int minPrice, String categoryItem, String order) throws Exception;
 
     public boolean addUser(PUser pUser) throws Exception;
 

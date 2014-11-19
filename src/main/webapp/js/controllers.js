@@ -603,6 +603,26 @@ app.controller('MenCtrl', ['$scope', '$rootScope', '$location', 'MenFactory',
             $rootScope.brandList = MenFactory.allbrands.query({category: category});
             $rootScope.colorList = MenFactory.allcolor.query({category: category});
             $rootScope.MenList = MenFactory.allclothing.query({category: category});
+
+//            $rootScope.getItemsToShow = function () {
+//                var List;
+//                var count;
+//                var obj = $rootScope.MenList;
+//
+//                if (obj[0].List) {
+//                    List = obj[0].List;
+//                    count = obj[1].TotalResult;
+//                }
+//                else {
+//
+//                    List = obj[1].List;
+//                    count = obj[0].TotalResult;
+//                }
+//
+//                alert(count);
+//            };
+
+          //  $rootScope.getItemsToShow();
             $rootScope.priceList = [
                 {
                     price: "Rs. 1000 and below"
@@ -623,13 +643,22 @@ app.controller('MenCtrl', ['$scope', '$rootScope', '$location', 'MenFactory',
 
             var pagesShown = 1;
             var pageSize = 21;
+            var rowCount=1;
 
             $scope.paginationLimit = function (data) {
                 //alert("34");
                 return pageSize * pagesShown;
             };
             $scope.hasMoreItemsToShow = function () {
-                return pagesShown < ($rootScope.MenList.length / pageSize);
+                var List;
+                var obj = $rootScope.MenList;
+
+                    if(obj[0].List)
+                    List = obj[0].List;
+                    else
+                    List = obj[1].List;
+
+                return pagesShown < (List.length / pageSize);
             };
             $scope.showMoreItems = function () {
                 pagesShown = pagesShown + 1;

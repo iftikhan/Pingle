@@ -12,13 +12,13 @@
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<!--<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://192.169.233.15:3306/nvyas_pingle" />
 		<property name="username" value="nvyas_naveen" />
-		<property name="password" value="Acc1234$$" />
-        <!--<property name="url" value="jdbc:mysql://localhost:3306/employee_db" />
+		<property name="password" value="Acc1234$$" /> -->
+        <property name="url" value="jdbc:mysql://localhost:3306/employee_db" />
         <property name="username" value="root" />
-        <property name="password" value="root" />-->
+        <property name="password" value="root" />
 	</bean>
 
 	<bean id="sessionFactory"

@@ -4,6 +4,8 @@ import com.beingjavaguys.model.Brand;
 import com.beingjavaguys.model.PMenClothing;
 import com.beingjavaguys.services.DataServices;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
@@ -133,10 +135,13 @@ public class MenClothingController {
         }
 
         try {
-            List<PMenClothing> finalProd = dataServices.getAllMenSelectClothingList(brand, color, maxPrice, minPrice, categoryItem, order);
+            Map map = dataServices.getAllMenSelectClothingList(brand, color, maxPrice, minPrice, categoryItem, order);
+
+            int TotalResult = (Integer)map.get("TotalResult");
+            List<PMenClothing> finalBrandlist = (List<PMenClothing>)map.get("List");
 
             if (categoryItem.equalsIgnoreCase("Dress")) {
-                for (Iterator<PMenClothing> iter = finalProd.iterator(); iter.hasNext(); ) {
+                for (Iterator<PMenClothing> iter = finalBrandlist.iterator(); iter.hasNext(); ) {
                     PMenClothing p = iter.next();
 
                     if (p.getProductName().toLowerCase().contains("dress") && (p.getProductName().toLowerCase().contains("top") ||
@@ -165,12 +170,15 @@ public class MenClothingController {
                 }
             }
 
+            map.clear();
+            map.put("TotalResult","["+TotalResult+"]");
+            map.put("List",finalBrandlist);
             Gson gson = new Gson();
-            result = gson.toJson(finalProd);
+            result = gson.toJson(map);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return result;
+        return "["+result+"]";
     }
 
 
@@ -181,7 +189,10 @@ public class MenClothingController {
 
         String result = "";
         try {
-            List<PMenClothing> finalBrandlist = dataServices.getMenClothingForCatList(category);
+           Map map =  dataServices.getMenClothingForCatList(category);
+
+            int TotalResult = (Integer)map.get("TotalResult");
+            List<PMenClothing> finalBrandlist = (List<PMenClothing>)map.get("List");
 
             if (category.equalsIgnoreCase("Dress")) {
                 for (Iterator<PMenClothing> iter = finalBrandlist.iterator(); iter.hasNext(); ) {
@@ -215,12 +226,17 @@ public class MenClothingController {
 
             System.out.println("Size is for finalBrandlist :: " + finalBrandlist.size());
 
+
+            map.clear();
+            map.put("TotalResult","["+TotalResult+"]");
+            map.put("List",finalBrandlist);
+
             Gson gson = new Gson();
-            result = gson.toJson(finalBrandlist);
+            result = gson.toJson(map);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return result;
+        return "["+result+"]";
     }
 
 
@@ -231,7 +247,11 @@ public class MenClothingController {
         System.out.println("compare for productName is :: " + productName);
         String result = "";
         try {
-            List<PMenClothing> pWomenClothings = dataServices.getMenClothingForCatList(category);
+
+            Map map =  dataServices.getMenClothingForCatList(category);
+            int TotalResult = (Integer)map.get("TotalResult");
+            List<PMenClothing> pMenClothings = (List<PMenClothing>)map.get("List");
+
 
             StandardAnalyzer analyzer = new StandardAnalyzer(Version.LUCENE_40);
             // 1. create the index
@@ -240,7 +260,7 @@ public class MenClothingController {
             IndexWriterConfig config = new IndexWriterConfig(Version.LUCENE_40, analyzer);
 
             IndexWriter w = new IndexWriter(index, config);
-            for (PMenClothing product : pWomenClothings) {
+            for (PMenClothing product : pMenClothings) {
                 addDoc(w, product.getProductName(), product.getSalePrice(), product.getMerchant(), product.getProductURL(),
                         product.getMediumImage());
             }

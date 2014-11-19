@@ -5,7 +5,7 @@ package com.beingjavaguys.pmisc;
  */
 public class PConstants {
 
-    public static int MaxListSize = 100;
+    public static int PAGE_SIZE = 100;
 
 
 }

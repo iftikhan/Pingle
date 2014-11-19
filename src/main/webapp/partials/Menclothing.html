@@ -92,9 +92,14 @@
                 </div>
                 <div class="clear"></div>
             </div>
-            <div ng-show="MenList.length>0">
-                <label class="text-muted fa-bold"><b>Total results : {{ MenList.length }}</b></label> <br>
+
+            <!--<b>{{MenList}}</b>-->
+            <div data-ng-repeat="product1 in MenList">
+            <div >
+                <label class="text-muted fa-bold"><b>Total results : {{ product1.TotalResult }}</b></label> <br>
             </div>
+            </div>
+
             <div class="clear"></div>
 
             <!--  <a href="#" class="btn btn-primary btn-lg" data-ng-controller="watchesCtrl" ng-click="start()">
@@ -114,8 +119,9 @@
                     </div>-->
 
                 </div>
+                <div data-ng-repeat="product1 in MenList">
+                <div data-ng-repeat="product in product1.List | limitTo: paginationLimit() | orderBy : 'salePrice'">
 
-                <div data-ng-repeat="product in MenList | limitTo: paginationLimit() | orderBy : 'salePrice'">
                     <div class="col_1_of_single1 span_1_of_single1">
                         <a  ng-click="getProductInfo(product.productName, categoryItem)" data-toggle="modal" data-target="#myModal">
                             <div class="view1 view-fifth1" style="width: 300px; height: 490px;">
@@ -168,6 +174,7 @@
                             <div class="clear"></div>
                             <div class="clear"></div>
                         </a></div>
+                </div>
                 </div>
                 <div class="pagination pagination-centered">
                     <button class="btn btn-default btn-group-lg" style="margin-left: 400px"

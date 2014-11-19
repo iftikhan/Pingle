@@ -4,6 +4,7 @@ import com.beingjavaguys.model.*;
 import com.beingjavaguys.vo.Product;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public interface DataDao {
@@ -51,7 +52,7 @@ public interface DataDao {
     public List<PWomenClothing> getWomenClothingForCatList(String category) throws Exception;
     public List<PWomenClothing> getAllWomenSelectClothingList(String brand, String color, int maxPrice, int minPrice, String categoryItem, String order) throws Exception;
 
-    public List<PMenClothing> getAllMenSelectClothingList(String brand, String color, int maxPrice, int minPrice, String categoryItem, String order) throws Exception;
+    public Map getAllMenSelectClothingList(String brand, String color, int maxPrice, int minPrice, String categoryItem, String order) throws Exception;
 
 
     public Set<String> getAllElectronicsBrandList(String category) throws Exception;
@@ -72,7 +73,7 @@ public interface DataDao {
 
     public Set<String> getAllMenBrandList(String category) throws Exception;
     public Set<String> getAllMenColorList(String category) throws Exception;
-    public List<PMenClothing> getMenClothingForCatList(String category) throws Exception;
+    public Map getMenClothingForCatList(String category) throws Exception;
 
 
 }

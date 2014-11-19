@@ -184,12 +184,9 @@ public class DataServicesImpl implements DataServices {
     }
 
     @Override
-    public List<PMenClothing> getAllMenSelectClothingList(String brand, String color, int maxPrice, int minPrice, String categoryItem, String order) throws Exception{
+    public Map getAllMenSelectClothingList(String brand, String color, int maxPrice, int minPrice, String categoryItem, String order) throws Exception{
         return dataDao.getAllMenSelectClothingList(brand, color,  maxPrice,  minPrice, categoryItem, order);
     }
-
-
-
 
     @Override
     public Set<String> getAllElectronicsBrandList(String category) throws Exception{
@@ -265,7 +262,7 @@ public class DataServicesImpl implements DataServices {
     }
 
     @Override
-    public List<PMenClothing> getMenClothingForCatList(String category) throws Exception{
+    public Map getMenClothingForCatList(String category) throws Exception{
         return dataDao.getMenClothingForCatList(category);
     }
 
