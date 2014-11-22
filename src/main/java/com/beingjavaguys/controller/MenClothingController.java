@@ -51,7 +51,7 @@ public class MenClothingController {
     @RequestMapping(value = "/brands/{category}", method = RequestMethod.GET)
     public
     @ResponseBody
-    String getAllWomenBrands(@PathVariable("category") String category) {
+    String getAllMenBrands(@PathVariable("category") String category) {
         System.out.println("Category is :: " + category);
         String result = "";
         try {
@@ -74,7 +74,7 @@ public class MenClothingController {
     @RequestMapping(value = "/color/{category}", method = RequestMethod.GET)
     public
     @ResponseBody
-    String getAllWomenColor(@PathVariable("category") String category) {
+    String getAllMenColor(@PathVariable("category") String category) {
         System.out.println("Category is :: " + category);
         String result = "";
         try {
@@ -171,7 +171,7 @@ public class MenClothingController {
             }
 
             map.clear();
-            map.put("TotalResult","["+TotalResult+"]");
+            map.put("TotalResult",TotalResult);
             map.put("List",finalBrandlist);
             Gson gson = new Gson();
             result = gson.toJson(map);
@@ -185,7 +185,7 @@ public class MenClothingController {
     @RequestMapping(value = "/allresults/{category}", method = RequestMethod.GET)
     public
     @ResponseBody
-    String getAllWomenClothsForCat(@PathVariable("category") String category) {
+    String getAllMenClothsForCat(@PathVariable("category") String category) {
 
         String result = "";
         try {
@@ -228,7 +228,7 @@ public class MenClothingController {
 
 
             map.clear();
-            map.put("TotalResult","["+TotalResult+"]");
+            map.put("TotalResult",TotalResult);
             map.put("List",finalBrandlist);
 
             Gson gson = new Gson();

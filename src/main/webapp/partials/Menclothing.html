@@ -96,7 +96,7 @@
             <!--<b>{{MenList}}</b>-->
             <div data-ng-repeat="product1 in MenList">
             <div >
-                <label class="text-muted fa-bold"><b>Total results : {{ product1.TotalResult }}</b></label> <br>
+                <label class="text-muted fa-bold">Showing {{ (product1.List.length) }} out of {{ product1.TotalResult }} records</label> <br>
             </div>
             </div>
 

@@ -592,8 +592,12 @@ app.controller('WomenCtrl', ['$scope', '$rootScope', '$location', 'WomenFactory'
     }]);
 
 
-app.controller('MenCtrl', ['$scope', '$rootScope', '$location', 'MenFactory',
-    function ($scope, $rootScope, $location, MenFactory) {
+app.controller('MenCtrl', ['$scope', '$rootScope','$q', '$location', 'MenFactory',
+    function ($scope, $rootScope,$q, $location, MenFactory) {
+
+
+
+
 
 
         $scope.getMenClothing = function (category) {
@@ -603,6 +607,7 @@ app.controller('MenCtrl', ['$scope', '$rootScope', '$location', 'MenFactory',
             $rootScope.brandList = MenFactory.allbrands.query({category: category});
             $rootScope.colorList = MenFactory.allcolor.query({category: category});
             $rootScope.MenList = MenFactory.allclothing.query({category: category});
+            $rootScope.NewLsit=null;
 
 //            $rootScope.getItemsToShow = function () {
 //                var List;
@@ -621,8 +626,11 @@ app.controller('MenCtrl', ['$scope', '$rootScope', '$location', 'MenFactory',
 //
 //                alert(count);
 //            };
+//  $rootScope.getItemsToShow();
 
-          //  $rootScope.getItemsToShow();
+
+
+
             $rootScope.priceList = [
                 {
                     price: "Rs. 1000 and below"
@@ -642,28 +650,87 @@ app.controller('MenCtrl', ['$scope', '$rootScope', '$location', 'MenFactory',
             ];
 
             var pagesShown = 1;
-            var pageSize = 21;
+            var pageSize = 50;
             var rowCount=1;
+//rowCount:rowCount
+            function doQuery(category) {
+                var d = $q.defer();
+                var result = MenFactory.allclothing.query({category: category}, function() {
+                    d.resolve(result);
+                });
+                return d.promise;
+            }
 
             $scope.paginationLimit = function (data) {
                 //alert("34");
                 return pageSize * pagesShown;
             };
             $scope.hasMoreItemsToShow = function () {
+
                 var List;
                 var obj = $rootScope.MenList;
 
-                    if(obj[0].List)
+             //   console.log(obj);
+                if (obj[0]!=undefined )
+                    if(obj[0].List!=undefined)
                     List = obj[0].List;
-                    else
+                else
                     List = obj[1].List;
-
-                return pagesShown < (List.length / pageSize);
+              //  console.log(List);
+                if(List!= undefined)
+                    return pagesShown < (List.length / pageSize);
             };
             $scope.showMoreItems = function () {
                 pagesShown = pagesShown + 1;
-            };
 
+
+                    var List;
+                    var fetchedList;
+                    var obj = $rootScope.MenList;
+
+                    if ( obj[0] != undefined)
+                    if(obj[0].List != undefined)
+                        List = obj[0].List;
+                    else
+                        List = obj[1].List;
+
+
+                    if (!(pagesShown < (List.length / pageSize))) {
+                        console.log("need to call DB");
+
+                        $q.all([
+                            doQuery(category)
+                        ]).then(function (data1) {
+
+                            var newlist = data1[0];
+
+
+                           if(newlist.length >0) {
+                               if (newlist[0] != undefined)
+                                   if (newlist[0].List != undefined)
+                                       fetchedList = newlist[0].List;
+                                   else
+                                       fetchedList = newlist[1].List;
+
+                                   if (fetchedList.length > 0) {
+                                       console.log("fetchedList:" ,fetchedList)
+                                       if (newlist[0] != undefined)
+                                           if ($rootScope.MenList[0].List != undefined) {
+                                               $rootScope.MenList[0].List = $rootScope.MenList[0].List.concat(fetchedList);
+                                               console.log( "updated records",$rootScope.MenList[0]);
+                                           }
+                                           else {
+                                               $rootScope.MenList[1].List = $rootScope.MenList[1].List.concat(fetchedList);
+                                               console.log( "updated records",$rootScope.MenList[1]);
+                                           }
+                                   }
+                                   return true;
+                               }
+
+                        });
+                    }
+                return true;
+            };
 
             $location.path('/Menclothing');
         }
